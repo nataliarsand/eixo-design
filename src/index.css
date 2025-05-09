@@ -7,7 +7,6 @@
    Root Variables
 ---------------------------------------------- */
 :root {
-  /* Colors */
   --color-bg: #000;
   --color-text: #fff;
   --color-accent: #ccc;
@@ -19,15 +18,12 @@
   --color-cta-bg: #fff;
   --color-cta-text: #000;
 
-  /* Fonts */
   --font-sans: 'Space Grotesk', sans-serif;
   --font-serif: 'EB Garamond', serif;
 
-  /* Sizing */
   --max-width: 960px;
   --gutter: 2rem;
 
-  /* Typography */
   --size-h1: clamp(2rem, 8vw, 4rem);
   --size-h2: clamp(1.2rem, 4vw, 2rem);
   --size-body: 1rem;
@@ -38,25 +34,9 @@
   --cursor-y: 50vh;
 }
 
-:root .bg-noise::before {
-  opacity: 0;
-}
-
-:root.cursor-active .bg-noise::before {
-  opacity: 1;
-}
-
-
 /* ----------------------------------------------
    Base Styles
 ---------------------------------------------- */
-html {
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
-  height: 100%;
-  overflow-y: scroll;
-}
-
 html, body {
   margin: 0;
   padding: 0;
@@ -66,25 +46,24 @@ html, body {
   background: var(--color-bg);
   color: var(--color-text);
   overflow-x: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
 }
+
 body {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none;  /* IE 10+ */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 body::-webkit-scrollbar {
-  display: none; /* Chrome/Safari */
+  display: none;
 }
 
-
 #root {
-  padding: 0;
   margin: 0;
+  padding: 0;
   max-width: none;
 }
 
-/* ----------------------------------------------
-   Background Effect
----------------------------------------------- */
 .bg-noise {
   position: absolute;
   inset: 0;
@@ -106,11 +85,15 @@ body::-webkit-scrollbar {
     rgba(255, 255, 255, 0.02) 100%,
     rgba(255, 255, 255, 0) 100%
   );
-  pointer-events: none;
   opacity: 0;
-  transition: 
-    background-position 0.3s ease,
-    opacity 1.2s ease;
+  transition: background-position 0.3s ease, opacity 1.2s ease;
+}
+
+:root .bg-noise::before {
+  opacity: 0;
+}
+:root.cursor-active .bg-noise::before {
+  opacity: 1;
 }
 
 .trail-layer {
@@ -124,74 +107,63 @@ body::-webkit-scrollbar {
   position: absolute;
   width: 200px;
   height: 200px;
-  overflow: visible;
   background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 80%);
   transform: translate(-50%, -50%);
   animation: fadeTrail 1.8s ease-out forwards;
 }
 
 @keyframes fadeTrail {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
+  0% { opacity: 1; }
+  100% { opacity: 0; }
 }
-
-
 
 /* ----------------------------------------------
    Layout
 ---------------------------------------------- */
-  .app {
-    position: relative;
-    display: block;
-    min-height: 100vh;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: var(--gutter);
-    box-sizing: border-box;
-    /* ✖ REMOVE any scroll-related settings */
-    overflow: hidden;
-  }
-  
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: var(--gutter);
+  box-sizing: border-box;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
 
-  section {
-    height: 100vh;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: var(--gutter);
-    box-sizing: border-box;
-  }
-  
+section {
+  height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--gutter);
+  box-sizing: border-box;
+}
+
 /* ----------------------------------------------
-   Header & Language Switcher
+   Header
 ---------------------------------------------- */
 header {
   display: flex;
-  flex-direction: row;
-  width: 100%;
   justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
 }
 
 .logo {
   height: 32px;
-  margin-left: var(--gutter);
   object-fit: contain;
-  padding: 0;
+  margin-left: var(--gutter);
 }
-
 
 .lang-switcher {
   display: flex;
-  gap: 8px;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .lang-switcher button {
@@ -207,15 +179,15 @@ header {
   transition: all 0.2s ease;
 }
 
-.lang-switcher button:hover {
+.lang-switcher button:hover,
+.lang-switcher button.active {
   background: var(--color-text);
   color: var(--color-bg);
 }
 
 /* ----------------------------------------------
-   Hero Section
+   Hero
 ---------------------------------------------- */
-
 .hero-brand {
   display: flex;
   flex-direction: column;
@@ -239,18 +211,17 @@ header {
 }
 
 .hero-text {
+  max-width: 80vw;
   text-align: center;
   z-index: 1;
-  max-width: 80vw;
 }
 
 .hero h1 {
-  font-size: clamp(2rem, 8vw, 5rem);
+  font-size: var(--size-h1);
   line-height: 1.1;
   text-transform: uppercase;
   font-weight: 800;
-  margin-bottom: 1rem;
-  margin-top: 0;
+  margin: 0 0 1rem;
 }
 
 .hero .line1 {
@@ -278,13 +249,13 @@ header {
 
 .hero p {
   color: #aaa;
-  font-size: 1.125rem;
+  font-size: var(--size-body-lg);
   max-width: 640px;
   margin: 0 auto;
 }
 
 /* ----------------------------------------------
-   About Section
+   About
 ---------------------------------------------- */
 .about {
   padding: 6rem 2rem;
@@ -305,23 +276,20 @@ header {
 .about p {
   font-size: var(--size-body-lg);
   color: var(--color-accent);
-  line-height: 1.8;
-  margin-bottom: 1rem;
   font-family: var(--font-serif);
+  line-height: 1.8;
   max-width: 720px;
-  margin-left: auto;
-  margin-right: auto;
-  text-wrap: balance;
+  margin: 0 auto 1rem;
   opacity: 0.9;
+  text-wrap: balance;
   transition: opacity 0.3s ease;
 }
-
 .about p:hover {
   opacity: 1;
 }
 
 /* ----------------------------------------------
-   Offerings Grid
+   Offerings
 ---------------------------------------------- */
 .offerings h3 {
   text-transform: uppercase;
@@ -344,7 +312,7 @@ header {
 }
 
 .offering-card {
-  background-color: var(--color-card);
+  background: var(--color-card);
   border: 1px solid var(--color-border);
   padding: 2rem;
   border-radius: 8px;
@@ -353,21 +321,20 @@ header {
   transform: translateY(30px);
   animation: fadeUp 0.6s ease forwards;
 }
-
 .offering-card:nth-child(1) { animation-delay: 0.1s; }
 .offering-card:nth-child(2) { animation-delay: 0.3s; }
 .offering-card:nth-child(3) { animation-delay: 0.5s; }
-
-.offering-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-}
 
 @keyframes fadeUp {
   to {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.offering-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 .offering-card h4 {
@@ -396,10 +363,9 @@ header {
   font-size: var(--size-body);
   color: #aaa;
   margin-bottom: 0.4rem;
-  margin-left: 0.8rem;
-  position: relative;
   padding-left: 1.2rem;
   text-align: left;
+  position: relative;
 }
 
 .offering-card li::before {
@@ -410,7 +376,7 @@ header {
 }
 
 /* ----------------------------------------------
-   CTA Button
+   CTA
 ---------------------------------------------- */
 .cta {
   margin-top: 4rem;
@@ -437,22 +403,8 @@ header {
 }
 
 /* ----------------------------------------------
-   Responsive
+   Footer
 ---------------------------------------------- */
-@media (max-width: 600px) {
-  .hero h1 { font-size: 2rem; }
-  .hero h2 { font-size: 1.2rem; }
-
-  .lang-switcher {
-    flex-direction: column;
-    align-items: flex-end;
-  }
-
-  .lang-switcher button {
-    padding: 0.25rem 0.5rem;
-  }
-}
-
 .footer {
   padding: 3rem 2rem;
   text-align: center;
@@ -470,4 +422,93 @@ header {
 
 .footer a:hover {
   text-decoration: underline;
+}
+
+/* ----------------------------------------------
+   Media Queries
+---------------------------------------------- */
+@media (max-width: 1024px) {
+  .hero-text { max-width: 90vw; }
+  .about { padding: 4rem 1.5rem; }
+  .offerings-grid { gap: 1.5rem; padding: 0 1.5rem; }
+  .offering-card { padding: 1.5rem; }
+}
+
+@media (max-width: 768px) {
+  header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .lang-switcher { align-self: flex-end; }
+  .cta-button { padding: 0.6rem 1.2rem; font-size: 0.95rem; }
+  .about p,
+  .offering-sub,
+  .offering-card li { font-size: 1rem; }
+
+  @media (max-width: 767px) {
+    /* HEADER: reposition lang switcher and logo */
+    header {
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 1rem;
+      padding-top: 1.5rem;
+    }
+
+    section {
+      height: auto;
+    }
+
+    #hero {
+      height: 100vh;
+    }
+  
+    .lang-switcher {
+      order: -1;
+      justify-content: center;
+      width: 100%;
+      gap: 0.5rem;
+    }
+  
+    .logo {
+      height: clamp(48px, 10vw, 80px);
+      margin: 0 auto;
+      display: block;
+      position: static;
+    }
+  
+    /* HERO ICON: hide the floating X */
+    .hero-x {
+      display: none !important;
+    }
+  
+    /* Adjust spacing if needed for hero text */
+    .hero-text {
+      margin-top: 1rem;
+    }
+  
+    /* FOOTER: avoid overlap */
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+  
+    #root {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .footer {
+      margin-top: auto;
+    }
+  }
+
+  
+}
+
+@media (max-width: 480px) {
+  section { padding: 2rem 1rem; height: auto; }
+  .hero h1 { font-size: clamp(1.8rem, 6vw, 2.4rem); }
+  .hero p { font-size: 1rem; padding: 0 0.5rem; }
+  .footer { padding: 2rem 1rem; }
+  .offerings-grid { grid-template-columns: 1fr; }
 }

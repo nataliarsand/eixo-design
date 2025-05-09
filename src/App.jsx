@@ -125,6 +125,9 @@ const offerings = [
 function App() {
   const [lang, setLang] = useState('en');
   const t = content[lang];
+  useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
 
   // Section scroll effect
   useEffect(() => {
@@ -188,9 +191,20 @@ function App() {
       <header>
         <img src={logo} alt="Eixo Logo" className="logo" />
         <div className="lang-switcher">
-          <button onClick={() => setLang('en')}>EN</button>
-          <button onClick={() => setLang('pt')}>PT</button>
+          <button
+            className={lang === 'en' ? 'active' : ''}
+            onClick={() => setLang('en')}
+          >
+            EN
+          </button>
+          <button
+            className={lang === 'pt' ? 'active' : ''}
+            onClick={() => setLang('pt')}
+          >
+            PT
+          </button>
         </div>
+
       </header>
 
 
