@@ -11,10 +11,11 @@ import icon from './assets/images/eixo-icon-white.png'
       description: 'We align systems, people, and purpose through intentional UX.',
       offeringsLabel: 'How we do it',
       cta: "Let's talk",
-      aboutTitle: 'Who we are',
-      aboutText1: 'Eixo is an independent UX design studio helping teams bring clarity, coherence, and purpose to digital products and services.',
-      aboutText2: 'We design from the inside out — aligning systems, teams, and strategy before shaping flows, interfaces, and scale. Our work sits at the intersection of UX, product thinking, and design systems.',
-      aboutText3: 'We cut through noise, surface what matters, and build structures that support it. Whether you’re creating something new or improving what exists, we bring the clarity to move forward.',
+      aboutTitle: "Who we are",
+aboutText1: "Eixo is a UX design studio that brings clarity to complexity. We help teams cut through noise, align on purpose, and design systems that scale.",
+aboutText2: "We design from the inside out — working from intent to interface. Our work connects product thinking, service design, and UX craft to shape meaningful, repeatable experiences.",
+aboutText3: "We’re not here to make things pretty. We’re here to make things work — with intention, coherence, and a structure that lasts.",
+
       aboutPrinciplesTitle: 'How we work',
       aboutPrinciples: [
         '→ We ask hard questions early',
@@ -31,10 +32,10 @@ import icon from './assets/images/eixo-icon-white.png'
       description: 'Alinhamos sistemas, pessoas e propósito através de UX intencional.',
       offeringsLabel: 'O que oferecemos',
       cta: 'Vamos conversar',
-      aboutTitle: 'Quem somos',
-      aboutText1: 'A Eixo é um estúdio independente de UX que ajuda times a trazer clareza, coerência e propósito para produtos e serviços digitais.',
-      aboutText2: 'Projetamos de dentro para fora — alinhando sistemas, times e estratégia antes de moldar fluxos, interfaces e escala. Nosso trabalho vive na interseção entre UX, pensamento de produto e design de sistemas.',
-      aboutText3: 'Cortamos o ruído, revelamos o que importa e estruturamos para que isso floresça. Seja para criar algo novo ou refinar o que já existe, trazemos clareza para avançar.',
+      aboutTitle: "Quem somos",
+      aboutText1: "A Eixo é um estúdio de UX que traz clareza à complexidade. Ajudamos times a cortar o ruído, alinhar propósito e desenhar sistemas que escalam.",
+      aboutText2: "Projetamos de dentro pra fora — do propósito à interface. Nosso trabalho conecta pensamento de produto, design de serviços e prática de UX para criar experiências com significado e estrutura.",
+      aboutText3: "Não estamos aqui pra deixar as coisas bonitas. Estamos aqui pra fazê-las funcionar — com intenção, coerência e consistência.",
       aboutPrinciplesTitle: 'Como trabalhamos',
       aboutPrinciples: [
         '→ Fazemos as perguntas difíceis desde o início',
@@ -224,18 +225,19 @@ function App() {
 
 
 
-        <section className="about" id="about">
-          <h3>{t.aboutTitle}</h3>
-          <p>{t.aboutText1}</p>
-          <p>{t.aboutText2}</p>
-          <p>{t.aboutText3}</p>
+      <section className="about" id="about">
+        <h3>{t.aboutTitle}</h3>
+        <p>{t.aboutText1}</p>
+        <p>{t.aboutText2}</p>
+        <p className="strong">{t.aboutText3}</p>
 
-          <div className="cta">
-            <a href="mailto:hello@eixo.design" className="cta-button">
-              {t.cta}
-            </a>
-          </div>
-        </section>
+        <div className="cta">
+          <a href="mailto:hello@eixo.design" className="cta-button">
+            {t.cta}
+          </a>
+        </div>
+      </section>
+
 
         <section className="offerings" id="offerings">
           <h3>{t.offeringsLabel}</h3>

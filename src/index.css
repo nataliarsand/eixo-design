@@ -274,19 +274,34 @@ header {
 }
 
 .about p {
-  font-size: var(--size-body-lg);
-  color: var(--color-accent);
+  max-width: 700px;
+  margin: 0 auto 1.5rem auto;
+  font-size: 1.4rem;
+  line-height: 1.75;
   font-family: var(--font-serif);
-  line-height: 1.8;
-  max-width: 720px;
-  margin: 0 auto 1rem;
+  color: var(--color-accent);
   opacity: 0.9;
   text-wrap: balance;
-  transition: opacity 0.3s ease;
 }
+
 .about p:hover {
   opacity: 1;
 }
+
+.about .strong {
+  font-weight: 600;
+  color: var(--color-text);
+  font-style: normal;
+}
+
+
+@media (max-width: 600px) {
+  .about p {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+}
+
 
 /* ----------------------------------------------
    Offerings
