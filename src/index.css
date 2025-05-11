@@ -303,10 +303,104 @@ header {
   }
 }
 
+/* ----------------------------------------------
+   How We Work (Methodology Section)
+---------------------------------------------- */
+.methodology {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6rem 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.methodology h3 {
+  text-transform: uppercase;
+  font-size: var(--size-label);
+  color: var(--color-subtle);
+  margin-bottom: 2.5rem;
+  letter-spacing: 0.12em;
+  font-weight: 500;
+  text-align: center;
+  width: 100%;
+}
+
+.methodology-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  width: 100%;
+}
+
+.methodology-intro {
+  font-family: var(--font-serif);
+  font-size: var(--size-body-lg);
+  color: var(--color-accent);
+  line-height: 1.7;
+  opacity: 0.95;
+  margin-top: 0.2rem;
+}
+
+.principles-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.principles-list li {
+  font-size: 1rem;
+  color: var(--color-text);
+  position: relative;
+  padding-left: 2rem;
+  font-family: var(--font-sans);
+  transition: all 0.3s ease;
+}
+
+.principles-list li::before {
+  content: '✺';
+  position: absolute;
+  left: 0;
+  top: 0.1rem;
+  color: var(--color-accent);
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.principles-list li:hover {
+  transform: translateX(4px);
+  color: var(--color-accent);
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  .methodology-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .methodology {
+    text-align: center;
+  }
+
+  .principles-list li {
+    text-align: left;
+  }
+}
+
+
 
 /* ----------------------------------------------
-   Offerings
+   Offerings Grid: Responsive 2x2 Layout
 ---------------------------------------------- */
+.offerings {
+  padding: 6rem 2rem;
+}
+
 .offerings h3 {
   text-transform: uppercase;
   font-size: var(--size-label);
@@ -319,10 +413,10 @@ header {
 
 .offerings-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   width: 100%;
-  max-width: var(--max-width);
+  max-width: 960px;
   margin: 0 auto;
   padding: 0 var(--gutter);
 }
@@ -331,15 +425,20 @@ header {
   background: var(--color-card);
   border: 1px solid var(--color-border);
   padding: 2rem;
-  border-radius: 8px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   opacity: 0;
   transform: translateY(30px);
   animation: fadeUp 0.6s ease forwards;
 }
+
 .offering-card:nth-child(1) { animation-delay: 0.1s; }
-.offering-card:nth-child(2) { animation-delay: 0.3s; }
-.offering-card:nth-child(3) { animation-delay: 0.5s; }
+.offering-card:nth-child(2) { animation-delay: 0.2s; }
+.offering-card:nth-child(3) { animation-delay: 0.3s; }
+.offering-card:nth-child(4) { animation-delay: 0.4s; }
 
 @keyframes fadeUp {
   to {
@@ -350,13 +449,25 @@ header {
 
 .offering-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.offering-icon {
+  width: 42px;
+  height: auto;
+  margin-bottom: 1rem;
+  filter: brightness(0.9);
+}
+
+.offering-card:hover .offering-icon {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
 }
 
 .offering-card h4 {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
   font-family: var(--font-sans);
   color: var(--color-text);
 }
@@ -367,6 +478,7 @@ header {
   color: var(--color-accent);
   font-style: italic;
   margin-bottom: 1rem;
+  line-height: 1.6;
 }
 
 .offering-card ul {
@@ -390,6 +502,34 @@ header {
   left: 0;
   color: var(--color-bullet);
 }
+
+
+/* ----------------------------------------------
+   Mobile Adjustments
+---------------------------------------------- */
+@media (max-width: 640px) {
+  .principles-list li {
+    font-size: 1rem;
+    padding-left: 1.2rem;
+  }
+
+  .offering-card {
+    align-items: flex-start;
+  }
+
+  .offering-card h4 {
+    font-size: 1.2rem;
+  }
+
+  .offering-sub {
+    font-size: 1rem;
+  }
+
+  .offering-card li {
+    font-size: 0.95rem;
+  }
+}
+
 
 /* ----------------------------------------------
    CTA

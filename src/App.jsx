@@ -12,9 +12,9 @@ import icon from './assets/images/eixo-icon-white.png'
       offeringsLabel: 'How we do it',
       cta: "Let's talk",
       aboutTitle: "Who we are",
-aboutText1: "Eixo is a UX design studio that brings clarity to complexity. We help teams cut through noise, align on purpose, and design systems that scale.",
-aboutText2: "We design from the inside out — working from intent to interface. Our work connects product thinking, service design, and UX craft to shape meaningful, repeatable experiences.",
-aboutText3: "We’re not here to make things pretty. We’re here to make things work — with intention, coherence, and a structure that lasts.",
+      aboutText1: "Eixo is a UX design studio that brings clarity to complexity. We help teams cut through noise, align on purpose, and design systems that scale.",
+      aboutText2: "We design from the inside out — working from intent to interface. Our work connects product thinking, service design, and UX craft to shape meaningful, repeatable experiences.",
+      aboutText3: "We’re not here to make things pretty. We’re here to make things work — with intention, coherence, and a structure that lasts.",
 
       aboutPrinciplesTitle: 'How we work',
       aboutPrinciples: [
@@ -48,80 +48,100 @@ aboutText3: "We’re not here to make things pretty. We’re here to make things
   };
   
 
-const offerings = [
-  {
-    title: {
-      en: 'Foundations',
-      pt: 'Fundamentos'
+  const offerings = [
+    {
+      key: 'consultancy',
+      image: '/assets/images/consultancy-white.png',
+      title: { en: 'Consultancy', pt: 'Consultoria' },
+      subtitle: {
+        en: 'Targeted design support at any stage.',
+        pt: 'Apoio estratégico em qualquer etapa.'
+      },
+      bullets: {
+        en: [
+          'Discovery workshops & team alignment',
+          'Problem framing & opportunity mapping',
+          'UX strategy & service design reviews',
+          'Co-creation & structured ideation sessions'
+        ],
+        pt: [
+          'Workshops de descoberta e alinhamento',
+          'Definição de problemas e mapeamento de oportunidades',
+          'Revisões estratégicas de UX e design de serviços',
+          'Sessões de ideação e co-criação com estrutura'
+        ]
+      }
     },
-    subtitle: {
-      en: 'Seeing clearly before building anything.',
-      pt: 'Enxergar com clareza antes de construir qualquer coisa.'
+    {
+      key: 'delivery',
+      image: '/assets/images/delivery-white.png',
+      title: { en: 'Delivery', pt: 'Entrega' },
+      subtitle: {
+        en: 'End-to-end product and system design.',
+        pt: 'Design completo de produtos e sistemas digitais.'
+      },
+      bullets: {
+        en: [
+          'UX/UI design for apps and web',
+          'Design system foundations & scale',
+          'Flow mapping, wireframes, and prototypes',
+          'Dev collaboration & implementation support'
+        ],
+        pt: [
+          'UX/UI para web e aplicativos',
+          'Fundação e escalabilidade de design systems',
+          'Mapeamento de fluxos, wireframes e protótipos',
+          'Colaboração com times de desenvolvimento'
+        ]
+      }
     },
-    bullets: {
-      en: [
-        'Product discovery',
-        'Problem framing',
-        'Research & synthesis',
-        'Team alignment workshops'
-      ],
-      pt: [
-        'Descoberta de produto',
-        'Definição de problemas',
-        'Pesquisa e síntese',
-        'Workshops de alinhamento'
-      ]
+    {
+      key: 'courses',
+      image: '/assets/images/courses-white.png',
+      title: { en: 'Courses', pt: 'Cursos' },
+      subtitle: {
+        en: 'Intentional design education for modern teams.',
+        pt: 'Educação em design com clareza e propósito.'
+      },
+      bullets: {
+        en: [
+          'UX foundations course (coming soon)',
+          'Problem to prototype: full design flow',
+          'Design & code for designers (with Daniel)',
+          'Brand & typography strategy (with Tássia)'
+        ],
+        pt: [
+          'Curso de fundamentos de UX (em breve)',
+          'Do problema ao protótipo: fluxo completo de design',
+          'Design & código para designers (com Daniel)',
+          'Estratégia de marca e tipografia (com Tássia)'
+        ]
+      }
+    },
+    {
+      key: 'mentoring',
+      image: '/assets/images/mentoring-white.png',
+      title: { en: 'Mentoring', pt: 'Mentorias' },
+      subtitle: {
+        en: 'Guidance for designers, teams, and transitions.',
+        pt: 'Acompanhamento individual e para times.'
+      },
+      bullets: {
+        en: [
+          '1:1 design growth paths',
+          'Career shifts into UX',
+          'Team mentoring & system coaching',
+          'Workshops tailored to your context'
+        ],
+        pt: [
+          'Caminhos de crescimento para designers',
+          'Transições de carreira para UX',
+          'Mentorias sobre design systems',
+          'Workshops personalizados para seu contexto'
+        ]
+      }
     }
-  },
-  {
-    title: {
-      en: 'Experiments',
-      pt: 'Experimentos'
-    },
-    subtitle: {
-      en: 'Shaping possibilities into purpose.',
-      pt: 'Transformar possibilidades em propósito.'
-    },
-    bullets: {
-      en: [
-        'UX strategy',
-        'Outcome definition',
-        'Wireframes & validation',
-        'Experience audits'
-      ],
-      pt: [
-        'Estratégia de UX',
-        'Definição de resultados',
-        'Wireframes e validação',
-        'Auditorias de experiência'
-      ]
-    }
-  },
-  {
-    title: {
-      en: 'Systems',
-      pt: 'Sistemas'
-    },
-    subtitle: {
-      en: 'Building the structures that make good design repeatable.',
-      pt: 'Construir estruturas para tornar o bom design replicável.'
-    },
-    bullets: {
-      en: [
-        'Design systems',
-        'Component libraries',
-        'Consistency audits',
-        'Scaling practices'
-      ],
-      pt: [
-        'Design systems',
-        'Bibliotecas de componentes',
-        'Auditorias de consistência',
-        'Práticas de escala'
-      ]
-    }
-  }
-];
+  ];  
 
 function App() {
   const [lang, setLang] = useState('en');
@@ -211,39 +231,50 @@ function App() {
 
 
       <main>
-      <section className="hero" id="hero">
+        <section className="hero" id="hero">
+          <div className="hero-brand">
+            <img src={icon} alt="Eixo Icon" className="hero-x" />
+            <h1>
+              <span className="line1">{t.subtitle1}</span>
+              <span className="line2">{t.subtitle2}</span>
+            </h1>
+            <p>{t.description}</p>
+          </div>
+        </section>
 
-        <div className="hero-brand">
-          <img src={icon} alt="Eixo Icon" className="hero-x" />
-          <h1>
-            <span className="line1">{t.subtitle1}</span>
-            <span className="line2">{t.subtitle2}</span>
-          </h1>
-          <p>{t.description}</p>
-        </div>
-      </section>
+        <section className="about" id="about">
+          <h3>{t.aboutTitle}</h3>
+          <p>{t.aboutText1}</p>
+          <p>{t.aboutText2}</p>
+          <p className="strong">{t.aboutText3}</p>
+          <div className="cta">
+            <a href="mailto:hello@eixo.design" className="cta-button">
+              {t.cta}
+            </a>
+          </div>
+        </section>
 
-
-
-      <section className="about" id="about">
-        <h3>{t.aboutTitle}</h3>
-        <p>{t.aboutText1}</p>
-        <p>{t.aboutText2}</p>
-        <p className="strong">{t.aboutText3}</p>
-
-        <div className="cta">
-          <a href="mailto:hello@eixo.design" className="cta-button">
-            {t.cta}
-          </a>
-        </div>
-      </section>
-
+        <section className="methodology" id="methodology">
+          <h3>{t.aboutPrinciplesTitle}</h3>
+          <div className="methodology-content">
+            <p className="methodology-intro">
+              Our process brings structure to complexity and clarity to collaboration.
+              Here’s how we work:
+            </p>
+            <ul className="principles-list">
+              {t.aboutPrinciples.map((item, i) => (
+                <li key={i}>{item.replace('→ ', '')}</li>
+              ))}
+            </ul>
+          </div>
+        </section>
 
         <section className="offerings" id="offerings">
           <h3>{t.offeringsLabel}</h3>
           <div className="offerings-grid">
             {offerings.map((item, i) => (
-              <div key={i} className="offering-card">
+              <div className="offering-card">
+                <img src={item.image} alt={`${item.title[lang]} icon`} className="offering-icon" />
                 <h4>{item.title[lang]}</h4>
                 <p className="offering-sub">{item.subtitle[lang]}</p>
                 <ul>
@@ -252,6 +283,7 @@ function App() {
                   ))}
                 </ul>
               </div>
+            
             ))}
           </div>
           <div className="cta">
