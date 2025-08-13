@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://eixo.design/sitemap.xml
