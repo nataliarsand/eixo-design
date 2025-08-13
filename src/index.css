@@ -484,11 +484,12 @@ header {
   height: auto;
   margin-bottom: 1rem;
   filter: brightness(0.9);
+  transform: rotate(-90deg);
+  transition: transform 0.3s ease;
 }
 
 .offering-card:hover .offering-icon {
-  transform: scale(1.05);
-  transition: transform 0.3s ease;
+  transform: rotate(-90deg) scale(1.05);
 }
 
 .offering-card h4 {
