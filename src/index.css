@@ -216,21 +216,44 @@ section {
 }
 
 /* ----------------------------------------------
-   Header Styles
+   Header & Navigation Styles
 ---------------------------------------------- */
 header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--color-bg);
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   flex-wrap: wrap;
+  padding: 1rem var(--gutter);
 }
 
 .logo {
   height: 32px;
   object-fit: contain;
-  margin-left: var(--gutter);
   padding: 0;
+}
+
+.nav-menu {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.nav-menu a {
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: var(--size-label);
+  letter-spacing: 0.05em;
+  transition: color 0.2s ease;
+}
+
+.nav-menu a:hover {
+  color: var(--color-accent);
 }
 
 .lang-switcher {
@@ -600,15 +623,20 @@ header {
 }
 
 @media (max-width: 768px) {
-  header { 
-    flex-direction: column; 
-    align-items: flex-start; 
-    gap: 1rem; 
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .nav-menu {
+    width: 100%;
+    justify-content: center;
+    margin: 0.5rem 0;
   }
   .lang-switcher { align-self: flex-end; }
-  .cta-button { 
-    padding: 0.6rem 1.2rem; 
-    font-size: 0.95rem; 
+  .cta-button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
   }
   .about p,
   .offering-sub,
@@ -634,6 +662,12 @@ header {
       height: 100vh;
     }
   
+    .nav-menu {
+      width: 100%;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
     .lang-switcher {
       order: -1;
       justify-content: center;
