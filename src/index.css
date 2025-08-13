@@ -72,6 +72,7 @@ body::-webkit-scrollbar {
 
 main {
   scroll-snap-type: y mandatory;
+  padding-top: calc(2rem + 32px);
 }
 
 
@@ -218,8 +219,10 @@ section {
    Header & Navigation Styles
 ---------------------------------------------- */
 header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 1000;
   background: var(--color-bg);
   display: flex;
