@@ -3,35 +3,38 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
+
     <title>eixo.design — UX with clarity, intention and systems</title>
     <meta name="description" content="Eixo is an independent UX design practice. We bring clarity, structure, and purpose to digital experiences through systems thinking and intentional UX." />
     <meta name="author" content="eixo.design" />
-  
+
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/eixo-favicon.png" />
-  
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://eixo.design/" />
     <meta property="og:title" content="eixo.design — UX with clarity, intention and systems" />
     <meta property="og:description" content="Clarity, structure, and purpose through intentional UX and systems design." />
     <meta property="og:image" content="https://eixo.design/og-image.png" />
-  
+
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://eixo.design/" />
     <meta name="twitter:title" content="eixo.design — UX with clarity, intention and systems" />
     <meta name="twitter:description" content="Clarity, structure, and purpose through intentional UX and systems design." />
     <meta name="twitter:image" content="https://eixo.design/og-image.png" />
-  
+
     <!-- Preload Fonts (optional for performance) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
-  
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap"></noscript>
+
     <!-- Canonical -->
     <link rel="canonical" href="https://eixo.design/" />
+    <link rel="alternate" hreflang="en" href="https://eixo.design/" />
+    <link rel="alternate" hreflang="pt" href="https://eixo.design/pt/" />
 
     <script type="application/ld+json">
       {
@@ -47,10 +50,69 @@
         }
       }
     </script>
+
+    <!-- Cookie banner styles -->
+    <style>
+      .cookie-banner {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.85);
+        color: #fff;
+        padding: 1rem;
+        text-align: center;
+        font-size: 0.875rem;
+        display: none;
+      }
+
+      .cookie-banner button {
+        margin-left: 0.5rem;
+      }
+    </style>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DZC7SVEFE1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', { analytics_storage: 'denied' });
+      gtag('js', new Date());
+
+      function enableAnalytics() {
+        gtag('consent', 'update', { analytics_storage: 'granted' });
+        gtag('config', 'G-DZC7SVEFE1', { anonymize_ip: true });
+      }
+    </script>
   </head>
-  
+
   <body>
     <div id="root"></div>
+
+    <div id="cookie-banner" class="cookie-banner">
+      We use anonymized analytics cookies to improve your experience.
+      <button id="accept-cookies">Accept</button>
+    </div>
+
+    <script>
+      (function () {
+        const banner = document.getElementById('cookie-banner');
+        const accept = document.getElementById('accept-cookies');
+        const consent = localStorage.getItem('analytics-consent');
+
+        if (consent === 'granted') {
+          enableAnalytics();
+        } else {
+          banner.style.display = 'block';
+          accept.addEventListener('click', function () {
+            localStorage.setItem('analytics-consent', 'granted');
+            banner.style.display = 'none';
+            enableAnalytics();
+          });
+        }
+      })();
+    </script>
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

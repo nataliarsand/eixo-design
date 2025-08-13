@@ -1,7 +1,6 @@
 /* ----------------------------------------------
    Imports, Fonts & Global Reset
 ---------------------------------------------- */
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
 
 *,
 *::before,
@@ -217,21 +216,44 @@ section {
 }
 
 /* ----------------------------------------------
-   Header Styles
+   Header & Navigation Styles
 ---------------------------------------------- */
 header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--color-bg);
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   flex-wrap: wrap;
+  padding: 1rem var(--gutter);
 }
 
 .logo {
   height: 32px;
   object-fit: contain;
-  margin-left: var(--gutter);
   padding: 0;
+}
+
+.nav-menu {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.nav-menu a {
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: var(--size-label);
+  letter-spacing: 0.05em;
+  transition: color 0.2s ease;
+}
+
+.nav-menu a:hover {
+  color: var(--color-accent);
 }
 
 .lang-switcher {
@@ -601,15 +623,20 @@ header {
 }
 
 @media (max-width: 768px) {
-  header { 
-    flex-direction: column; 
-    align-items: flex-start; 
-    gap: 1rem; 
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .nav-menu {
+    width: 100%;
+    justify-content: center;
+    margin: 0.5rem 0;
   }
   .lang-switcher { align-self: flex-end; }
-  .cta-button { 
-    padding: 0.6rem 1.2rem; 
-    font-size: 0.95rem; 
+  .cta-button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
   }
   .about p,
   .offering-sub,
@@ -635,6 +662,12 @@ header {
       height: 100vh;
     }
   
+    .nav-menu {
+      width: 100%;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
     .lang-switcher {
       order: -1;
       justify-content: center;
@@ -706,9 +739,9 @@ header {
 }
 
 @media (max-width: 480px) {
-  section { 
-    padding: 2rem 1rem; 
-    height: auto; 
+  section {
+    padding: 2rem 1rem;
+    height: auto;
   }
   .hero h1 { 
     font-size: clamp(1.8rem, 6vw, 2.4rem); 
@@ -721,6 +754,37 @@ header {
     padding: 2rem 1rem; 
   }
   .offerings-grid { 
-    grid-template-columns: 1fr; 
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trail-layer {
+    display: none;
+  }
+  .trail-spot {
+    animation: none;
+  }
+  .fade-up {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .hero-x {
+    animation: none;
+  }
+  .accordion-content {
+    animation: none;
+    transition: none;
+  }
+  .offering-card {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .offering-card:hover {
+    transform: none;
+    box-shadow: none;
   }
 }

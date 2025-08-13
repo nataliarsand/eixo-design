@@ -4,17 +4,48 @@ import logo from './assets/images/eixo-logo-white.png';
 import icon from './assets/images/eixo-icon-white.png';
 import { content, offerings } from './content';
 
-const AccordionItem = ({ title, content, isOpen, onClick }) => (
-  <div className={`accordion-item ${isOpen ? 'open' : ''}`}>
-    <button className="accordion-title" onClick={onClick}>
-      <span>{title}</span>
-      <span className="accordion-icon">{isOpen ? '−' : '+'}</span>
-    </button>
-    <div className={`accordion-content ${isOpen ? 'visible' : 'hidden'}`}>
-      <p>{content}</p>
+const navItems = [
+  { id: 'about', label: { en: 'Who we are', pt: 'Quem somos' } },
+  { id: 'methodology', label: { en: 'How we work', pt: 'Como trabalhamos' } },
+  { id: 'offerings', label: { en: 'Offerings', pt: 'O que oferecemos' } },
+  { id: 'contact', label: { en: 'Contact', pt: 'Contato' } }
+];
+
+const AccordionItem = ({ id, title, content, isOpen, onClick }) => {
+  const buttonId = `accordion-header-${id}`;
+  const panelId = `accordion-panel-${id}`;
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      onClick();
+    }
+  };
+
+  return (
+    <div className={`accordion-item ${isOpen ? 'open' : ''}`}>
+      <button
+        id={buttonId}
+        className="accordion-title"
+        aria-expanded={isOpen}
+        aria-controls={panelId}
+        onClick={onClick}
+        onKeyDown={handleKeyDown}
+        type="button"
+      >
+        <span>{title}</span>
+        <span className="accordion-icon">{isOpen ? '−' : '+'}</span>
+      </button>
+      <div
+        id={panelId}
+        className={`accordion-content ${isOpen ? 'visible' : 'hidden'}`}
+        role="region"
+        aria-labelledby={buttonId}
+      >
+        <p>{content}</p>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 function App() {
   const [lang, setLang] = useState('en');
@@ -36,6 +67,9 @@ function App() {
   }, [lang]);
 
   useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: no-preference)');
+    if (!mediaQuery.matches) return;
+
     const trailLayer = document.getElementById('trail-layer');
     const createTrailSpot = (x, y) => {
       const spot = document.createElement('div');
@@ -58,6 +92,12 @@ function App() {
   }, []);
 
   useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: no-preference)');
+    if (!mediaQuery.matches) {
+      document.querySelectorAll('.fade-up').forEach((el) => el.classList.add('visible'));
+      return;
+    }
+
     const observerOptions = {
       threshold: 0.1
     };
@@ -80,6 +120,13 @@ function App() {
 
       <header>
         <img src={logo} alt="Eixo Logo" className="logo" />
+        <nav className="nav-menu">
+          {navItems.map((item) => (
+            <a key={item.id} href={`#${item.id}`}>
+              {item.label[lang]}
+            </a>
+          ))}
+        </nav>
         <div className="lang-switcher">
           <button className={lang === 'en' ? 'active' : ''} onClick={() => setLang('en')}>EN</button>
           <button className={lang === 'pt' ? 'active' : ''} onClick={() => setLang('pt')}>PT</button>
@@ -115,6 +162,7 @@ function App() {
               {t.aboutPrinciples.map((item, i) => (
                 <AccordionItem
                   key={i}
+                  id={i}
                   title={item.title}
                   content={item.description}
                   isOpen={openIndex === i}
@@ -147,7 +195,7 @@ function App() {
           </div>
         </section>
 
-        <footer className="footer fade-up" ref={sectionRefs.contact}>
+        <footer id="contact" className="footer fade-up" ref={sectionRefs.contact}>
           <p>&copy; {new Date().getFullYear()} eixo.design — All rights reserved.</p>
           <p>
             Crafted with clarity · <a href="mailto:hello@eixo.design">hello@eixo.design</a>
