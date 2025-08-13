@@ -120,7 +120,9 @@ function App() {
       <div className="trail-layer" id="trail-layer"></div>
 
       <header>
-        <img src={logo} alt="Eixo Logo" className="logo" />
+        <a href="#hero">
+          <img src={logo} alt="Eixo Logo" className="logo" />
+        </a>
         <button
           className="menu-toggle"
           aria-label={
