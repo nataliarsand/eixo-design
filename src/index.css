@@ -635,14 +635,14 @@ header {
     align-items: flex-start;
     gap: 1rem;
   }
+
   .nav-menu ul {
     width: 100%;
     justify-content: center;
     margin: 0.5rem 0;
   }
-  .lang-switcher {
-    align-self: flex-end;
-  }
+
+  .lang-switcher { align-self: flex-end; }
   .cta-button {
     padding: 0.6rem 1.2rem;
     font-size: 0.95rem;
