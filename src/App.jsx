@@ -4,6 +4,13 @@ import logo from './assets/images/eixo-logo-white.png';
 import icon from './assets/images/eixo-icon-white.png';
 import { content, offerings } from './content';
 
+const navItems = [
+  { id: 'about', label: { en: 'Who we are', pt: 'Quem somos' } },
+  { id: 'methodology', label: { en: 'How we work', pt: 'Como trabalhamos' } },
+  { id: 'offerings', label: { en: 'Offerings', pt: 'O que oferecemos' } },
+  { id: 'contact', label: { en: 'Contact', pt: 'Contato' } }
+];
+
 const AccordionItem = ({ id, title, content, isOpen, onClick }) => {
   const buttonId = `accordion-header-${id}`;
   const panelId = `accordion-panel-${id}`;
@@ -113,6 +120,18 @@ function App() {
 
       <header>
         <img src={logo} alt="Eixo Logo" className="logo" />
+        <nav
+          className="nav-menu"
+          aria-label={lang === 'en' ? 'Main navigation' : 'Navegação principal'}
+        >
+          <ul>
+            {navItems.map((item) => (
+              <li key={item.id}>
+                <a href={`#${item.id}`}>{item.label[lang]}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
         <div className="lang-switcher">
           <button className={lang === 'en' ? 'active' : ''} onClick={() => setLang('en')}>EN</button>
           <button className={lang === 'pt' ? 'active' : ''} onClick={() => setLang('pt')}>PT</button>
@@ -181,7 +200,7 @@ function App() {
           </div>
         </section>
 
-        <footer className="footer fade-up" ref={sectionRefs.contact}>
+        <footer id="contact" className="footer fade-up" ref={sectionRefs.contact}>
           <p>&copy; {new Date().getFullYear()} eixo.design — All rights reserved.</p>
           <p>
             Crafted with clarity · <a href="mailto:hello@eixo.design">hello@eixo.design</a>
