@@ -4,17 +4,41 @@ import logo from './assets/images/eixo-logo-white.png';
 import icon from './assets/images/eixo-icon-white.png';
 import { content, offerings } from './content';
 
-const AccordionItem = ({ title, content, isOpen, onClick }) => (
-  <div className={`accordion-item ${isOpen ? 'open' : ''}`}>
-    <button className="accordion-title" onClick={onClick}>
-      <span>{title}</span>
-      <span className="accordion-icon">{isOpen ? '−' : '+'}</span>
-    </button>
-    <div className={`accordion-content ${isOpen ? 'visible' : 'hidden'}`}>
-      <p>{content}</p>
+const AccordionItem = ({ id, title, content, isOpen, onClick }) => {
+  const buttonId = `accordion-header-${id}`;
+  const panelId = `accordion-panel-${id}`;
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      onClick();
+    }
+  };
+
+  return (
+    <div className={`accordion-item ${isOpen ? 'open' : ''}`}>
+      <button
+        id={buttonId}
+        className="accordion-title"
+        aria-expanded={isOpen}
+        aria-controls={panelId}
+        onClick={onClick}
+        onKeyDown={handleKeyDown}
+        type="button"
+      >
+        <span>{title}</span>
+        <span className="accordion-icon">{isOpen ? '−' : '+'}</span>
+      </button>
+      <div
+        id={panelId}
+        className={`accordion-content ${isOpen ? 'visible' : 'hidden'}`}
+        role="region"
+        aria-labelledby={buttonId}
+      >
+        <p>{content}</p>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 function App() {
   const [lang, setLang] = useState('en');
@@ -124,6 +148,7 @@ function App() {
               {t.aboutPrinciples.map((item, i) => (
                 <AccordionItem
                   key={i}
+                  id={i}
                   title={item.title}
                   content={item.description}
                   isOpen={openIndex === i}
