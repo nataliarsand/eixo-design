@@ -120,12 +120,17 @@ function App() {
 
       <header>
         <img src={logo} alt="Eixo Logo" className="logo" />
-        <nav className="nav-menu">
-          {navItems.map((item) => (
-            <a key={item.id} href={`#${item.id}`}>
-              {item.label[lang]}
-            </a>
-          ))}
+        <nav
+          className="nav-menu"
+          aria-label={lang === 'en' ? 'Main navigation' : 'Navegação principal'}
+        >
+          <ul>
+            {navItems.map((item) => (
+              <li key={item.id}>
+                <a href={`#${item.id}`}>{item.label[lang]}</a>
+              </li>
+            ))}
+          </ul>
         </nav>
         <div className="lang-switcher">
           <button className={lang === 'en' ? 'active' : ''} onClick={() => setLang('en')}>EN</button>
