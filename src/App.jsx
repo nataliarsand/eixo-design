@@ -51,6 +51,7 @@ function App() {
   const [lang, setLang] = useState('en');
   const t = content[lang];
   const [openIndex, setOpenIndex] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
   const sectionRefs = {
     hero: useRef(null),
     methodology: useRef(null),
@@ -120,14 +121,30 @@ function App() {
 
       <header>
         <img src={logo} alt="Eixo Logo" className="logo" />
+        <button
+          className="menu-toggle"
+          aria-label={
+            lang === 'en'
+              ? menuOpen
+                ? 'Close navigation'
+                : 'Open navigation'
+              : menuOpen
+                ? 'Fechar navegação'
+                : 'Abrir navegação'
+          }
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          {menuOpen ? '\u2715' : '\u2630'}
+        </button>
         <nav
-          className="nav-menu"
+          className={`nav-menu ${menuOpen ? 'open' : ''}`}
           aria-label={lang === 'en' ? 'Main navigation' : 'Navegação principal'}
         >
           <ul>
             {navItems.map((item) => (
               <li key={item.id}>
-                <a href={`#${item.id}`}>{item.label[lang]}</a>
+                <a href={`#${item.id}`} onClick={() => setMenuOpen(false)}>{item.label[lang]}</a>
               </li>
             ))}
           </ul>
