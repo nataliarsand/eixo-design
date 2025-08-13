@@ -36,6 +36,9 @@ function App() {
   }, [lang]);
 
   useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: no-preference)');
+    if (!mediaQuery.matches) return;
+
     const trailLayer = document.getElementById('trail-layer');
     const createTrailSpot = (x, y) => {
       const spot = document.createElement('div');
@@ -58,6 +61,12 @@ function App() {
   }, []);
 
   useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: no-preference)');
+    if (!mediaQuery.matches) {
+      document.querySelectorAll('.fade-up').forEach((el) => el.classList.add('visible'));
+      return;
+    }
+
     const observerOptions = {
       threshold: 0.1
     };
