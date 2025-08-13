@@ -36,67 +36,19 @@
     <link rel="alternate" hreflang="en" href="https://eixo.design/" />
     <link rel="alternate" hreflang="pt" href="https://eixo.design/pt/" />
 
-    <!-- Cookie banner styles -->
-    <style>
-      .cookie-banner {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: rgba(0, 0, 0, 0.85);
-        color: #fff;
-        padding: 1rem;
-        text-align: center;
-        font-size: 0.875rem;
-        display: none;
-      }
-
-      .cookie-banner button {
-        margin-left: 0.5rem;
-      }
-    </style>
-
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-DZC7SVEFE1"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('consent', 'default', { analytics_storage: 'denied' });
+      function gtag() { dataLayer.push(arguments); }
       gtag('js', new Date());
 
-      function enableAnalytics() {
-        gtag('consent', 'update', { analytics_storage: 'granted' });
-        gtag('config', 'G-DZC7SVEFE1', { anonymize_ip: true });
-      }
+      gtag('config', 'G-DZC7SVEFE1');
     </script>
   </head>
 
   <body>
     <div id="root"></div>
-
-    <div id="cookie-banner" class="cookie-banner">
-      We use anonymized analytics cookies to improve your experience.
-      <button id="accept-cookies">Accept</button>
-    </div>
-
-    <script>
-      (function () {
-        const banner = document.getElementById('cookie-banner');
-        const accept = document.getElementById('accept-cookies');
-        const consent = localStorage.getItem('analytics-consent');
-
-        if (consent === 'granted') {
-          enableAnalytics();
-        } else {
-          banner.style.display = 'block';
-          accept.addEventListener('click', function () {
-            localStorage.setItem('analytics-consent', 'granted');
-            banner.style.display = 'none';
-            enableAnalytics();
-          });
-        }
-      })();
-    </script>
 
     <script type="module" src="/src/main.jsx"></script>
   </body>
