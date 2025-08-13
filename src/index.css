@@ -1,12 +1,21 @@
 /* ----------------------------------------------
-   Imports & Fonts
+   Imports, Fonts & Global Reset
 ---------------------------------------------- */
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 /* ----------------------------------------------
-   Root Variables
+   Root Variables: Comprehensive Design System
 ---------------------------------------------- */
 :root {
+  /* Color Palette */
   --color-bg: #000;
   --color-text: #fff;
   --color-accent: #ccc;
@@ -18,24 +27,28 @@
   --color-cta-bg: #fff;
   --color-cta-text: #000;
 
+  /* Typography */
   --font-sans: 'Space Grotesk', sans-serif;
   --font-serif: 'EB Garamond', serif;
 
+  /* Sizing & Layout */
   --max-width: 960px;
   --gutter: 2rem;
 
+  /* Responsive Typography */
   --size-h1: clamp(2rem, 8vw, 4rem);
   --size-h2: clamp(1.2rem, 4vw, 2rem);
   --size-body: 1rem;
   --size-body-lg: 1.125rem;
   --size-label: 0.875rem;
 
+  /* Cursor Tracking */
   --cursor-x: 50vw;
   --cursor-y: 50vh;
 }
 
 /* ----------------------------------------------
-   Base Styles
+   Base & Global Styles
 ---------------------------------------------- */
 html, body {
   margin: 0;
@@ -58,12 +71,31 @@ body::-webkit-scrollbar {
   display: none;
 }
 
+main {
+  scroll-snap-type: y mandatory;
+}
+
+
 #root {
   margin: 0;
   padding: 0;
   max-width: none;
 }
 
+/* Global Element Styles */
+h3 {
+  text-transform: uppercase;
+  font-size: var(--size-label);
+  color: var(--color-subtle);
+  margin-bottom: 3rem;
+  letter-spacing: 0.15em;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* ----------------------------------------------
+   Background & Visual Effects
+---------------------------------------------- */
 .bg-noise {
   position: absolute;
   inset: 0;
@@ -112,13 +144,52 @@ body::-webkit-scrollbar {
   animation: fadeTrail 1.8s ease-out forwards;
 }
 
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  will-change: opacity, transform;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ----------------------------------------------
+   Keyframe Animations
+---------------------------------------------- */
 @keyframes fadeTrail {
   0% { opacity: 1; }
   100% { opacity: 0; }
 }
 
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* ----------------------------------------------
-   Layout
+   Layout Styles
 ---------------------------------------------- */
 .app {
   display: flex;
@@ -132,7 +203,9 @@ body::-webkit-scrollbar {
 }
 
 section {
-  height: 100vh;
+  min-height: 100vh;
+  max-width: var(--max-width);
+  margin: 0 auto;
   scroll-snap-align: start;
   scroll-snap-stop: always;
   display: flex;
@@ -144,7 +217,7 @@ section {
 }
 
 /* ----------------------------------------------
-   Header
+   Header Styles
 ---------------------------------------------- */
 header {
   display: flex;
@@ -187,7 +260,7 @@ header {
 }
 
 /* ----------------------------------------------
-   Hero
+   Hero Section Styles
 ---------------------------------------------- */
 .hero-brand {
   display: flex;
@@ -204,11 +277,6 @@ header {
   opacity: 0.8;
   animation: float 4s ease-in-out infinite;
   filter: grayscale(1) contrast(2);
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
 }
 
 .hero-text {
@@ -256,7 +324,7 @@ header {
 }
 
 /* ----------------------------------------------
-   About
+   About Section Styles
 ---------------------------------------------- */
 .about {
   padding: 6rem 2rem;
@@ -295,120 +363,87 @@ header {
   font-style: normal;
 }
 
-
-@media (max-width: 600px) {
-  .about p {
-    font-size: 1rem;
-    padding: 0 1rem;
-  }
-}
-
 /* ----------------------------------------------
-   How We Work (Methodology Section)
+   Accordion Section Styles
 ---------------------------------------------- */
-.methodology {
+.accordion-layout {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.accordion {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.accordion-image {
+  flex: 1;
+  text-align: right;
+}
+
+.accordion-image img {
+  max-width: 100%;
+  border-radius: 1rem;
+  object-fit: cover;
+}
+
+.accordion-item {
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 1rem;
+}
+
+.accordion-title {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  padding: 6rem 2rem;
-  max-width: 1100px;
-  margin: 0 auto;
-  text-align: left;
-}
-
-.methodology h3 {
-  text-transform: uppercase;
-  font-size: var(--size-label);
-  color: var(--color-subtle);
-  margin-bottom: 2.5rem;
-  letter-spacing: 0.12em;
-  font-weight: 500;
-  text-align: center;
-  width: 100%;
-}
-
-.methodology-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  width: 100%;
-}
-
-.methodology-intro {
   font-family: var(--font-serif);
-  font-size: var(--size-body-lg);
-  color: var(--color-accent);
-  line-height: 1.7;
-  opacity: 0.95;
-  margin-top: 0.2rem;
-}
-
-.principles-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+  font-size: 1.25rem;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
   padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
-.principles-list li {
-  font-size: 1rem;
   color: var(--color-text);
-  position: relative;
-  padding-left: 2rem;
-  font-family: var(--font-sans);
-  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
-.principles-list li::before {
-  content: '✺';
-  position: absolute;
-  left: 0;
-  top: 0.1rem;
-  color: var(--color-accent);
-  font-size: 1.1rem;
-  line-height: 1;
-}
-
-.principles-list li:hover {
-  transform: translateX(4px);
+.accordion-title:hover {
   color: var(--color-accent);
 }
 
-/* Responsive layout */
-@media (max-width: 768px) {
-  .methodology-content {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .methodology {
-    text-align: center;
-  }
-
-  .principles-list li {
-    text-align: left;
-  }
+.accordion-icon {
+  font-size: 1.25rem;
+  font-weight: bold;
+  padding-left: 1rem;
 }
 
+.accordion-content {
+  margin-top: 0.75rem;
+  animation: fadeIn 0.3s ease-out;
+  font-size: 1rem;
+  line-height: 1.6;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.6s ease, opacity 0.3s ease;
+}
+
+.accordion-item.open .accordion-content {
+  max-height: 500px; /* or auto with JS if needed */
+  opacity: 1;
+}
 
 
 /* ----------------------------------------------
-   Offerings Grid: Responsive 2x2 Layout
+   Offerings Section Styles
 ---------------------------------------------- */
 .offerings {
   padding: 6rem 2rem;
-}
-
-.offerings h3 {
-  text-transform: uppercase;
-  font-size: var(--size-label);
-  color: var(--color-subtle);
-  margin-bottom: 3rem;
-  letter-spacing: 0.15em;
-  font-weight: 500;
-  text-align: center;
 }
 
 .offerings-grid {
@@ -416,7 +451,6 @@ header {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   width: 100%;
-  max-width: 960px;
   margin: 0 auto;
   padding: 0 var(--gutter);
 }
@@ -439,13 +473,6 @@ header {
 .offering-card:nth-child(2) { animation-delay: 0.2s; }
 .offering-card:nth-child(3) { animation-delay: 0.3s; }
 .offering-card:nth-child(4) { animation-delay: 0.4s; }
-
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
 .offering-card:hover {
   transform: translateY(-5px);
@@ -503,36 +530,8 @@ header {
   color: var(--color-bullet);
 }
 
-
 /* ----------------------------------------------
-   Mobile Adjustments
----------------------------------------------- */
-@media (max-width: 640px) {
-  .principles-list li {
-    font-size: 1rem;
-    padding-left: 1.2rem;
-  }
-
-  .offering-card {
-    align-items: flex-start;
-  }
-
-  .offering-card h4 {
-    font-size: 1.2rem;
-  }
-
-  .offering-sub {
-    font-size: 1rem;
-  }
-
-  .offering-card li {
-    font-size: 0.95rem;
-  }
-}
-
-
-/* ----------------------------------------------
-   CTA
+   CTA Section Styles
 ---------------------------------------------- */
 .cta {
   margin-top: 4rem;
@@ -559,15 +558,15 @@ header {
 }
 
 /* ----------------------------------------------
-   Footer
+   Footer Styles
 ---------------------------------------------- */
 .footer {
   padding: 3rem 2rem;
+  margin: 0 -32px -32px;
   text-align: center;
   font-size: 0.875rem;
   color: var(--color-subtle);
   font-family: var(--font-sans);
-  background: var(--color-bg);
   border-top: 1px solid var(--color-border);
 }
 
@@ -581,25 +580,44 @@ header {
 }
 
 /* ----------------------------------------------
-   Media Queries
+   Responsive Media Queries
 ---------------------------------------------- */
+@media (min-width: 768px) {
+  .accordion-layout {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
 @media (max-width: 1024px) {
   .hero-text { max-width: 90vw; }
   .about { padding: 4rem 1.5rem; }
-  .offerings-grid { gap: 1.5rem; padding: 0 1.5rem; }
+  .offerings-grid { 
+    gap: 1.5rem; 
+    padding: 0 1.5rem; 
+  }
   .offering-card { padding: 1.5rem; }
 }
 
 @media (max-width: 768px) {
-  header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  header { 
+    flex-direction: column; 
+    align-items: flex-start; 
+    gap: 1rem; 
+  }
   .lang-switcher { align-self: flex-end; }
-  .cta-button { padding: 0.6rem 1.2rem; font-size: 0.95rem; }
+  .cta-button { 
+    padding: 0.6rem 1.2rem; 
+    font-size: 0.95rem; 
+  }
   .about p,
   .offering-sub,
-  .offering-card li { font-size: 1rem; }
+  .offering-card li { 
+    font-size: 1rem; 
+  }
 
   @media (max-width: 767px) {
-    /* HEADER: reposition lang switcher and logo */
+    /* Detailed mobile adjustments */
     header {
       flex-direction: column;
       align-items: center;
@@ -630,17 +648,14 @@ header {
       position: static;
     }
   
-    /* HERO ICON: hide the floating X */
     .hero-x {
       display: none !important;
     }
   
-    /* Adjust spacing if needed for hero text */
     .hero-text {
       margin-top: 1rem;
     }
   
-    /* FOOTER: avoid overlap */
     body {
       display: flex;
       flex-direction: column;
@@ -657,14 +672,54 @@ header {
       margin-top: auto;
     }
   }
+}
 
-  
+@media (max-width: 600px) {
+  .about p {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .principles-list li {
+    font-size: 1rem;
+    padding-left: 1.2rem;
+  }
+
+  .offering-card {
+    align-items: flex-start;
+  }
+
+  .offering-card h4 {
+    font-size: 1.2rem;
+  }
+
+  .offering-sub {
+    font-size: 1rem;
+  }
+
+  .offering-card li {
+    font-size: 0.95rem;
+  }
 }
 
 @media (max-width: 480px) {
-  section { padding: 2rem 1rem; height: auto; }
-  .hero h1 { font-size: clamp(1.8rem, 6vw, 2.4rem); }
-  .hero p { font-size: 1rem; padding: 0 0.5rem; }
-  .footer { padding: 2rem 1rem; }
-  .offerings-grid { grid-template-columns: 1fr; }
+  section { 
+    padding: 2rem 1rem; 
+    height: auto; 
+  }
+  .hero h1 { 
+    font-size: clamp(1.8rem, 6vw, 2.4rem); 
+  }
+  .hero p { 
+    font-size: 1rem; 
+    padding: 0 0.5rem; 
+  }
+  .footer { 
+    padding: 2rem 1rem; 
+  }
+  .offerings-grid { 
+    grid-template-columns: 1fr; 
+  }
 }
