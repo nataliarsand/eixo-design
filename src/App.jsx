@@ -15,9 +15,42 @@ const AccordionItem = ({ id, title, content, isOpen, onClick }) => {
   const buttonId = `accordion-header-${id}`;
   const panelId = `accordion-panel-${id}`;
   const handleKeyDown = (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      onClick();
+    const accordionButtons = document.querySelectorAll('.accordion-title');
+    const currentIndex = Array.from(accordionButtons).indexOf(e.currentTarget);
+    let targetIndex;
+
+    switch (e.key) {
+      case 'ArrowDown':
+        targetIndex = (currentIndex + 1) % accordionButtons.length;
+        accordionButtons[targetIndex].focus();
+        e.preventDefault();
+        break;
+      case 'ArrowUp':
+        targetIndex = (currentIndex - 1 + accordionButtons.length) % accordionButtons.length;
+        accordionButtons[targetIndex].focus();
+        e.preventDefault();
+        break;
+      case 'Home':
+        accordionButtons[0].focus();
+        e.preventDefault();
+        break;
+      case 'End':
+        accordionButtons[accordionButtons.length - 1].focus();
+        e.preventDefault();
+        break;
+      case 'Escape':
+        if (isOpen) {
+          e.preventDefault();
+          onClick();
+        }
+        break;
+      case 'Enter':
+      case ' ':
+        e.preventDefault();
+        onClick();
+        break;
+      default:
+        break;
     }
   };
 
