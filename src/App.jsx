@@ -52,6 +52,9 @@ function App() {
   const t = content[lang];
   const [openIndex, setOpenIndex] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const menuToggleRef = useRef(null);
+  const firstNavLinkRef = useRef(null);
+  const initialRender = useRef(true);
   const sectionRefs = {
     hero: useRef(null),
     methodology: useRef(null),
@@ -66,6 +69,18 @@ function App() {
   useEffect(() => {
     document.documentElement.lang = lang;
   }, [lang]);
+
+  useEffect(() => {
+    if (initialRender.current) {
+      initialRender.current = false;
+      return;
+    }
+    if (menuOpen) {
+      firstNavLinkRef.current?.focus();
+    } else {
+      menuToggleRef.current?.focus();
+    }
+  }, [menuOpen]);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: no-preference)');
@@ -114,16 +129,23 @@ function App() {
     return () => observer.disconnect();
   }, []);
 
+  const handleHeaderKeyDown = (e) => {
+    if (e.key === 'Escape' && menuOpen) {
+      setMenuOpen(false);
+    }
+  };
+
   return (
     <div className="app">
       <div className="bg-noise"></div>
       <div className="trail-layer" id="trail-layer"></div>
 
-      <header>
+      <header onKeyDown={handleHeaderKeyDown}>
         <a href="#hero">
           <img src={logo} alt="Eixo Logo" className="logo" />
         </a>
         <button
+          ref={menuToggleRef}
           className="menu-toggle"
           aria-label={
             lang === 'en'
@@ -135,18 +157,26 @@ function App() {
                 : 'Abrir navegação'
           }
           aria-expanded={menuOpen}
+          aria-controls="primary-navigation"
           onClick={() => setMenuOpen(!menuOpen)}
         >
           {menuOpen ? '\u2715' : '\u2630'}
         </button>
         <nav
+          id="primary-navigation"
           className={`nav-menu ${menuOpen ? 'open' : ''}`}
           aria-label={lang === 'en' ? 'Main navigation' : 'Navegação principal'}
         >
           <ul>
-            {navItems.map((item) => (
+            {navItems.map((item, index) => (
               <li key={item.id}>
-                <a href={`#${item.id}`} onClick={() => setMenuOpen(false)}>{item.label[lang]}</a>
+                <a
+                  ref={index === 0 ? firstNavLinkRef : null}
+                  href={`#${item.id}`}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {item.label[lang]}
+                </a>
               </li>
             ))}
           </ul>
