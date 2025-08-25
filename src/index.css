@@ -601,6 +601,31 @@ header {
 }
 
 /* ----------------------------------------------
+   Scroll-to-Top Button Styles
+---------------------------------------------- */
+.scroll-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--color-cta-bg);
+  color: var(--color-cta-text);
+  border: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 999px;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.1);
+  z-index: 100;
+}
+
+.scroll-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ----------------------------------------------
    Footer Styles
 ---------------------------------------------- */
 .footer {

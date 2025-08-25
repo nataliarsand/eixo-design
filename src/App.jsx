@@ -52,6 +52,7 @@ function App() {
   const t = content[lang];
   const [openIndex, setOpenIndex] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
   const sectionRefs = {
     hero: useRef(null),
     methodology: useRef(null),
@@ -90,6 +91,14 @@ function App() {
     };
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 300);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
@@ -226,6 +235,13 @@ function App() {
           </p>
         </footer>
       </main>
+      <button
+        className={`scroll-top ${showScrollTop ? 'visible' : ''}`}
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        aria-label={lang === 'en' ? 'Back to top' : 'Voltar ao topo'}
+      >
+        ↑
+      </button>
     </div>
   );
 }
