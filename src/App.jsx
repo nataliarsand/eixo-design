@@ -68,26 +68,54 @@ function App() {
   }, [lang]);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: no-preference)');
-    if (!mediaQuery.matches) return;
+    const motionMediaQuery = window.matchMedia(
+      '(prefers-reduced-motion: no-preference)'
+    );
+    const smallScreenQuery = window.matchMedia('(max-width: 768px)');
+    if (!motionMediaQuery.matches || smallScreenQuery.matches) return;
 
     const trailLayer = document.getElementById('trail-layer');
+    const trailSpots = [];
+    const maxSpots = 50;
+    let ticking = false;
+
     const createTrailSpot = (x, y) => {
       const spot = document.createElement('div');
       spot.className = 'trail-spot';
       spot.style.left = `${x}px`;
       spot.style.top = `${y}px`;
       trailLayer.appendChild(spot);
+      trailSpots.push(spot);
+      if (trailSpots.length > maxSpots) {
+        const oldest = trailSpots.shift();
+        if (oldest && oldest.parentNode) {
+          trailLayer.removeChild(oldest);
+        }
+      }
       setTimeout(() => {
-        trailLayer.removeChild(spot);
+        if (spot.parentNode) {
+          trailLayer.removeChild(spot);
+        }
+        const idx = trailSpots.indexOf(spot);
+        if (idx > -1) {
+          trailSpots.splice(idx, 1);
+        }
       }, 1800);
     };
+
     const handleMouseMove = (e) => {
-      const { clientX: x, clientY: y } = e;
-      document.documentElement.style.setProperty('--cursor-x', `${x}px`);
-      document.documentElement.style.setProperty('--cursor-y', `${y}px`);
-      createTrailSpot(x, y);
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => {
+          const { clientX: x, clientY: y } = e;
+          document.documentElement.style.setProperty('--cursor-x', `${x}px`);
+          document.documentElement.style.setProperty('--cursor-y', `${y}px`);
+          createTrailSpot(x, y);
+          ticking = false;
+        });
+      }
     };
+
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
