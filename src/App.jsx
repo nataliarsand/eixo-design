@@ -223,6 +223,7 @@ function App() {
                   <p>{t.aboutText2}</p>
                   <p className="strong">{t.aboutText3}</p>
                   <div className="flip-hint">
+                    <span className="flip-icon">↻</span>
                     {lang === 'en' ? 'Click to learn about studio owner' : 'Clique para saber sobre a dona do estúdio'}
                   </div>
                 </div>
@@ -234,11 +235,17 @@ function App() {
                   <p>{t.bioText2}</p>
                   <p className="strong">{t.bioText3}</p>
                   <div className="flip-hint">
+                    <span className="flip-icon">↻</span>
                     {lang === 'en' ? 'Click to return to studio info' : 'Clique para voltar ao estúdio'}
                   </div>
                 </div>
               </div>
             </div>
+          </div>
+          <div className="about-cta">
+            <a href="mailto:hello@eixo.design" className="cta-button secondary">
+              {lang === 'en' ? 'Work with us' : 'Trabalhe conosco'}
+            </a>
           </div>
         </section>
 
