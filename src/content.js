@@ -3,11 +3,11 @@ const content = {
       title: 'eixo.design',
       subtitle1: 'Design from',
       subtitle2: ' the core out.',
-      description: 'Aligning systems, people, and purpose through intentional UX.',
+      description: 'Aligning systems, people, and purpose through intentional design.',
       offeringsLabel: 'How we do it',
       cta: "Let's talk",
       aboutTitle: "Who we are",
-      aboutText1: "Eixo is a UX design studio built for complexity. We cut through noise, align intent, and bring structure that replaces chaos with coherence.",
+      aboutText1: "Eixo is a design studio built for complexity. We cut through noise, align intent, and bring structure that replaces chaos with coherence.",
       aboutText2: "We design from the inside out — from purpose to product. Our work bridges product thinking, service design, and UX craft to shape experiences that are meaningful, usable, and built to last.",
       aboutText3: "We’re not here to decorate. We’re here to make things work — with coherence, integrity, and intention.",
       aboutPrinciplesTitle: 'How we work',
@@ -39,12 +39,12 @@ const content = {
       title: 'eixo.design',
       subtitle1: 'Design do',
       subtitle2: 'eixo pra fora.',
-      description: 'Alinhamos sistemas, pessoas e propósito através de UX intencional.',
+      description: 'Alinhamos sistemas, pessoas e propósito através de design intencional.',
       offeringsLabel: 'O que oferecemos',
       cta: 'Vamos conversar',
       aboutTitle: "Quem somos",
-      aboutText1: "A Eixo é um estúdio de UX feito para a complexidade. Cortamos o ruído, alinhamos o propósito e trazemos estrutura que transforma o caos em coerência.",
-      aboutText2: "Projetamos de dentro pra fora — do propósito ao produto. Nosso trabalho conecta pensamento de produto, design de serviços e prática de UX para criar experiências com sentido, usabilidade e longevidade.",
+      aboutText1: "A Eixo é um estúdio de design feito para a complexidade. Cortamos o ruído, alinhamos o propósito e trazemos estrutura que transforma o caos em coerência.",
+      aboutText2: "Projetamos de dentro pra fora — do propósito ao produto. Nosso trabalho conecta pensamento de produto, design de serviços e prática de design para criar experiências com sentido, usabilidade e longevidade.",
       aboutText3: "Não estamos aqui pra enfeitar. Estamos aqui pra fazer funcionar — com coerência, intenção e integridade.",
       aboutPrinciplesTitle: 'Como trabalhamos',
       aboutPrinciplesIntro: 'Nosso processo traz estrutura à complexidade e clareza à colaboração. Assim que fazemos:',
@@ -86,13 +86,13 @@ const content = {
         en: [
           'Discovery workshops & team alignment',
           'Problem framing & opportunity mapping',
-          'UX strategy & service design reviews',
+          'Business strategy reviews',
           'Co-creation & structured ideation sessions'
         ],
         pt: [
           'Workshops de descoberta e alinhamento de times',
           'Enquadramento de problemas e mapeamento de oportunidades',
-          'Revisões estratégicas de UX e design de serviços',
+          'Revisões estratégicas empresariais e design de serviços',
           'Sessões de ideação e co-criação com estrutura'
         ]
       }
@@ -148,20 +148,20 @@ const content = {
       image: '/assets/images/mentoring-white.png',
       title: { en: 'Mentoring', pt: 'Mentorias' },
       subtitle: {
-        en: 'Guidance for designers, teams, and transitions.',
-        pt: 'Acompanhamento para designers, times e transições.'
+        en: 'Guidance for designers, teams, operations, and transitions.',
+        pt: 'Acompanhamento para designers, times, operações e transições.'
       },
       bullets: {
         en: [
-          '1:1 growth paths for designers',
-          'Support for career shifts into UX',
-          'Team mentoring & systems coaching',
+          '1:1 growth paths for designers and operators',
+          'Support for career shifts into design and strategy',
+          'Team mentoring & business systems coaching',
           'Contextual workshops & guidance'
         ],
         pt: [
-          'Caminhos de crescimento 1:1 para designers',
-          'Apoio em transições de carreira para UX',
-          'Mentoria para times e design systems',
+          'Caminhos de crescimento 1:1 para designers e operadores',
+          'Apoio em transições de carreira para design e estratégia',
+          'Mentoria para times e design de sistemas empresariais',
           'Workshops e orientações sob medida'
         ]
       }

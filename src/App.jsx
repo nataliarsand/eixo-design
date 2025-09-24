@@ -86,8 +86,12 @@ function App() {
   const [openIndex, setOpenIndex] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [activeSection, setActiveSection] = useState('hero');
+  const [isScrolled, setIsScrolled] = useState(false);
+  const scrollListenerSetup = useRef(false);
   const sectionRefs = {
     hero: useRef(null),
+    about: useRef(null),
     methodology: useRef(null),
     offerings: useRef(null),
     contact: useRef(null)
@@ -101,95 +105,58 @@ function App() {
     document.documentElement.lang = lang;
   }, [lang]);
 
-  useEffect(() => {
-    const motionMediaQuery = window.matchMedia(
-      '(prefers-reduced-motion: no-preference)'
-    );
-    const smallScreenQuery = window.matchMedia('(max-width: 768px)');
-    if (!motionMediaQuery.matches || smallScreenQuery.matches) return;
+  // Mouse trail effect disabled to improve scroll performance
+  // useEffect(() => {
+  //   const motionMediaQuery = window.matchMedia(
+  //     '(prefers-reduced-motion: no-preference)'
+  //   );
+  //   const smallScreenQuery = window.matchMedia('(max-width: 768px)');
+  //   if (!motionMediaQuery.matches || smallScreenQuery.matches) return;
+  //   // Mouse trail logic removed for performance
+  // }, []);
 
-    const trailLayer = document.getElementById('trail-layer');
-    const trailSpots = [];
-    const maxSpots = 50;
-    let ticking = false;
-
-    const createTrailSpot = (x, y) => {
-      const spot = document.createElement('div');
-      spot.className = 'trail-spot';
-      spot.style.left = `${x}px`;
-      spot.style.top = `${y}px`;
-      trailLayer.appendChild(spot);
-      trailSpots.push(spot);
-      if (trailSpots.length > maxSpots) {
-        const oldest = trailSpots.shift();
-        if (oldest && oldest.parentNode) {
-          trailLayer.removeChild(oldest);
-        }
-      }
-      setTimeout(() => {
-        if (spot.parentNode) {
-          trailLayer.removeChild(spot);
-        }
-        const idx = trailSpots.indexOf(spot);
-        if (idx > -1) {
-          trailSpots.splice(idx, 1);
-        }
-      }, 1800);
-    };
-
-    const handleMouseMove = (e) => {
-      if (!ticking) {
-        ticking = true;
-        requestAnimationFrame(() => {
-          const { clientX: x, clientY: y } = e;
-          document.documentElement.style.setProperty('--cursor-x', `${x}px`);
-          document.documentElement.style.setProperty('--cursor-y', `${y}px`);
-          createTrailSpot(x, y);
-          ticking = false;
-        });
-      }
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+  // Removed scroll listener - now using intersection observer only
 
   useEffect(() => {
-    const handleScroll = () => {
-      setShowScrollTop(window.scrollY > 300);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: no-preference)');
-    if (!mediaQuery.matches) {
-      document.querySelectorAll('.fade-up').forEach((el) => el.classList.add('visible'));
-      return;
-    }
-
     const observerOptions = {
-      threshold: 0.1
+      threshold: 0.9,
+      rootMargin: '0px'
     };
-    const callback = (entries) => {
+
+    const observerCallback = (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+        if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+          setActiveSection(entry.target.id);
+        }
+        // Use hero section to detect scroll state
+        if (entry.target.id === 'hero') {
+          setIsScrolled(!entry.isIntersecting);
+          console.log('Hero section intersecting:', entry.isIntersecting, 'isScrolled now:', !entry.isIntersecting);
         }
       });
     };
-    const observer = new IntersectionObserver(callback, observerOptions);
-    document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    Object.values(sectionRefs).forEach((ref) => {
+      if (ref.current) {
+        observer.observe(ref.current);
+      }
+    });
+
     return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    // Disable fade-up animations to improve scroll performance
+    document.querySelectorAll('.fade-up').forEach((el) => el.classList.add('visible'));
   }, []);
 
   return (
     <div className="app">
       <div className="bg-noise"></div>
-      <div className="trail-layer" id="trail-layer"></div>
 
-      <header>
+      <header className={isScrolled ? 'active' : ''} data-scrolled={isScrolled}>
         <a href="#hero">
           <img src={logo} alt="Eixo Logo" className="logo" />
         </a>
@@ -207,7 +174,7 @@ function App() {
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen(!menuOpen)}
         >
-          {menuOpen ? '\u2715' : '\u2630'}
+          {menuOpen ? '✕' : '☰'}
         </button>
         <nav
           className={`nav-menu ${menuOpen ? 'open' : ''}`}
@@ -216,7 +183,13 @@ function App() {
           <ul>
             {navItems.map((item) => (
               <li key={item.id}>
-                <a href={`#${item.id}`} onClick={() => setMenuOpen(false)}>{item.label[lang]}</a>
+                <a
+                  href={`#${item.id}`}
+                  className={activeSection === item.id ? 'active' : ''}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {item.label[lang]}
+                </a>
               </li>
             ))}
           </ul>
@@ -239,7 +212,7 @@ function App() {
           </div>
         </section>
 
-        <section className="about fade-up" id="about">
+        <section className="about fade-up" id="about" ref={sectionRefs.about}>
           <h3>{t.aboutTitle}</h3>
           <p>{t.aboutText1}</p>
           <p>{t.aboutText2}</p>
