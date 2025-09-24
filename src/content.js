@@ -3,15 +3,15 @@ const content = {
       title: 'eixo.design',
       subtitle1: 'Design from',
       subtitle2: ' the core out.',
-      description: 'Aligning systems, people, and purpose through intentional design.',
+      description: 'Aligning people, processes and purpose through intentional design.',
       offeringsLabel: 'How we do it',
-      cta: "Let's talk",
+      cta: "Let us talk",
       aboutTitle: "Who we are",
       aboutText1: "Eixo is a design studio built for complexity. We cut through noise, align intent, and bring structure that replaces chaos with coherence.",
-      aboutText2: "We design from the inside out — from purpose to product. Our work bridges product thinking, service design, and UX craft to shape experiences that are meaningful, usable, and built to last.",
-      aboutText3: "We’re not here to decorate. We’re here to make things work — with coherence, integrity, and intention.",
+      aboutText2: "We design from the inside out, from purpose to product. Our work bridges product thinking, service design, and UX craft to shape experiences that are meaningful, usable, and built to last.",
+      aboutText3: "We are not here to decorate. We are here to make things work with coherence, integrity, and intention.",
       aboutPrinciplesTitle: 'How we work',
-      aboutPrinciplesIntro: 'Our process brings structure to complexity and clarity to collaboration. Here’s how:',
+      aboutPrinciplesIntro: 'Our process brings structure to complexity and clarity to collaboration. Here is how:',
       aboutPrinciples: [
         {
           title: 'Ask hard questions early',
@@ -19,7 +19,7 @@ const content = {
         },
         {
           title: 'Frame problems before solving them',
-          description: 'We shape problems with care so we can solve the right one — not just the loudest.'
+          description: 'We shape problems with care so we can solve the right one, not just the loudest.'
         },
         {
           title: 'Favour clarity over trend',
@@ -27,13 +27,15 @@ const content = {
         },
         {
           title: 'Collaborate with care',
-          description: 'We bring people in, not just pixels — research, dialogue, and structure over chaos.'
+          description: 'We bring people in, not just pixels. Research, dialogue, and structure over chaos.'
         },
         {
           title: 'Design for continuity',
-          description: 'Our work connects flows, teams, and tools — so it scales with your growth.'
+          description: 'Our work connects flows, teams, and tools so it scales with your growth.'
         }
-      ]
+      ],
+      contactTitle: 'Get in touch',
+      contactText: 'Ready to align your vision with intentional design?'
     },
     pt: {
       title: 'eixo.design',
@@ -44,8 +46,8 @@ const content = {
       cta: 'Vamos conversar',
       aboutTitle: "Quem somos",
       aboutText1: "A Eixo é um estúdio de design feito para a complexidade. Cortamos o ruído, alinhamos o propósito e trazemos estrutura que transforma o caos em coerência.",
-      aboutText2: "Projetamos de dentro pra fora — do propósito ao produto. Nosso trabalho conecta pensamento de produto, design de serviços e prática de design para criar experiências com sentido, usabilidade e longevidade.",
-      aboutText3: "Não estamos aqui pra enfeitar. Estamos aqui pra fazer funcionar — com coerência, intenção e integridade.",
+      aboutText2: "Projetamos de dentro pra fora, do propósito ao produto. Nosso trabalho conecta pensamento de produto, design de serviços e prática de design para criar experiências com sentido, usabilidade e longevidade.",
+      aboutText3: "Não estamos aqui pra enfeitar. Estamos aqui pra fazer funcionar com coerência, intenção e integridade.",
       aboutPrinciplesTitle: 'Como trabalhamos',
       aboutPrinciplesIntro: 'Nosso processo traz estrutura à complexidade e clareza à colaboração. Assim que fazemos:',
       aboutPrinciples: [
@@ -55,7 +57,7 @@ const content = {
         },
         {
           title: 'Enquadramos o problema antes de propor soluções',
-          description: 'Encaramos o problema com cuidado pra resolver o certo — não só o mais barulhento.'
+          description: 'Encaramos o problema com cuidado pra resolver o certo, não só o mais barulhento.'
         },
         {
           title: 'Priorizamos clareza acima de tendências',
@@ -63,13 +65,15 @@ const content = {
         },
         {
           title: 'Colaboramos com cuidado',
-          description: 'Envolvemos pessoas — não só pixels. Pesquisa, conversa e estrutura acima do caos.'
+          description: 'Envolvemos pessoas, não só pixels. Pesquisa, conversa e estrutura acima do caos.'
         },
         {
           title: 'Projetamos com visão de continuidade',
-          description: 'Nosso trabalho conecta fluxos, times e ferramentas — e cresce junto com você.'
+          description: 'Nosso trabalho conecta fluxos, times e ferramentas e cresce junto com você.'
         }
-      ]
+      ],
+      contactTitle: 'Entre em contato',
+      contactText: 'Pronto para alinhar sua visão com design intencional?'
     }
   };
     

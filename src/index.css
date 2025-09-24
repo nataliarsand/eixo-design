@@ -60,7 +60,7 @@ html, body {
   background: var(--color-bg);
   color: var(--color-text);
   overflow-x: hidden;
-  scroll-behavior: auto;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -609,6 +609,47 @@ header.active {
 }
 
 /* ----------------------------------------------
+   Contact Section Styles
+---------------------------------------------- */
+.contact {
+  padding: 6rem 2rem;
+  max-width: 880px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contact-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+.contact-intro {
+  font-size: 1.8rem;
+  line-height: 1.6;
+  font-family: var(--font-serif);
+  color: var(--color-accent);
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+
+.contact-email {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-text);
+  text-decoration: none;
+  border-bottom: 2px solid var(--color-accent);
+  padding-bottom: 0.25rem;
+  transition: all 0.3s ease;
+}
+
+.contact-email:hover {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-text);
+}
+
+/* ----------------------------------------------
    CTA Section Styles
 ---------------------------------------------- */
 .cta {
@@ -664,13 +705,14 @@ header.active {
    Footer Styles
 ---------------------------------------------- */
 .footer {
-  padding: 3rem 2rem;
+  padding: 2rem;
   margin: 0;
   text-align: center;
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   color: var(--color-subtle);
   font-family: var(--font-sans);
   border-top: 1px solid var(--color-border);
+  background: rgba(0, 0, 0, 0.3);
 }
 
 .footer a {

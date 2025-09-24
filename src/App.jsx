@@ -119,13 +119,13 @@ function App() {
 
   useEffect(() => {
     const observerOptions = {
-      threshold: 0.9,
-      rootMargin: '0px'
+      threshold: 0.3,
+      rootMargin: '-50px 0px'
     };
 
     const observerCallback = (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+        if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
           setActiveSection(entry.target.id);
         }
         // Use hero section to detect scroll state
@@ -262,11 +262,20 @@ function App() {
           </div>
         </section>
 
-        <footer id="contact" className="footer fade-up" ref={sectionRefs.contact}>
-          <p>&copy; {new Date().getFullYear()} eixo.design — All rights reserved.</p>
-          <p>
-            Crafted with clarity · <a href="mailto:hello@eixo.design">hello@eixo.design</a>
-          </p>
+        <section className="contact fade-up" id="contact" ref={sectionRefs.contact}>
+          <h3>{t.contactTitle || 'Contact'}</h3>
+          <div className="contact-content">
+            <div className="contact-text">
+              <p className="contact-intro">{t.contactText || 'Ready to align your vision with intentional design?'}</p>
+              <div className="contact-details">
+                <a href="mailto:hello@eixo.design" className="contact-email">hello@eixo.design</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <footer className="footer">
+          <p>&copy; {new Date().getFullYear()} eixo.design</p>
         </footer>
       </main>
       <button
