@@ -410,6 +410,88 @@ header.active {
   text-align: center;
 }
 
+.flip-card {
+  background-color: transparent;
+  width: 100%;
+  max-width: 700px;
+  height: 500px;
+  margin: 0 auto;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner,
+.flip-card-inner.flipped {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  transition: all 0.3s ease;
+}
+
+.flip-card:hover .flip-card-front,
+.flip-card:hover .flip-card-back {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--color-accent);
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 3rem 2rem 4rem 2rem;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.card-content h3 {
+  margin-bottom: 2rem;
+  flex-shrink: 0;
+}
+
+.card-content p {
+  flex-grow: 1;
+  margin-bottom: 1rem;
+}
+
+.card-content p:last-of-type {
+  margin-bottom: 0;
+}
+
+.flip-hint {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.8rem;
+  color: var(--color-subtle);
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+  font-style: italic;
+}
+
 .about h3 {
   text-transform: uppercase;
   font-size: var(--size-label);

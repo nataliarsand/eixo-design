@@ -88,6 +88,7 @@ function App() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
   const [isScrolled, setIsScrolled] = useState(false);
+  const [showBio, setShowBio] = useState(false);
   const scrollListenerSetup = useRef(false);
   const sectionRefs = {
     hero: useRef(null),
@@ -213,12 +214,31 @@ function App() {
         </section>
 
         <section className="about fade-up" id="about" ref={sectionRefs.about}>
-          <h3>{t.aboutTitle}</h3>
-          <p>{t.aboutText1}</p>
-          <p>{t.aboutText2}</p>
-          <p className="strong">{t.aboutText3}</p>
-          <div className="cta">
-            <a href="mailto:hello@eixo.design" className="cta-button">{t.cta}</a>
+          <div className="flip-card" onClick={() => setShowBio(!showBio)}>
+            <div className={`flip-card-inner ${showBio ? 'flipped' : ''}`}>
+              <div className="flip-card-front">
+                <div className="card-content">
+                  <h3>{t.aboutTitle}</h3>
+                  <p>{t.aboutText1}</p>
+                  <p>{t.aboutText2}</p>
+                  <p className="strong">{t.aboutText3}</p>
+                  <div className="flip-hint">
+                    {lang === 'en' ? 'Click to learn about studio owner' : 'Clique para saber sobre a dona do estúdio'}
+                  </div>
+                </div>
+              </div>
+              <div className="flip-card-back">
+                <div className="card-content">
+                  <h3>{t.bioTitle}</h3>
+                  <p>{t.bioText1}</p>
+                  <p>{t.bioText2}</p>
+                  <p className="strong">{t.bioText3}</p>
+                  <div className="flip-hint">
+                    {lang === 'en' ? 'Click to return to studio info' : 'Clique para voltar ao estúdio'}
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 

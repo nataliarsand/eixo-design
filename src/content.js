@@ -7,11 +7,15 @@ const content = {
       offeringsLabel: 'How we do it',
       cta: "Let us talk",
       aboutTitle: "Who we are",
-      aboutText1: "Eixo is a design studio built for complexity. We cut through noise, align intent, and bring structure that replaces chaos with coherence.",
-      aboutText2: "We design from the inside out, from purpose to product. Our work bridges product thinking, service design, and UX craft to shape experiences that are meaningful, usable, and built to last.",
-      aboutText3: "We are not here to decorate. We are here to make things work with coherence, integrity, and intention.",
+      aboutText1: "Eixo is a design studio built for complexity. We cut through noise and bring order to chaos.",
+      aboutText2: "Our work bridges product thinking, service design, and UX craft to shape experiences that are meaningful, usable, and built to last.",
+      aboutText3: "We are not here to decorate. We are here to make things work.",
+      bioTitle: "About Natalia",
+      bioText1: "UX Design Lead with 15+ years across Dell, ThoughtWorks, startups, and latest Booking.com, where I led design systems at scale.",
+      bioText2: "My expertise spans strategic discovery, technical implementation, and cross-functional team alignment.",
+      bioText3: "I connect partners and colleagues as needed to form specialist teams tailored to your project context and requirements.",
       aboutPrinciplesTitle: 'How we work',
-      aboutPrinciplesIntro: 'Our process brings structure to complexity and clarity to collaboration. Here is how:',
+      aboutPrinciplesIntro: 'Our process brings clarity to collaboration. Here is how:',
       aboutPrinciples: [
         {
           title: 'Ask hard questions early',
@@ -35,7 +39,7 @@ const content = {
         }
       ],
       contactTitle: 'Get in touch',
-      contactText: 'Ready to align your vision with intentional design?'
+      contactText: 'Ready to bring clarity to your next challenge?'
     },
     pt: {
       title: 'eixo.design',
@@ -45,11 +49,15 @@ const content = {
       offeringsLabel: 'O que oferecemos',
       cta: 'Vamos conversar',
       aboutTitle: "Quem somos",
-      aboutText1: "A Eixo é um estúdio de design feito para a complexidade. Cortamos o ruído, alinhamos o propósito e trazemos estrutura que transforma o caos em coerência.",
-      aboutText2: "Projetamos de dentro pra fora, do propósito ao produto. Nosso trabalho conecta pensamento de produto, design de serviços e prática de design para criar experiências com sentido, usabilidade e longevidade.",
-      aboutText3: "Não estamos aqui pra enfeitar. Estamos aqui pra fazer funcionar com coerência, intenção e integridade.",
+      aboutText1: "A Eixo é um estúdio de design feito para a complexidade. Cortamos o ruído e trazemos ordem ao caos.",
+      aboutText2: "Nosso trabalho conecta pensamento de produto, design de serviços e prática de design para criar experiências com sentido, usabilidade e longevidade.",
+      aboutText3: "Não estamos aqui pra enfeitar. Estamos aqui pra fazer funcionar.",
+      bioTitle: "Sobre a Natalia",
+      bioText1: "UX Design Lead com 15+ anos na Dell, ThoughtWorks, startups, e mais recentemente na Booking.com, onde liderei design systems em escala.",
+      bioText2: "Minha expertise abrange descoberta estratégica, implementação técnica e alinhamento de times cross-funcionais.",
+      bioText3: "Conecto parceiros e colegas conforme necessário para formar times especialistas sob medida para o contexto e requisitos do seu projeto.",
       aboutPrinciplesTitle: 'Como trabalhamos',
-      aboutPrinciplesIntro: 'Nosso processo traz estrutura à complexidade e clareza à colaboração. Assim que fazemos:',
+      aboutPrinciplesIntro: 'Nosso processo traz clareza à colaboração. Assim que fazemos:',
       aboutPrinciples: [
         {
           title: 'Fazemos as perguntas difíceis desde o início',
@@ -73,7 +81,7 @@ const content = {
         }
       ],
       contactTitle: 'Entre em contato',
-      contactText: 'Pronto para alinhar sua visão com design intencional?'
+      contactText: 'Pronto para trazer clareza ao seu próximo desafio?'
     }
   };
     
@@ -91,13 +99,13 @@ const content = {
           'Discovery workshops & team alignment',
           'Problem framing & opportunity mapping',
           'Business strategy reviews',
-          'Co-creation & structured ideation sessions'
+          'Structured ideation sessions'
         ],
         pt: [
           'Workshops de descoberta e alinhamento de times',
           'Enquadramento de problemas e mapeamento de oportunidades',
-          'Revisões estratégicas empresariais e design de serviços',
-          'Sessões de ideação e co-criação com estrutura'
+          'Revisões estratégicas empresariais',
+          'Sessões de ideação estruturadas'
         ]
       }
     },
