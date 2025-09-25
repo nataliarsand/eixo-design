@@ -91,6 +91,53 @@ h3 {
   letter-spacing: 0.15em;
   font-weight: 500;
   text-align: center;
+  position: relative;
+}
+
+h3::after {
+  content: '';
+  position: absolute;
+  bottom: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-accent),
+    transparent
+  );
+  opacity: 0.5;
+}
+
+/* Page entrance animation */
+body {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+body.page-loaded {
+  opacity: 1;
+}
+
+/* Enhanced focus states */
+*:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Smooth scrolling with momentum */
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Loading states */
+.content-loading {
+  pointer-events: none;
+  user-select: none;
 }
 
 /* ----------------------------------------------
@@ -146,13 +193,48 @@ h3 {
 
 .fade-up {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .fade-up.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Staggered loading animation */
+.offering-card {
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+  animation: none;
+}
+
+.offering-card.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.offering-card:nth-child(1).visible { transition-delay: 0.1s; }
+.offering-card:nth-child(2).visible { transition-delay: 0.2s; }
+.offering-card:nth-child(3).visible { transition-delay: 0.3s; }
+.offering-card:nth-child(4).visible { transition-delay: 0.4s; }
+
+/* Skeleton loading state */
+.loading-skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.03) 25%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.03) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }
 
 
@@ -505,6 +587,7 @@ header.active {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  z-index: 10;
 }
 
 .flip-card:hover .flip-hint {
@@ -609,6 +692,12 @@ header.active {
 
 .accordion-title:hover {
   color: var(--color-accent);
+  transform: translateX(4px);
+}
+
+.accordion-title:focus {
+  color: var(--color-accent);
+  transform: translateX(2px);
 }
 
 .accordion-icon {
@@ -827,14 +916,21 @@ header.active {
   cursor: pointer;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 6px 20px rgba(255, 255, 255, 0.1);
   z-index: 100;
+  transform: translateY(20px) scale(0.8);
+}
+
+.scroll-top:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.15);
 }
 
 .scroll-top.visible {
   opacity: 1;
   pointer-events: auto;
+  transform: translateY(0) scale(1);
 }
 
 /* ----------------------------------------------
@@ -870,6 +966,28 @@ html {
   -webkit-overflow-scrolling: touch;
 }
 
+/* Mobile pull-to-refresh and gesture enhancements */
+@media (max-width: 767px) {
+  body {
+    overscroll-behavior-y: contain;
+    overflow-x: hidden;
+  }
+
+  /* Enhanced mobile tap feedback */
+  .flip-card,
+  .offering-card,
+  .accordion-title {
+    -webkit-tap-highlight-color: rgba(204, 204, 204, 0.1);
+  }
+
+  /* Haptic-style feedback simulation */
+  .cta-button:active,
+  .menu-toggle:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+  }
+}
+
 /* Touch-optimized interactions */
 button, a, .flip-card {
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
@@ -900,6 +1018,57 @@ button, a, .flip-card {
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Delightful micro-interactions */
+.logo {
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+/* Enhanced button interactions */
+button, .cta-button, .flip-card {
+  position: relative;
+  overflow: hidden;
+}
+
+button::before, .cta-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease;
+  z-index: 0;
+}
+
+button:hover::before, .cta-button:hover::before {
+  width: 200px;
+  height: 200px;
+}
+
+button > *, .cta-button > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Smooth text selection */
+::selection {
+  background: rgba(204, 204, 204, 0.3);
+  color: var(--color-text);
+}
+
+::-moz-selection {
+  background: rgba(204, 204, 204, 0.3);
+  color: var(--color-text);
 }
 
 /* Mobile-specific optimizations */
@@ -951,6 +1120,8 @@ html.mobile body {
     min-height: 44px;
     min-width: 44px;
   }
+
+  /* Removed swipe indicator - not needed */
 }
 
 /* ----------------------------------------------
@@ -1179,9 +1350,31 @@ html.mobile body {
     font-weight: 500;
     letter-spacing: 0.02em;
     border-left: 3px solid transparent;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     width: 100%;
     text-align: left;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .nav-menu a::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.05),
+      transparent
+    );
+    transition: left 0.5s ease;
+  }
+
+  .nav-menu a:hover::after {
+    left: 100%;
   }
 
   .nav-menu a:hover,
@@ -1300,9 +1493,16 @@ html.mobile body {
   }
 
   .card-content {
-    padding: 2rem 1.5rem;
+    padding: 2rem 1.5rem 4rem 1.5rem;
     min-height: 350px;
+    position: relative;
   }
+
+  .flip-hint {
+    bottom: 1rem;
+    font-size: 0.75rem;
+  }
+
 
   /* Enhanced accordion for mobile */
   .accordion-title {
@@ -1444,9 +1644,16 @@ html.mobile body {
   }
 
   .card-content {
-    padding: 1.5rem var(--gutter);
+    padding: 1.5rem var(--gutter) 4rem var(--gutter);
     min-height: 300px;
+    position: relative;
   }
+
+  .flip-hint {
+    bottom: 0.75rem;
+    font-size: 0.7rem;
+  }
+
 
   .card-content h3 {
     margin-bottom: 1.5rem;

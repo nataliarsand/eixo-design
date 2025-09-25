@@ -92,8 +92,10 @@ function App() {
   const [isMobile, setIsMobile] = useState(false);
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   const scrollListenerSetup = useRef(false);
   const lastTap = useRef(0);
+  const cardRef = useRef(null);
   const sectionRefs = {
     hero: useRef(null),
     about: useRef(null),
@@ -181,12 +183,23 @@ function App() {
     document.documentElement.lang = lang;
     detectMobile();
 
+    // Simulate initial loading
+    const loadingTimer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+
     const handleResize = () => {
       detectMobile();
     };
 
+    // Add subtle page entrance animation
+    document.body.classList.add('page-loaded');
+
     window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      clearTimeout(loadingTimer);
+    };
   }, [lang, detectMobile]);
 
   // Mouse trail effect disabled to improve scroll performance
@@ -374,8 +387,8 @@ function App() {
                   <div className="flip-hint">
                     <span className="flip-icon">↻</span>
                     {lang === 'en'
-                      ? (isMobile ? 'Tap or swipe to learn about studio owner' : 'Click to learn about studio owner')
-                      : (isMobile ? 'Toque ou deslize para saber sobre a dona do estúdio' : 'Clique para saber sobre a dona do estúdio')
+                      ? (isMobile ? 'Tap or swipe to see who\'s behind it' : 'Click to see who\'s behind it')
+                      : (isMobile ? 'Toque ou deslize para ver quem está por trás' : 'Clique para ver quem está por trás')
                     }
                   </div>
                 </div>
