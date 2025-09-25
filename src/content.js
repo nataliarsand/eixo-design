@@ -39,7 +39,12 @@ const content = {
         }
       ],
       contactTitle: 'Get in touch',
-      contactText: 'Ready to bring clarity to your next challenge?'
+      contactText: 'Ready to bring clarity to your next challenge?',
+      socialProof: {
+        testimonialPreview: "\"Natalia brings rare depth to UX strategy and systems thinking.\"",
+        responseTime: "Response within 24h",
+        availability: "Available for new projects"
+      }
     },
     pt: {
       title: 'eixo.design',
@@ -81,7 +86,12 @@ const content = {
         }
       ],
       contactTitle: 'Entre em contato',
-      contactText: 'Pronto para trazer clareza ao seu próximo desafio?'
+      contactText: 'Pronto para trazer clareza ao seu próximo desafio?',
+      socialProof: {
+        testimonialPreview: "\"Natalia traz profundidade rara em estratégia de UX e pensamento sistêmico.\"",
+        responseTime: "Resposta em até 24h",
+        availability: "Disponível para novos projetos"
+      }
     }
   };
     

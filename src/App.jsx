@@ -462,6 +462,15 @@ function App() {
           <div className="contact-content">
             <div className="contact-text">
               <p className="contact-intro">{t.contactText || 'Ready to align your vision with intentional design?'}</p>
+              {t.socialProof && (
+                <div className="social-proof">
+                  <p className="testimonial-preview">{t.socialProof.testimonialPreview}</p>
+                  <div className="trust-signals">
+                    <span className="response-time">{t.socialProof.responseTime}</span>
+                    <span className="availability">{t.socialProof.availability}</span>
+                  </div>
+                </div>
+              )}
               <div className="contact-details">
                 <a href="mailto:hello@eixo.design" className="contact-email">hello@eixo.design</a>
               </div>
@@ -470,7 +479,16 @@ function App() {
         </section>
 
         <footer className="footer">
-          <p>&copy; {new Date().getFullYear()} eixo.design</p>
+          <div className="footer-content">
+            <div className="footer-main">
+              <p className="copyright">&copy; {new Date().getFullYear()} eixo.design</p>
+              <div className="footer-links">
+                <span className="location">Netherlands</span>
+                <span className="separator">|</span>
+                <span className="status">Available for new projects</span>
+              </div>
+            </div>
+          </div>
         </footer>
       </main>
       <button
