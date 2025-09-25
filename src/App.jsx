@@ -365,7 +365,7 @@ function App() {
               <span className="line2">{t.subtitle2}</span>
             </h1>
             <p>{t.description}</p>
-          </div>
+            <p className="pronunciation">{t.pronunciation}</p>          </div>
         </section>
 
         <section className="about fade-up" id="about" ref={sectionRefs.about}>

@@ -2087,3 +2087,12 @@ html.mobile body {
     page-break-inside: avoid;
   }
 }
+
+
+p.pronunciation {
+    font-style: italic;
+    font-size: 0.9em !important;
+    color: #999;
+    margin-top: 0.25rem;
+    text-align: center;
+  }

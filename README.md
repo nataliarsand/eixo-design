@@ -1,4 +1,4 @@
-# Eixo Design Website
+# Eixo Design Website (pronounced A-shoo)
 
 This repository contains the marketing site for [eixo.design](https://eixo.design), a UX design studio that "brings clarity to complexity" and aligns systems, people, and purpose through intentional design.
 

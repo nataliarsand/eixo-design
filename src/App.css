@@ -40,3 +40,11 @@
 .read-the-docs {
   color: #888;
 }
+.pronunciation {\n  font-size: 0.7em;\n  opacity: 0.6;\n  margin-top: 0.25rem;\n}
+  text-align: center;  font-style: italic;.pronunciation {
+  font-style: italic;
+  font-size: 0.7em;
+  opacity: 0.6;
+  margin-top: 0.25rem;
+  text-align: center;
+}
