@@ -1681,6 +1681,19 @@ html.mobile body {
   .accordion-title:active {
     background: none !important;
     transform: none !important;
+    color: var(--color-accent) !important;
+  }
+
+  .accordion-title:active {
+    color: var(--color-text) !important;
+  }
+
+  .accordion-item.open .accordion-title {
+    color: var(--color-accent) !important;
+  }
+
+  .accordion-item.open .accordion-title:active {
+    color: var(--color-accent) !important;
   }
 
   .accordion-content {
