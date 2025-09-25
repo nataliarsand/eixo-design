@@ -2,7 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover" />
+
+    <!-- Mobile Web App Capabilities -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="eixo.design" />
+    <meta name="application-name" content="eixo.design" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="msapplication-navbutton-color" content="#000000" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
     <!-- Primary Meta Tags -->
     <title>eixo.design — Design from the core out | UX Design & Strategy</title>
@@ -35,11 +45,17 @@
     <meta name="twitter:site" content="@eixodesign" />
     <meta name="twitter:image" content="https://eixo.design/og-image.png" />
   
-    <!-- Preload Fonts (optional for performance) -->
+    <!-- Performance-Optimized Font Loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap"></noscript>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap"></noscript>
+
+    <!-- Mobile Performance Hints -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <link rel="preload" as="image" href="/src/assets/images/eixo-logo-white.png" />
+    <link rel="preload" as="image" href="/src/assets/images/eixo-icon-white.png" />
   
     <!-- Canonical -->
     <link rel="canonical" href="https://eixo.design/" />
@@ -102,6 +118,17 @@
   <body>
     <div id="root"></div>
 
+    <!-- Mobile-optimized loading -->
+    <script>
+      // Prevent FOUC on mobile
+      document.documentElement.style.setProperty('--initial-color-scheme',
+        window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+      // Add mobile class for conditional styling
+      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768) {
+        document.documentElement.classList.add('mobile');
+      }
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
