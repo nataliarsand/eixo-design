@@ -2,10 +2,16 @@
 .contact-content {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: var(--space-6);
   width: 100%;
-  text-align: left;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contact-text {
+  width: 100%;
 }
 
 .contact-intro {
@@ -54,7 +60,7 @@
   background: var(--color-card);
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: var(--radius-md);
-  text-align: left;
+  text-align: center;
   width: 100%;
 }
 
@@ -69,13 +75,12 @@
 
 .trust-signals {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   gap: var(--space-4);
   flex-wrap: wrap;
 }
 
-.response-time,
-.availability {
+.response-time {
   font-size: var(--text-sm);
   color: var(--color-subtle);
   text-transform: uppercase;
@@ -89,19 +94,6 @@
   position: absolute;
   left: 0;
   color: var(--color-accent);
-}
-
-.availability::before {
-  content: '●';
-  position: absolute;
-  left: 0;
-  color: #4ade80;
-  animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.6; }
 }
 
 @media (max-width: 767px) {

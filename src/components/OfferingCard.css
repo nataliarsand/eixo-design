@@ -24,6 +24,22 @@
   background: rgba(255, 255, 255, 0.04);
 }
 
+/* Disabled state - temporarily hidden offering detail pages */
+.offering-card--disabled {
+  cursor: default;
+}
+
+.offering-card--disabled:hover {
+  transform: none;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.15);
+  border-color: var(--color-border);
+  background: var(--color-card);
+}
+
+.offering-card--disabled:hover .offering-icon {
+  transform: rotate(-90deg);
+}
+
 .offering-icon {
   width: 42px;
   height: auto;

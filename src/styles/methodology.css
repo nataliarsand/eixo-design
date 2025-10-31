@@ -1,19 +1,24 @@
 /* Methodology section - component-specific styles only */
 .accordion-image {
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .accordion-image img {
-  width: 100%;
+  width: 70%;
   height: auto;
   border-radius: var(--radius-xl);
   object-fit: cover;
 }
 
 @media (max-width: 767px) {
+  .accordion-image {
+    align-items: center;
+  }
+
   .accordion-image img {
+    width: 100%;
     border-radius: var(--radius-md);
     margin-top: var(--space-2);
   }

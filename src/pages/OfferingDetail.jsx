@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
-import { offerings } from '../content';
+import { content, offerings } from '../content';
 import logo from '../assets/images/eixo-logo-white.png';
 import Footer from '../components/Footer';
 import './OfferingDetail.css';
@@ -8,6 +8,7 @@ import './OfferingDetail.css';
 const OfferingDetail = ({ lang, setLang }) => {
   const { offeringKey } = useParams();
   const offering = offerings.find(o => o.key === offeringKey);
+  const footerCopy = content[lang]?.footer;
 
   // Scroll to top immediately when component mounts or offeringKey changes
   useEffect(() => {
@@ -465,7 +466,7 @@ const OfferingDetail = ({ lang, setLang }) => {
         </div>
       </main>
 
-      <Footer />
+      <Footer footerCopy={footerCopy} />
     </div>
   );
 };

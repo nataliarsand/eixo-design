@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import App from './App.jsx'
-import OfferingDetail from './pages/OfferingDetail.jsx'
+// import OfferingDetail from './pages/OfferingDetail.jsx' // Temporarily disabled - offering pages hidden
 import './index.css'
 
 function ScrollToTop() {
@@ -23,7 +23,8 @@ function AppWrapper() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<App lang={lang} setLang={setLang} />} />
-        <Route path="/offerings/:offeringKey" element={<OfferingDetail lang={lang} setLang={setLang} />} />
+        {/* Temporarily disabled - offering detail pages hidden */}
+        {/* <Route path="/offerings/:offeringKey" element={<OfferingDetail lang={lang} setLang={setLang} />} /> */}
       </Routes>
     </BrowserRouter>
   );

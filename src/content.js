@@ -57,6 +57,12 @@ const content = {
         testimonialPreview: "\"Natalia brings rare depth to UX strategy and systems thinking.\"",
         responseTime: "Response within 24h",
         availability: "Available for new projects"
+      },
+      footer: {
+        description: "Eixo.design is a digital design studio based in Amsterdam, working with clients worldwide. We help teams and organisations design better systems, products, and services through UX design, service design, and design systems. After years inside large corporations, we've seen what brings alignment and what gets in the way. Our mission is to bring that clarity and structure to growing businesses, helping them scale with purpose, efficiency, and focus. From discovery to delivery, we design systems and experiences that work in the real world.",
+        location: "Amsterdam-based, nomad at heart, connected worldwide.",
+        availability: "Open to work",
+        email: "hello@eixo.design"
       }
     },
     pt: {
@@ -119,6 +125,12 @@ const content = {
             testimonialPreview: "\"Natalia traz profundidade rara em estratégia de UX e pensamento sistêmico.\"",
             responseTime: "Resposta em até 24h",
             availability: "Disponível para novos projetos"
+          },
+          footer: {
+            description: "Eixo.design é um estúdio de design digital baseado em Amsterdã, trabalhando com clientes no mundo todo. Ajudamos times e organizações a desenharem sistemas, produtos e serviços melhores através de UX, service design e design systems. Depois de anos dentro de grandes corporações, vimos o que gera alinhamento e o que atrapalha. Nossa missão é levar essa clareza e estrutura para negócios em crescimento, ajudando-os a escalar com propósito, eficiência e foco. Do discovery à entrega, desenhamos sistemas e experiências que funcionam no mundo real.",
+            location: "Base em Amsterdã, nômade de espírito, conectada ao mundo.",
+            availability: "Aberta a novos projetos",
+            email: "hello@eixo.design"
           }
         }
       };

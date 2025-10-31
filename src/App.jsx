@@ -8,6 +8,7 @@ import Button from './components/Button';
 import Accordion from './components/Accordion';
 import FlipCard from './components/FlipCard';
 import OfferingCard from './components/OfferingCard';
+import StatusBadge from './components/StatusBadge';
 
 function App({ lang = 'en', setLang }) {
   const location = useLocation();
@@ -148,6 +149,7 @@ function App({ lang = 'en', setLang }) {
           // Use hero section to detect scroll state
           if (entry.target.id === 'hero') {
             setIsScrolled(!entry.isIntersecting);
+            setShowScrollTop(!entry.isIntersecting);
           }
         });
       });
@@ -321,7 +323,7 @@ function App({ lang = 'en', setLang }) {
                 </div>
               }
             />
-            <div className="about-cta">
+            <div className="cta-container">
               <Button
                 as="a"
                 href="mailto:hello@eixo.design"
@@ -353,7 +355,7 @@ function App({ lang = 'en', setLang }) {
                 <OfferingCard key={i} offering={offering} lang={lang} />
               ))}
             </div>
-            <div className="cta">
+            <div className="cta-container">
               <Button as="a" href="mailto:hello@eixo.design" variant="primary">
                 {t.cta}
               </Button>
@@ -372,7 +374,7 @@ function App({ lang = 'en', setLang }) {
                     <p className="testimonial-preview">{t.socialProof.testimonialPreview}</p>
                     <div className="trust-signals">
                       <span className="response-time">{t.socialProof.responseTime}</span>
-                      <span className="availability">{t.socialProof.availability}</span>
+                      <StatusBadge variant="online">{t.socialProof.availability}</StatusBadge>
                     </div>
                   </div>
                 )}
@@ -384,19 +386,22 @@ function App({ lang = 'en', setLang }) {
           </div>
         </section>
 
-        <Footer />
+        <Footer footerCopy={t.footer} />
       </main>
       <button
         className={`scroll-top ${showScrollTop ? 'visible' : ''}`}
-        onClick={() => {
-          // Use native scrollTo with fallback for better mobile performance
-          if (isMobile && 'scrollBehavior' in document.documentElement.style) {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const heroSection = document.getElementById('hero');
+          if (heroSection) {
+            heroSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
           } else {
-            window.scrollTo({ top: 0, behavior: 'auto' });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
           }
         }}
         aria-label={navigationLabels.backToTop}
+        type="button"
       >
         ↑
       </button>
