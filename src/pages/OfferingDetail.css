@@ -1,0 +1,501 @@
+.offering-detail-page {
+  min-height: 100vh;
+  background: var(--bg);
+  position: relative;
+}
+
+.offering-detail-main {
+  position: relative;
+  z-index: 1;
+  padding-top: 120px;
+}
+
+.offering-detail-hero {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 3rem 4rem;
+}
+
+header .header-left {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-accent);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: opacity 0.2s ease;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.back-link:hover {
+  opacity: 0.7;
+}
+
+.offering-detail-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.offering-detail-icon {
+  width: 64px;
+  height: 64px;
+  filter: brightness(0) invert(1);
+  opacity: 0.85;
+}
+
+.offering-detail-header h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+  text-align: center;
+}
+
+.offering-detail-subtitle {
+  font-family: var(--font-serif);
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  color: var(--color-accent);
+  line-height: 1.6;
+  font-style: italic;
+  font-weight: 500;
+  text-align: center;
+  max-width: 700px;
+}
+
+.offering-detail-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 3rem 6rem;
+}
+
+/* What we do section - full width prose */
+.offering-section-what {
+  margin-bottom: 4rem;
+  padding-top: 4rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.offering-section-what h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 2.5vw, 1.8rem);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.01em;
+}
+
+.offering-section-what p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--color-text-muted);
+}
+
+/* How it works - vertical timeline */
+.offering-section-how {
+  margin-bottom: 4rem;
+  padding-top: 4rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.offering-section-how h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 2.5vw, 1.8rem);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 2.5rem;
+  letter-spacing: -0.01em;
+  text-align: left;
+}
+
+.process-timeline {
+  position: relative;
+  padding-left: 3rem;
+  max-width: 800px;
+}
+
+.process-timeline::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 12px;
+  bottom: 2.5rem;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    var(--color-accent) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+}
+
+.process-step {
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+
+.process-step:last-child {
+  margin-bottom: 0;
+}
+
+.process-step::before {
+  content: '';
+  position: absolute;
+  left: -3rem;
+  top: 4px;
+  width: 18px;
+  height: 18px;
+  background: var(--color-accent);
+  border-radius: 50%;
+  border: 3px solid var(--color-bg);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+  z-index: 1;
+}
+
+.process-step-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: left;
+}
+
+.process-step-title {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.process-step-description {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+}
+
+/* This is for you if - checklist cards */
+.offering-section-fit {
+  margin-bottom: 4rem;
+  padding-top: 4rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.fit-requirements h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 2.5vw, 1.8rem);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 1.75rem;
+  letter-spacing: -0.01em;
+}
+
+.fit-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: sticky;
+  top: 120px;
+}
+
+.fit-preparation {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 2rem;
+}
+
+.fit-preparation h3 {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+  text-align: left;
+}
+
+.fit-preparation h3::after {
+  display: none;
+}
+
+.fit-preparation p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.fit-related-services {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 2rem;
+}
+
+.fit-related-services h3 {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.01em;
+  text-align: left;
+}
+
+.fit-related-services h3::after {
+  display: none;
+}
+
+.related-group {
+  margin-bottom: 1.5rem;
+}
+
+.related-group:last-child {
+  margin-bottom: 0;
+}
+
+.related-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-subtle);
+  margin-bottom: 0.75rem;
+}
+
+.related-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.related-link {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-accent);
+  text-decoration: none;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease;
+}
+
+.related-link:hover {
+  color: var(--color-text);
+  border-bottom-color: var(--color-accent);
+  padding-left: 0.5rem;
+}
+
+.fit-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.fit-checklist li {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+  padding: 1.25rem 1.25rem 1.25rem 3.5rem;
+  position: relative;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.fit-checklist li::before {
+  content: '✓';
+  position: absolute;
+  left: 1.25rem;
+  top: 1.25rem;
+  color: var(--color-accent);
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+.fit-checklist li:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.1);
+  transform: translateX(8px);
+}
+
+.offering-cta {
+  text-align: center;
+  margin-top: 4rem;
+  padding: 4rem 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.offering-cta h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 2.5vw, 2rem);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.offering-cta p {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  margin-bottom: 2rem;
+}
+
+.offering-cta .cta-button {
+  display: inline-flex;
+}
+
+@media (max-width: 968px) {
+  .offering-detail-header {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .offering-detail-icon {
+    grid-row: auto;
+    grid-column: 1;
+    margin: 0 auto 1rem;
+  }
+
+  .offering-detail-header h1,
+  .offering-detail-subtitle {
+    grid-column: 1;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .offering-detail-main {
+    padding-top: 100px;
+  }
+
+  .offering-detail-hero {
+    padding: 0 1.5rem 2rem;
+  }
+
+  .offering-detail-content {
+    padding: 0 1.5rem 4rem;
+  }
+
+  .offering-detail-header {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+  }
+
+  .offering-detail-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .offering-intro-section {
+    margin-bottom: 3rem;
+    padding: 0;
+  }
+
+  .offering-intro {
+    font-size: 1.3rem;
+  }
+
+  .offering-section-what,
+  .offering-section-how,
+  .offering-section-fit {
+    margin-bottom: 3rem;
+  }
+
+  .offering-section-fit {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .fit-sidebar {
+    position: static;
+  }
+
+  .fit-preparation,
+  .fit-related-services {
+    padding: 2rem;
+  }
+
+  .offering-section-what h2,
+  .offering-section-how h2,
+  .fit-requirements h2 {
+    font-size: 1.6rem;
+  }
+
+  .fit-preparation h3 {
+    font-size: 1.2rem;
+  }
+
+
+  .process-timeline {
+    padding-left: 2.5rem;
+  }
+
+  .process-timeline::before {
+    left: 6px;
+    top: 10px;
+  }
+
+  .process-step {
+    margin-bottom: 2rem;
+  }
+
+  .process-step::before {
+    left: -2.5rem;
+    width: 14px;
+    height: 14px;
+  }
+
+  .process-step-title {
+    font-size: 0.9rem;
+  }
+
+  .process-step-description {
+    font-size: 1.05rem;
+  }
+
+  .fit-checklist li {
+    padding: 1rem 1rem 1rem 3rem;
+    font-size: 1.05rem;
+  }
+
+  .fit-checklist li::before {
+    left: 1rem;
+    top: 1rem;
+    font-size: 1.1rem;
+  }
+
+  .fit-checklist li:hover {
+    transform: translateX(4px);
+  }
+
+  .offering-cta {
+    margin-top: 4rem;
+    padding-top: 3rem;
+  }
+}

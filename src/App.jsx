@@ -1,15 +1,10 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import './App.css';
 import logo from './assets/images/eixo-logo-white.png';
 import icon from './assets/images/eixo-icon-white.png';
 import { content, offerings } from './content';
-
-const navItems = [
-  { id: 'about', label: { en: 'Who we are', pt: 'Quem somos' } },
-  { id: 'methodology', label: { en: 'How we work', pt: 'Como trabalhamos' } },
-  { id: 'offerings', label: { en: 'Offerings', pt: 'O que oferecemos' } },
-  { id: 'contact', label: { en: 'Contact', pt: 'Contato' } }
-];
+import Footer from './components/Footer';
 
 const AccordionItem = ({ id, title, content, isOpen, onClick }) => {
   const buttonId = `accordion-header-${id}`;
@@ -80,9 +75,18 @@ const AccordionItem = ({ id, title, content, isOpen, onClick }) => {
   );
 };
 
-function App() {
-  const [lang, setLang] = useState('en');
+function App({ lang = 'en', setLang }) {
+  const location = useLocation();
   const t = content[lang];
+  const navItems = t.navItems || [];
+  const navigationCopy = t.navigation || {};
+  const navigationLabels = {
+    languageLabel: navigationCopy.languageLabel || (lang === 'en' ? 'Language' : 'Idioma'),
+    openMenu: navigationCopy.openMenu || (lang === 'en' ? 'Open navigation' : 'Abrir navegação'),
+    closeMenu: navigationCopy.closeMenu || (lang === 'en' ? 'Close navigation' : 'Fechar navegação'),
+    menuLabel: navigationCopy.menuLabel || (lang === 'en' ? 'Main navigation' : 'Navegação principal'),
+    backToTop: navigationCopy.backToTop || (lang === 'en' ? 'Back to top' : 'Voltar ao topo')
+  };
   const [openIndex, setOpenIndex] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -104,6 +108,19 @@ function App() {
     contact: useRef(null)
   };
 
+  // Handle hash navigation on mount
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      setTimeout(() => {
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  }, []);
+
   const toggleIndex = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
@@ -119,6 +136,16 @@ function App() {
   const closeMenu = useCallback(() => {
     setMenuOpen(false);
   }, []);
+
+  const handleNavClick = useCallback((event, targetId) => {
+    event.preventDefault();
+    closeMenu();
+    const target = document.getElementById(targetId);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.history.replaceState(null, '', `#${targetId}`);
+    }
+  }, [closeMenu]);
 
   const handleMenuToggle = useCallback((e) => {
     e.preventDefault();
@@ -292,20 +319,12 @@ function App() {
       <div className="bg-noise"></div>
 
       <header className={isScrolled ? 'active' : ''} data-scrolled={isScrolled}>
-        <a href="#hero">
+        <a href="#hero" onClick={(e) => handleNavClick(e, 'hero')}>
           <img src={logo} alt="Eixo Logo" className="logo" />
         </a>
         <button
           className={`menu-toggle ${menuOpen ? 'menu-open' : ''}`}
-          aria-label={
-            lang === 'en'
-              ? menuOpen
-                ? 'Close navigation'
-                : 'Open navigation'
-              : menuOpen
-                ? 'Fechar navegação'
-                : 'Abrir navegação'
-          }
+          aria-label={menuOpen ? navigationLabels.closeMenu : navigationLabels.openMenu}
           aria-expanded={menuOpen}
           onClick={handleMenuToggle}
         >
@@ -315,7 +334,7 @@ function App() {
         </button>
         <nav
           className={`nav-menu ${menuOpen ? 'open' : ''}`}
-          aria-label={lang === 'en' ? 'Main navigation' : 'Navegação principal'}
+          aria-label={navigationLabels.menuLabel}
         >
           <div className="nav-menu-content">
             <ul>
@@ -324,15 +343,15 @@ function App() {
                   <a
                     href={`#${item.id}`}
                     className={activeSection === item.id ? 'active' : ''}
-                    onClick={closeMenu}
+                    onClick={(e) => handleNavClick(e, item.id)}
                   >
-                    {item.label[lang]}
+                    {item.label}
                   </a>
                 </li>
               ))}
             </ul>
             <div className="mobile-lang-switcher">
-              <span className="lang-label">{lang === 'en' ? 'Language' : 'Idioma'}</span>
+              <span className="lang-label">{navigationLabels.languageLabel}</span>
               <div className="lang-buttons">
                 <button
                   className={lang === 'en' ? 'active' : ''}
@@ -365,7 +384,10 @@ function App() {
               <span className="line2">{t.subtitle2}</span>
             </h1>
             <p>{t.description}</p>
-            <p className="pronunciation">{t.pronunciation}</p>          </div>
+            {t.pronunciation && (
+              <p className="pronunciation">{t.pronunciation}</p>
+            )}
+          </div>
         </section>
 
         <section className="about fade-up" id="about" ref={sectionRefs.about}>
@@ -442,14 +464,15 @@ function App() {
           <h3>{t.offeringsLabel}</h3>
           <div className="offerings-grid">
             {offerings.map((item, i) => (
-              <div className="offering-card" key={i}>
+              <Link to={`/offerings/${item.key}`} className="offering-card" key={i}>
                 <img src={item.image} alt={`${item.title[lang]} icon`} className="offering-icon" />
                 <h4>{item.title[lang]}</h4>
                 <p className="offering-sub">{item.subtitle[lang]}</p>
                 <ul>
                   {item.bullets[lang].map((b, j) => <li key={j}>{b}</li>)}
                 </ul>
-              </div>
+                <span className="offering-link-arrow">→</span>
+              </Link>
             ))}
           </div>
           <div className="cta">
@@ -478,18 +501,7 @@ function App() {
           </div>
         </section>
 
-        <footer className="footer">
-          <div className="footer-content">
-            <div className="footer-main">
-              <p className="copyright">&copy; {new Date().getFullYear()} eixo.design</p>
-              <div className="footer-links">
-                <span className="location">Netherlands</span>
-                <span className="separator">|</span>
-                <span className="status">Available for new projects</span>
-              </div>
-            </div>
-          </div>
-        </footer>
+        <Footer />
       </main>
       <button
         className={`scroll-top ${showScrollTop ? 'visible' : ''}`}
@@ -501,7 +513,7 @@ function App() {
             window.scrollTo({ top: 0, behavior: 'auto' });
           }
         }}
-        aria-label={lang === 'en' ? 'Back to top' : 'Voltar ao topo'}
+        aria-label={navigationLabels.backToTop}
       >
         ↑
       </button>
