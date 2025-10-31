@@ -1,0 +1,111 @@
+/* Contact section - component-specific styles only */
+.contact-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-6);
+  width: 100%;
+  text-align: left;
+}
+
+.contact-intro {
+  font-size: var(--text-3xl);
+  line-height: 1.6;
+  font-family: var(--font-serif);
+  color: var(--color-accent);
+  margin-bottom: var(--space-4);
+}
+
+.contact-email {
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  color: var(--color-text);
+  text-decoration: none;
+  border-bottom: 2px solid var(--color-accent);
+  padding-bottom: 0.25rem;
+  transition: all var(--transition-base);
+  position: relative;
+  display: inline-block;
+}
+
+.contact-email::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-text);
+  transition: width var(--transition-base);
+}
+
+.contact-email:hover {
+  color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+.contact-email:hover::before {
+  width: 100%;
+}
+
+.social-proof {
+  margin: var(--space-4) 0;
+  padding: var(--space-4);
+  background: var(--color-card);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-md);
+  text-align: left;
+  width: 100%;
+}
+
+.testimonial-preview {
+  font-family: var(--font-serif);
+  font-size: var(--text-xl);
+  line-height: 1.6;
+  color: var(--color-accent);
+  font-style: italic;
+  margin-bottom: var(--space-3);
+}
+
+.trust-signals {
+  display: flex;
+  justify-content: flex-start;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.response-time,
+.availability {
+  font-size: var(--text-sm);
+  color: var(--color-subtle);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  position: relative;
+  padding-left: var(--space-3);
+}
+
+.response-time::before {
+  content: '⚡';
+  position: absolute;
+  left: 0;
+  color: var(--color-accent);
+}
+
+.availability::before {
+  content: '●';
+  position: absolute;
+  left: 0;
+  color: #4ade80;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+@media (max-width: 767px) {
+  .contact-intro {
+    font-size: var(--text-2xl);
+  }
+}

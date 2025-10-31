@@ -1,0 +1,126 @@
+/* OfferingCard Component Styles */
+.offering-card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: all var(--transition-base);
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  position: relative;
+  will-change: transform;
+  transform: translateZ(0);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.15);
+}
+
+.offering-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.offering-icon {
+  width: 42px;
+  height: auto;
+  margin-bottom: var(--space-2);
+  filter: brightness(0.9);
+  transform: rotate(-90deg);
+  transition: transform var(--transition-base);
+}
+
+.offering-card:hover .offering-icon {
+  transform: rotate(-90deg) scale(1.05);
+}
+
+.offering-card h4 {
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  margin-bottom: var(--space-1);
+  font-family: var(--font-sans);
+  color: var(--color-text);
+}
+
+.offering-sub {
+  font-family: var(--font-serif);
+  font-size: var(--size-body-lg);
+  color: var(--color-accent);
+  font-style: italic;
+  margin-bottom: var(--space-2);
+  line-height: 1.6;
+}
+
+.offering-card ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.offering-card li {
+  font-size: var(--size-body);
+  color: #aaa;
+  margin-bottom: var(--space-1);
+  padding-left: var(--space-3);
+  text-align: left;
+  position: relative;
+}
+
+.offering-card li::before {
+  content: '⟐';
+  position: absolute;
+  left: 0;
+  color: var(--color-bullet);
+}
+
+.offering-link-arrow {
+  margin-top: auto;
+  padding-top: var(--space-2);
+  color: var(--color-accent);
+  font-size: var(--text-2xl);
+  opacity: 0.6;
+  transition: opacity var(--transition-base), transform var(--transition-base);
+}
+
+.offering-card:hover .offering-link-arrow {
+  opacity: 1;
+  transform: translateX(5px);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .offering-card {
+    padding: var(--space-3);
+  }
+}
+
+@media (max-width: 767px) {
+  .offering-card {
+    padding: var(--space-4) var(--space-3);
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .offering-icon {
+    width: 36px;
+  }
+
+  .offering-card h4 {
+    font-size: var(--text-xl);
+  }
+
+  .offering-sub {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-3);
+  }
+
+  .offering-card li {
+    font-size: var(--text-sm);
+    line-height: 1.6;
+    margin-bottom: var(--space-1);
+  }
+}

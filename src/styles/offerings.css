@@ -1,0 +1,51 @@
+/* Offerings section - component-specific styles only */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  align-items: stretch;
+}
+
+/* Staggered card entrance animation */
+.fade-up.visible .cards-grid .offering-card {
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+}
+
+.fade-up.visible .cards-grid .offering-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.fade-up.visible .cards-grid .offering-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.fade-up.visible .cards-grid .offering-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.fade-up.visible .cards-grid .offering-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.cta {
+  margin-top: var(--space-8);
+  display: flex;
+  justify-content: flex-start;
+}
+
+@media (max-width: 1024px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-3);
+  }
+}
+
+@media (max-width: 767px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+}

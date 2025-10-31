@@ -1,0 +1,114 @@
+/* Accordion Component Styles */
+.accordion {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-card);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.accordion-item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0;
+  margin: 0;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.accordion-item:last-child {
+  border-bottom: none;
+}
+
+.accordion-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  background: transparent;
+  border: none;
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: var(--text-xl);
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.accordion-title:hover {
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--color-accent);
+}
+
+.accordion-title:hover .accordion-icon {
+  color: var(--color-accent);
+  transform: scale(1.1);
+}
+
+.accordion-item.open .accordion-title {
+  color: var(--color-accent);
+}
+
+.accordion-icon {
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--color-subtle);
+  transition: color var(--transition-base);
+  flex-shrink: 0;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.35s ease, opacity 0.25s ease;
+  margin: 0;
+  padding: 0 var(--space-4) 0;
+}
+
+.accordion-content p {
+  margin: 0 0 var(--space-3);
+  color: var(--color-accent);
+  line-height: 1.75;
+  font-size: var(--text-base);
+}
+
+.accordion-content p:last-child {
+  margin-bottom: 0;
+}
+
+.accordion-item.open .accordion-content {
+  max-height: 420px;
+  opacity: 1;
+  padding-bottom: var(--space-3);
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .accordion {
+    padding: var(--space-3);
+  }
+
+  .accordion-title {
+    font-size: var(--text-lg);
+    padding: var(--space-3) 0;
+  }
+
+  .accordion-content {
+    font-size: var(--text-base);
+  }
+
+  .accordion-item.open .accordion-content {
+    padding-bottom: var(--space-3);
+  }
+}

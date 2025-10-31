@@ -1,0 +1,89 @@
+/* ----------------------------------------------
+   Design Tokens - Single Source of Truth
+---------------------------------------------- */
+
+:root {
+  /* Colors */
+  --color-bg: #000;
+  --color-text: #fff;
+  --color-accent: #ccc;
+  --color-subtle: #888;
+  --color-border: #333;
+  --color-bullet: #666;
+  --color-card: rgba(255, 255, 255, 0.02);
+  --color-card-hover: rgba(255, 255, 255, 0.05);
+  --color-cta-bg: #fff;
+  --color-cta-text: #000;
+
+  /* Typography */
+  --font-sans: 'Space Grotesk', sans-serif;
+  --font-serif: 'EB Garamond', serif;
+
+  /* Font Sizes - Consistent Scale */
+  --text-xs: 0.75rem;      /* 12px */
+  --text-sm: 0.875rem;     /* 14px */
+  --text-base: 1rem;       /* 16px */
+  --text-lg: 1.125rem;     /* 18px */
+  --text-xl: 1.25rem;      /* 20px */
+  --text-2xl: 1.5rem;      /* 24px */
+  --text-3xl: 1.875rem;    /* 30px */
+  --text-4xl: 2.25rem;     /* 36px */
+  --text-5xl: 3rem;        /* 48px */
+
+  /* Responsive Font Sizes */
+  --size-h1: clamp(2.25rem, 8vw, 4rem);
+  --size-h2: clamp(1.5rem, 5vw, 2.5rem);
+  --size-h3: clamp(1.25rem, 4vw, 2rem);
+  --size-body: var(--text-base);
+  --size-body-lg: var(--text-lg);
+  --size-label: var(--text-sm);
+
+  /* Spacing Scale - 8px base */
+  --space-1: 0.5rem;   /* 8px */
+  --space-2: 1rem;     /* 16px */
+  --space-3: 1.5rem;   /* 24px */
+  --space-4: 2rem;     /* 32px */
+  --space-5: 2.5rem;   /* 40px */
+  --space-6: 3rem;     /* 48px */
+  --space-8: 4rem;     /* 64px */
+  --space-10: 5rem;    /* 80px */
+  --space-12: 6rem;    /* 96px */
+  --space-16: 8rem;    /* 128px */
+
+  /* Layout */
+  --max-width: 1180px;
+  --content-width: 1180px;
+  --gutter: var(--space-4);
+  --section-padding-x: clamp(1.5rem, 4vw, 2rem);
+  --section-padding-y: clamp(4rem, 8vw, 6rem);
+
+  /* Border Radius - Consistent System */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2);
+  --shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.25);
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Z-index Scale */
+  --z-base: 1;
+  --z-dropdown: 100;
+  --z-sticky: 500;
+  --z-fixed: 1000;
+  --z-modal: 2000;
+
+  /* Other */
+  --cursor-x: 50vw;
+  --cursor-y: 50vh;
+}

@@ -1,0 +1,20 @@
+/* Methodology section - component-specific styles only */
+.accordion-image {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.accordion-image img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-xl);
+  object-fit: cover;
+}
+
+@media (max-width: 767px) {
+  .accordion-image img {
+    border-radius: var(--radius-md);
+    margin-top: var(--space-2);
+  }
+}
