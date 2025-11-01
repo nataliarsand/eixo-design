@@ -675,10 +675,6 @@ header.active {
 @media (max-width: 767px) {
   section {
     min-height: auto;
-    padding: var(--space-12) var(--gutter);
-  }
-
-  section#about {
     padding: var(--space-10) var(--gutter);
   }
 
@@ -734,6 +730,11 @@ header.active {
     align-items: center;
     gap: 5px;
     z-index: calc(var(--z-modal) + 1);
+  }
+
+  .menu-toggle:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
   }
 
   .nav-backdrop {
@@ -839,7 +840,8 @@ header.active {
     width: 100%;
   }
 
-  .nav-menu a:hover {
+  .nav-menu a:hover,
+  .nav-menu a:focus-visible {
     color: var(--color-text);
     background: rgba(255, 255, 255, 0.02);
     border-left-color: rgba(255, 255, 255, 0.2);
@@ -853,6 +855,11 @@ header.active {
 
   .nav-menu a.active::after {
     display: none;
+  }
+
+  .nav-menu a:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: -2px;
   }
 
   .desktop-lang-switcher {

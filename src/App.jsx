@@ -252,9 +252,9 @@ function App({ lang = 'en', setLang }) {
           aria-expanded={menuOpen}
           onClick={handleMenuToggle}
         >
-          <span className="hamburger-line"></span>
-          <span className="hamburger-line"></span>
-          <span className="hamburger-line"></span>
+          <span className="hamburger-line" aria-hidden="true"></span>
+          <span className="hamburger-line" aria-hidden="true"></span>
+          <span className="hamburger-line" aria-hidden="true"></span>
         </button>
         {isMobile && (
           <div
@@ -290,6 +290,7 @@ function App({ lang = 'en', setLang }) {
                   size="sm"
                   className={lang === 'en' ? 'active' : ''}
                   onClick={() => {setLang('en'); closeMenu();}}
+                  aria-label="Switch to English"
                 >
                   EN
                 </Button>
@@ -298,6 +299,7 @@ function App({ lang = 'en', setLang }) {
                   size="sm"
                   className={lang === 'pt' ? 'active' : ''}
                   onClick={() => {setLang('pt'); closeMenu();}}
+                  aria-label="Mudar para Português"
                 >
                   PT
                 </Button>
