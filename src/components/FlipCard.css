@@ -49,6 +49,61 @@
   transform: rotateY(180deg);
 }
 
+.flip-card.show-back .flip-card-inner {
+  transform-origin: center;
+}
+
+.flip-card.is-mobile {
+  perspective: none;
+  height: auto;
+  min-height: 0;
+}
+
+.flip-card.is-mobile .flip-card-inner {
+  transform: none !important;
+  height: auto;
+}
+
+.flip-card.is-mobile .flip-card-front,
+.flip-card.is-mobile .flip-card-back {
+  position: relative;
+  transform: none;
+  height: auto;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  backface-visibility: visible;
+}
+
+.flip-card.is-mobile.show-front .flip-card-front,
+.flip-card.is-mobile.show-back .flip-card-back {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.flip-card.is-mobile.show-front .flip-card-back,
+.flip-card.is-mobile.show-back .flip-card-front {
+  pointer-events: none;
+}
+
+.flip-card.is-mobile .flip-card-back {
+  transform: none;
+}
+
+.flip-card.is-mobile .card-content {
+  min-height: 0;
+  height: auto;
+  padding: var(--space-5) var(--space-4) var(--space-4);
+}
+
+.flip-card.is-mobile .flip-hint {
+  position: static;
+  transform: none;
+  margin-top: var(--space-5);
+  padding-top: var(--space-3);
+  justify-content: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
 .card-content {
   display: flex;
   flex-direction: column;
@@ -144,6 +199,11 @@
     min-height: 320px;
   }
 
+  .card-content p {
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-2);
+  }
+
   .flip-hint {
     bottom: var(--space-2);
     font-size: var(--text-xs);
@@ -153,6 +213,10 @@
 @media (max-width: 480px) {
   .card-content {
     padding: 1.75rem 1.25rem var(--space-6);
+  }
+
+  .card-content p {
+    font-size: var(--text-base);
   }
 }
 

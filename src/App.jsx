@@ -29,6 +29,7 @@ function App({ lang = 'en', setLang }) {
   const [isMobile, setIsMobile] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const scrollListenerSetup = useRef(false);
+  const scrollPosition = useRef(0);
   const sectionRefs = {
     hero: useRef(null),
     about: useRef(null),
@@ -64,12 +65,20 @@ function App({ lang = 'en', setLang }) {
 
   const handleNavClick = useCallback((event, targetId) => {
     event.preventDefault();
+
+    // Clear the saved scroll position before closing menu to prevent jump
+    scrollPosition.current = 0;
+
     closeMenu();
-    const target = document.getElementById(targetId);
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      window.history.replaceState(null, '', `#${targetId}`);
-    }
+
+    // Small delay to let menu close animation start
+    setTimeout(() => {
+      const target = document.getElementById(targetId);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        window.history.replaceState(null, '', `#${targetId}`);
+      }
+    }, 50);
   }, [closeMenu]);
 
   const handleMenuToggle = useCallback((e) => {
@@ -77,23 +86,46 @@ function App({ lang = 'en', setLang }) {
     setMenuOpen(!menuOpen);
   }, [menuOpen]);
 
+  useEffect(() => {
+    if (!menuOpen || !isMobile) return undefined;
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        closeMenu();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [menuOpen, isMobile, closeMenu]);
+
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
     if (menuOpen && isMobile) {
+      scrollPosition.current = window.scrollY;
       document.body.style.overflow = 'hidden';
       document.body.style.position = 'fixed';
       document.body.style.width = '100%';
-    } else {
-      document.body.style.overflow = '';
-      document.body.style.position = '';
-      document.body.style.width = '';
+      document.body.style.top = `-${scrollPosition.current}px`;
+
+      return () => {
+        document.body.style.overflow = '';
+        document.body.style.position = '';
+        document.body.style.width = '';
+        document.body.style.top = '';
+        window.scrollTo({ top: scrollPosition.current });
+        scrollPosition.current = 0;
+      };
     }
 
-    return () => {
-      document.body.style.overflow = '';
-      document.body.style.position = '';
-      document.body.style.width = '';
-    };
+    document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.width = '';
+    document.body.style.top = '';
+    if (!menuOpen && scrollPosition.current !== 0) {
+      window.scrollTo({ top: scrollPosition.current });
+      scrollPosition.current = 0;
+    }
   }, [menuOpen, isMobile]);
 
 
@@ -224,9 +256,17 @@ function App({ lang = 'en', setLang }) {
           <span className="hamburger-line"></span>
           <span className="hamburger-line"></span>
         </button>
+        {isMobile && (
+          <div
+            className={`nav-backdrop ${menuOpen ? 'visible' : ''}`}
+            onClick={closeMenu}
+            aria-hidden="true"
+          ></div>
+        )}
         <nav
           className={`nav-menu ${menuOpen ? 'open' : ''}`}
           aria-label={navigationLabels.menuLabel}
+          aria-hidden={isMobile ? !menuOpen : false}
         >
           <div className="nav-menu-content">
             <ul>

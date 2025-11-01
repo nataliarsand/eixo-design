@@ -7,6 +7,10 @@ const FlipCard = ({ frontContent, backContent, isMobile = false }) => {
   const [touchEnd, setTouchEnd] = useState(null);
   const lastTap = useRef(0);
 
+  const handleToggle = useCallback(() => {
+    setShowBack((prev) => !prev);
+  }, []);
+
   const handleTouchStart = useCallback((e) => {
     setTouchEnd(null);
     setTouchStart(e.targetTouches[0].clientX);
@@ -24,9 +28,11 @@ const FlipCard = ({ frontContent, backContent, isMobile = false }) => {
     const isRightSwipe = distance < -50;
 
     if (isLeftSwipe || isRightSwipe) {
-      setShowBack(!showBack);
+      handleToggle();
     }
-  }, [touchStart, touchEnd, showBack]);
+    setTouchStart(null);
+    setTouchEnd(null);
+  }, [touchStart, touchEnd, handleToggle]);
 
   const handleDoubleTap = useCallback((e) => {
     const now = Date.now();
@@ -34,16 +40,34 @@ const FlipCard = ({ frontContent, backContent, isMobile = false }) => {
 
     if (now - lastTap.current < DOUBLE_TAP_DELAY) {
       e.preventDefault();
-      setShowBack(!showBack);
+      handleToggle();
     }
 
     lastTap.current = now;
-  }, [showBack]);
+    setTouchStart(null);
+    setTouchEnd(null);
+  }, [handleToggle]);
+
+  const cardClassNames = [
+    'flip-card',
+    showBack ? 'show-back' : 'show-front',
+    isMobile ? 'is-mobile' : ''
+  ].filter(Boolean).join(' ');
+
+  const handleKeyDown = useCallback((event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      handleToggle();
+    }
+  }, [handleToggle]);
 
   return (
     <div
-      className="flip-card"
-      onClick={() => setShowBack(!showBack)}
+      className={cardClassNames}
+      role="button"
+      tabIndex={0}
+      onClick={handleToggle}
+      onKeyDown={handleKeyDown}
       onTouchStart={isMobile ? handleTouchStart : undefined}
       onTouchMove={isMobile ? handleTouchMove : undefined}
       onTouchEnd={isMobile ? handleTouchEnd : undefined}
