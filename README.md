@@ -8,7 +8,7 @@ Eixo is a digital design studio that brings clarity to complex products and serv
 - Amsterdam-based, working worldwide across digital products, services, and design systems.
 - We design from the inside out, integrating service design, UX craft, and systems thinking.
 - The goal is functional, resilient experiences; aesthetics emerge from clarity, not trends.
-- Led by Natalia de Souza, a UX Design Lead with 15+ years across Dell, ThoughtWorks, startups, and Booking.com’s design systems.
+- Led by Natalia Arsand, a UX Design Lead with 15+ years across Dell, ThoughtWorks, startups, and Booking.com’s design systems.
 
 ## What we do
 - **Consultancy:** Discovery and alignment workshops, systems and workflow mapping, service and experience strategy, decision frameworks, and organisational clarity.
