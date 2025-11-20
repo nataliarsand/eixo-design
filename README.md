@@ -1,6 +1,6 @@
 # Eixo Design (pronounced A-shoo)
 
-> **Important:** This repository is public for transparency and learning purposes. The code structure is available for reference. **DO NOT** use my portfolio content, case studies, or personal information.
+> **Important:** This repository is public for transparency and learning purposes. The code structure is available for reference. **DO NOT** use its content, case studies, or replicate anything without permission.
 
 Eixo is a digital design studio that brings clarity to complex products and services. We align people, processes, and purpose through intentional design so teams can move with focus and confidence.
 
