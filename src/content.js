@@ -58,6 +58,33 @@ const content = {
         responseTime: "Response within 24h",
         availability: "Available for new projects"
       },
+      testimonialsTitle: 'What clients say',
+      testimonials: [
+        {
+          quote: "The workshop pushed us to think deeply about our business. The documentation that followed was clear and actionable and has already guided us on taking several decisions and follow-up on next steps.",
+          author: "Two-person Leadership Team",
+          company: "Small Business",
+          role: "Consultancy | Workshop"
+        },
+        {
+          quote: "Natalia brings strong facilitation and design skills. The workshop she ran for us was exceptionally well-structured and helped us generate and prioritise ideas for our next planning cycle. Her input has been instrumental in shaping our Inclusive Services strategy.",
+          author: "Accessibility & Inclusion Strategist",
+          company: "Global Platform",
+          role: "Consultancy | Workshop"
+        },
+        {
+          quote: "Natalia led a full research initiative to evaluate the impact of our design tooling. She drove interviews, kept the team aligned, and delivered insights that were both rich and measurable. Her calm ownership of complex work and her user-centred approach have already made a meaningful difference.",
+          author: "Design Lead",
+          company: "Internal Tools Team",
+          role: "Research | Strategy"
+        },
+        {
+          quote: "Natalia onboards quickly and makes meaningful contributions from day one. Her attention to detail, strong communication, and ability to work independently make her a reliable partner for high-impact projects.",
+          author: "Engineering Manager",
+          company: "Product Development",
+          role: "Delivery"
+        }
+      ],
       footer: {
         description: "Eixo.design is a digital design studio based in Amsterdam, working with clients worldwide. We help teams and organisations design better systems, products, and services through UX design, service design, and design systems. After years inside large corporations, we've seen what brings alignment and what gets in the way. Our mission is to bring that clarity and structure to growing businesses, helping them scale with purpose, efficiency, and focus. From discovery to delivery, we design systems and experiences that work in the real world.",
         location: "Amsterdam-based, nomad at heart, connected worldwide.",
@@ -126,6 +153,33 @@ const content = {
             responseTime: "Resposta em até 24h",
             availability: "Disponível para novos projetos"
           },
+          testimonialsTitle: 'O que dizem os clientes',
+          testimonials: [
+            {
+              quote: "O workshop nos levou a pensar profundamente sobre nosso negócio. A documentação que se seguiu foi clara e acionável, e já nos orientou em várias decisões e próximos passos.",
+              author: "Dupla de Liderança",
+              company: "Pequeno Negócio",
+              role: "Consultoria | Workshop"
+            },
+            {
+              quote: "Natalia traz fortes habilidades de facilitação e design. O workshop que ela conduziu para nós foi excepcionalmente bem estruturado e nos ajudou a gerar e priorizar ideias para nosso próximo ciclo de planejamento. Sua contribuição foi fundamental para moldar nossa estratégia de Serviços Inclusivos.",
+              author: "Estrategista de Acessibilidade & Inclusão",
+              company: "Plataforma Global",
+              role: "Consultoria | Workshop"
+            },
+            {
+              quote: "Natalia liderou uma iniciativa completa de pesquisa para avaliar o impacto de nossas ferramentas de design. Ela conduziu entrevistas, manteve o time alinhado e entregou insights ricos e mensuráveis. Sua propriedade calma de trabalhos complexos e sua abordagem centrada no usuário já fizeram uma diferença significativa.",
+              author: "Design Lead",
+              company: "Time de Ferramentas Internas",
+              role: "Pesquisa | Estratégia"
+            },
+            {
+              quote: "Natalia se integra rapidamente e faz contribuições significativas desde o primeiro dia. Sua atenção aos detalhes, comunicação forte e capacidade de trabalhar de forma independente a tornam uma parceira confiável para projetos de alto impacto.",
+              author: "Engineering Manager",
+              company: "Desenvolvimento de Produto",
+              role: "Entrega"
+            }
+          ],
           footer: {
             description: "Eixo.design é um estúdio de design digital baseado em Amsterdã, trabalhando com clientes no mundo todo. Ajudamos times e organizações a desenharem sistemas, produtos e serviços melhores através de UX, service design e design systems. Depois de anos dentro de grandes corporações, vimos o que gera alinhamento e o que atrapalha. Nossa missão é levar essa clareza e estrutura para negócios em crescimento, ajudando-os a escalar com propósito, eficiência e foco. Do discovery à entrega, desenhamos sistemas e experiências que funcionam no mundo real.",
             location: "Base em Amsterdã, nômade de espírito, conectada ao mundo.",

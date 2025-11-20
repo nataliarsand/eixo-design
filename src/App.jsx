@@ -9,6 +9,7 @@ import Accordion from './components/Accordion';
 import FlipCard from './components/FlipCard';
 import OfferingCard from './components/OfferingCard';
 import StatusBadge from './components/StatusBadge';
+import Testimonials from './components/Testimonials';
 
 function App({ lang = 'en', setLang }) {
   const location = useLocation();
@@ -35,6 +36,7 @@ function App({ lang = 'en', setLang }) {
     about: useRef(null),
     methodology: useRef(null),
     offerings: useRef(null),
+    testimonials: useRef(null),
     contact: useRef(null)
   };
 
@@ -402,6 +404,13 @@ function App({ lang = 'en', setLang }) {
                 {t.cta}
               </Button>
             </div>
+          </div>
+        </section>
+
+        <section className="section section--left fade-up" id="testimonials" ref={sectionRefs.testimonials}>
+          <div className="section__inner">
+            <h3>{t.testimonialsTitle}</h3>
+            <Testimonials testimonials={t.testimonials} />
           </div>
         </section>
 
