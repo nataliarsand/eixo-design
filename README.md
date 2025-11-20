@@ -1,45 +1,31 @@
-# Eixo Design Website (pronounced A-shoo)
+# Eixo Design (pronounced A-shoo)
 
-This repository contains the marketing site for [eixo.design](https://eixo.design), a UX design studio that "brings clarity to complexity" and aligns systems, people, and purpose through intentional design.
+> **Important:** This repository is public for transparency and learning purposes. The code structure is available for reference. **DO NOT** use my portfolio content, case studies, or personal information.
 
-## Tech Stack
-- **React 19** and **ReactDOM 19** for UI components
-- **Vite** for development and build tooling
-- **CSS with custom fonts and variables** for styling
-- **GitHub Pages** deployment via the `gh-pages` package
+Eixo is a digital design studio that brings clarity to complex products and services. We align people, processes, and purpose through intentional design so teams can move with focus and confidence.
 
-## Project Structure
-- `src/` – React source files (`App.jsx` holds all bilingual content and interactive logic)
-- `public/` – static assets copied directly into the build
-- `docs/` – static copy used for GitHub Pages hosting
+## About the studio
+- Amsterdam-based, working worldwide across digital products, services, and design systems.
+- We design from the inside out, integrating service design, UX craft, and systems thinking.
+- The goal is functional, resilient experiences; aesthetics emerge from clarity, not trends.
+- Led by Natalia de Souza, a UX Design Lead with 15+ years across Dell, ThoughtWorks, startups, and Booking.com’s design systems.
 
-## Getting Started
+## What we do
+- **Consultancy:** Discovery and alignment workshops, systems and workflow mapping, service and experience strategy, decision frameworks, and organisational clarity.
+- **Delivery:** UX/UI for web and mobile, design systems setup and documentation, internal tools and workflow interfaces, automation support, and developer collaboration.
 
-### Prerequisites
-- [Node.js](https://nodejs.org/) and npm installed
+## How we work
+- Ask the hard questions early to surface risks while there’s time to act.
+- Frame problems carefully so we solve the real ones, not just the loud ones.
+- Design for continuity by connecting flows, people, and tools into resilient systems.
+- Collaborate over authority; progress comes from shared understanding, not titles.
 
-### Installation
-```bash
-npm install
-```
+## Studio details
+- Availability: Open for new projects; responses within 24 hours.
+- Languages: English and Portuguese.
+- Contact: hello@eixo.design
 
-### Run a Development Server
-```bash
-npm run dev
-```
-The site will be available at [http://localhost:5173](http://localhost:5173).
-
-### Build for Production
-```bash
-npm run build
-```
-Outputs files into the `dist/` directory.
-
-### Deploy to GitHub Pages
-```bash
-npm run deploy
-```
-Builds the site and publishes the `dist/` folder to the `gh-pages` branch.
-
-## Contact
-For questions or collaboration opportunities, reach the studio at **hello@eixo.design**.
+## Site & code
+- Built with React 19, Vite, and custom CSS; deployed via GitHub Pages.
+- Key folders: `src/` (content and UI), `public/` (static assets), `docs/` (GitHub Pages copy).
+- Run locally: `npm install`, then `npm run dev` (default at http://localhost:5173). Build with `npm run build`.
