@@ -29,10 +29,10 @@ const content = {
       bioText2: "My expertise spans strategic discovery, technical implementation, and alignment of cross-functional teams.",
       bioText3: "I bring in trusted collaborators as needed to form specialist teams tailored to each project context.",
       aboutPrinciplesTitle: 'How we work',
-      aboutPrinciplesIntro: 'Our process brings clarity to collaboration. Here’s how we work:', 
+      aboutPrinciplesIntro: "Our process brings structure to collaboration. Here's how we work:", 
       aboutPrinciples: [ {
         title: 'Ask the hard questions early',
-        description: 'We surface gaps, risks, and friction points while there’s still time to act. We ask the questions most avoid, the ones that sting a little, but save a lot later.'
+        description: "We surface gaps, risks, and friction points while there's still time to act. We ask the questions most avoid, the ones that sting a little, but save a lot later."
         },
         {
           title: 'Design for continuity',
@@ -40,19 +40,19 @@ const content = {
         },
         {
           title: 'Frame problems before solving them',
-          description: 'We shape problems with care so we can solve the real one, not the loudest. You might feel uncomfortable, and that’s where the real growth begins.'
+          description: "We shape problems with care so we can solve the real one, not the loudest. You might feel uncomfortable, and that's where the real growth begins."
         },
         {
-          title: 'Favour clarity over trend',
-          description: 'We don’t chase aesthetics for attention. We design for clear language, simple flows, decisions that make sense regardless of style. Trends fade; clarity endures.'
+          title: 'Favour simplicity over trend',
+          description: "We don't chase aesthetics for attention. We design for clear language, simple flows, decisions that make sense regardless of style. Trends fade; simplicity endures."
         },
         {
           title: 'Collaboration over authority',
-          description: 'We work with people, not around them. We bring them into the conversation, even when it gets messy. Great ideas come from shared understanding and listening to seek clarity, not from job titles.'
+          description: 'We work with people, not around them. We bring them into the conversation, even when it gets messy. Great ideas come from shared understanding, not from job titles.'
         },
       ],
       contactTitle: 'Get in touch',
-      contactText: 'Ready to bring clarity to your next challenge?',
+      contactText: 'Ready to get started?',
       socialProof: {
         testimonialPreview: "\"Natalia brings rare depth to UX strategy and systems thinking.\"",
         responseTime: "Response within 24h",
@@ -86,7 +86,7 @@ const content = {
         }
       ],
       footer: {
-        description: "Eixo.design is a digital design studio based in Amsterdam, working with clients worldwide. We help teams and organisations design better systems, products, and services through UX design, service design, and design systems. After years inside large corporations, we've seen what brings alignment and what gets in the way. Our mission is to bring that clarity and structure to growing businesses, helping them scale with purpose, efficiency, and focus. From discovery to delivery, we design systems and experiences that work in the real world.",
+        description: "Eixo.design is a digital design studio based in Amsterdam, working with clients worldwide. We help teams and organisations design better systems, products, and services through UX design, service design, and design systems. After years inside large corporations, we've seen what brings alignment and what gets in the way. Our mission is to bring that focus and structure to growing businesses, helping them scale with purpose, efficiency, and intention. From discovery to delivery, we design systems and experiences that work in the real world.",
         location: "Amsterdam-based, nomad at heart, connected worldwide.",
         availability: "Open to work",
         email: "hello@eixo.design"
@@ -122,7 +122,7 @@ const content = {
       bioText3: "Trago colaboradores de confiança sempre que necessário para formar times especializados sob medida para cada projeto.",
       
       aboutPrinciplesTitle: "Como trabalhamos",
-      aboutPrinciplesIntro: "Nosso processo traz clareza à colaboração. É assim que trabalhamos:",
+      aboutPrinciplesIntro: "Nosso processo traz estrutura à colaboração. É assim que trabalhamos:",
       
       aboutPrinciples: [
         {
@@ -138,8 +138,8 @@ const content = {
           description: "Tratamos o problema com cuidado para resolver o certo, não o mais barulhento. Pode ser desconfortável, e é aí que o verdadeiro crescimento acontece."
         },
         {
-          title: "Clareza acima de tendência",
-          description: "Não corremos atrás de estética por atenção. Projetamos com linguagem clara, fluxos simples e decisões que fazem sentido, independentemente do estilo. As tendências passam; a clareza permanece."
+          title: "Simplicidade acima de tendência",
+          description: "Não corremos atrás de estética por atenção. Projetamos com linguagem clara, fluxos simples e decisões que fazem sentido, independentemente do estilo. As tendências passam; a simplicidade permanece."
         },
         {
           title: "Colaboração acima da autoridade",
@@ -147,7 +147,7 @@ const content = {
         }
           ],
           contactTitle: 'Entre em contato',
-          contactText: 'Pronto para trazer clareza ao seu próximo desafio?',
+          contactText: 'Pronto para começar?',
           socialProof: {
             testimonialPreview: "\"Natalia traz profundidade rara em estratégia de UX e pensamento sistêmico.\"",
             responseTime: "Resposta em até 24h",
@@ -181,7 +181,7 @@ const content = {
             }
           ],
           footer: {
-            description: "Eixo.design é um estúdio de design digital baseado em Amsterdã, trabalhando com clientes no mundo todo. Ajudamos times e organizações a desenharem sistemas, produtos e serviços melhores através de UX, service design e design systems. Depois de anos dentro de grandes corporações, vimos o que gera alinhamento e o que atrapalha. Nossa missão é levar essa clareza e estrutura para negócios em crescimento, ajudando-os a escalar com propósito, eficiência e foco. Do discovery à entrega, desenhamos sistemas e experiências que funcionam no mundo real.",
+            description: "Eixo.design é um estúdio de design digital baseado em Amsterdã, trabalhando com clientes no mundo todo. Ajudamos times e organizações a desenharem sistemas, produtos e serviços melhores através de UX, service design e design systems. Depois de anos dentro de grandes corporações, vimos o que gera alinhamento e o que atrapalha. Nossa missão é levar esse foco e estrutura para negócios em crescimento, ajudando-os a escalar com propósito, eficiência e intenção. Do discovery à entrega, desenhamos sistemas e experiências que funcionam no mundo real.",
             location: "Base em Amsterdã, nômade de espírito, conectada ao mundo.",
             availability: "Aberta a novos projetos",
             email: "hello@eixo.design"
@@ -195,8 +195,8 @@ const content = {
   image: '/assets/images/consultancy-white.png',
   title: { en: 'Consultancy', pt: 'Consultoria' },
   subtitle: {
-    en: 'Strategic design for clarity, alignment, and focus.',
-    pt: 'Design estratégico para clareza, alinhamento e foco.'
+    en: 'Strategic design for alignment, direction, and focus.',
+    pt: 'Design estratégico para alinhamento, direção e foco.'
   },
   bullets: {
     en: [
@@ -204,14 +204,14 @@ const content = {
       'Systems and workflow mapping',
       'Experience and service design strategy',
       'Prioritisation and decision frameworks',
-      'Organisational clarity and ways of working'
+      'Organisational alignment and ways of working'
     ],
     pt: [
       'Workshops de descoberta e alinhamento',
       'Mapeamento de sistemas e fluxos de trabalho',
       'Estratégia de experiência e design de serviços',
       'Priorização e frameworks de decisão',
-      'Clareza organizacional e formas de trabalho'
+      'Alinhamento organizacional e formas de trabalho'
     ]
   }
 },
@@ -275,13 +275,13 @@ const content = {
         en: [
           '1:1 mentoring for designers, leaders, and creatives',
           'Career and purpose alignment during transitions',
-          'Expanding confidence, clarity, and decision-making skills',
+          'Expanding confidence and decision-making skills',
           'Long-term guidance to evolve practice and mindset'
         ],
         pt: [
           'Mentorias 1:1 para designers, líderes e criativos',
           'Alinhamento de carreira e propósito em transições',
-          'Expansão de confiança, clareza e tomada de decisão',
+          'Expansão de confiança e tomada de decisão',
           'Acompanhamento de longo prazo para evoluir prática e mentalidade'
         ]
       }
