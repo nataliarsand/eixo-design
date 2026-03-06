@@ -20,9 +20,12 @@
     <meta name="description" content="Amsterdam-based UX consultancy specializing in workshops, design systems, and strategic discovery. 15+ years helping teams align and build better products." />
     <meta name="keywords" content="UX design Amsterdam, design consultancy, UX workshops, design systems, strategic discovery, product design, service design, UX strategy, design thinking" />
     <meta name="author" content="Natalia Arsand, eixo.design" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <meta name="language" content="English" />
     <meta name="revisit-after" content="7 days" />
+    <meta name="geo.region" content="NL-NH" />
+    <meta name="geo.placename" content="Amsterdam" />
+    <meta name="rating" content="general" />
   
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/eixo-favicon.png" />
@@ -35,6 +38,9 @@
     <meta property="og:site_name" content="eixo.design" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:image" content="https://eixo.design/og-image.png" />
+    <meta property="og:image:alt" content="eixo.design — UX Design Consultancy Amsterdam" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -80,12 +86,15 @@
       "name": "eixo.design",
       "url": "https://eixo.design",
       "logo": "https://eixo.design/eixo-icon-white.png",
+      "image": "https://eixo.design/og-image.png",
       "description": "Amsterdam-based UX consultancy specializing in workshops, design systems, and strategic discovery. Helping teams align and build better products.",
       "priceRange": "$$",
       "founder": {
         "@type": "Person",
         "name": "Natalia Arsand",
         "jobTitle": "UX Design Lead & Founder",
+        "url": "https://eixo.design/#about",
+        "knowsAbout": ["UX Design", "Design Systems", "Service Design", "Design Thinking", "Workshop Facilitation"],
         "worksFor": {
           "@type": "Organization",
           "name": "eixo.design"
@@ -106,6 +115,7 @@
         "addressCountry": "NL"
       },
       "areaServed": "Worldwide",
+      "knowsLanguage": ["English", "Portuguese"],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "UX Design Services",
@@ -115,41 +125,255 @@
             "itemOffered": {
               "@type": "Service",
               "name": "UX Consultancy & Workshops",
-              "description": "Strategic workshops for discovery, alignment, and prioritization"
+              "description": "Strategic workshops for discovery, alignment, and prioritization. Including systems mapping, experience strategy, and organisational alignment."
             }
           },
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "Design Systems",
-              "description": "Setup, documentation, and implementation of scalable design systems"
+              "name": "Design Systems & Delivery",
+              "description": "UX/UI design for web and mobile, design system setup and documentation, internal tools, and developer collaboration."
             }
           },
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "UX/UI Design & Delivery",
-              "description": "Web and mobile design with developer collaboration"
+              "name": "UX Courses",
+              "description": "UX foundations, crash courses for PMs and leaders, problem-framing workshops, and design maturity training."
             }
           },
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "Courses & Mentoring",
-              "description": "UX education and 1:1 mentoring for designers and leaders"
+              "name": "Design Mentoring",
+              "description": "1:1 mentoring for designers, leaders, and creatives. Career alignment, confidence building, and long-term guidance."
             }
           }
         ]
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "reviewBody": "The workshop pushed us to think deeply about our business. The documentation that followed was clear and actionable.",
+          "author": { "@type": "Person", "name": "Leadership Team" },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
+        },
+        {
+          "@type": "Review",
+          "reviewBody": "Natalia brings strong facilitation and design skills. The workshop she ran for us was exceptionally well-structured.",
+          "author": { "@type": "Person", "name": "Accessibility & Inclusion Strategist" },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
+        }
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "reviewCount": "4",
+        "bestRating": "5"
       }
+    }
+    </script>
+
+    <!-- WebSite Schema for Sitelinks Search -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "eixo.design",
+      "url": "https://eixo.design",
+      "description": "Amsterdam-based UX design consultancy offering workshops, design systems, courses, and mentoring.",
+      "inLanguage": ["en", "pt"]
+    }
+    </script>
+
+    <!-- WebPage Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "eixo.design — UX Design Consultancy Amsterdam",
+      "description": "Amsterdam-based UX consultancy specializing in workshops, design systems, and strategic discovery. 15+ years helping teams align and build better products.",
+      "url": "https://eixo.design",
+      "isPartOf": { "@type": "WebSite", "name": "eixo.design", "url": "https://eixo.design" },
+      "about": {
+        "@type": "Thing",
+        "name": "UX Design Services",
+        "description": "Professional UX design consultancy, workshops, design systems, courses, and mentoring"
+      },
+      "mainEntity": {
+        "@type": "ProfessionalService",
+        "name": "eixo.design"
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["#hero h1", "#hero p", "#about p", "#offerings h3"]
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://eixo.design/" },
+          { "@type": "ListItem", "position": 2, "name": "About", "item": "https://eixo.design/#about" },
+          { "@type": "ListItem", "position": 3, "name": "Offerings", "item": "https://eixo.design/#offerings" },
+          { "@type": "ListItem", "position": 4, "name": "Contact", "item": "https://eixo.design/#contact" }
+        ]
+      }
+    }
+    </script>
+
+    <!-- FAQ Schema for common questions -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What UX design services does eixo.design offer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "eixo.design offers UX consultancy and workshops, design system setup and documentation, UX/UI design and delivery for web and mobile, UX courses for teams and leaders, and 1:1 design mentoring."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where is eixo.design located?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "eixo.design is based in Amsterdam, Netherlands, and works with clients worldwide."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who is behind eixo.design?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "eixo.design was founded by Natalia Arsand, a UX Design Lead with 15+ years of experience across Dell, ThoughtWorks, startups, and Booking.com, where she led design systems at scale."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I contact eixo.design?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can reach eixo.design by emailing hello@eixo.design. They typically respond within 24 hours and are currently available for new projects."
+          }
+        }
+      ]
     }
     </script>
   </head>
 
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Static HTML for SEO crawlers — replaced by React on hydration -->
+      <main>
+        <section id="hero">
+          <h1>Design from the core out.</h1>
+          <p>Aligning people, processes, and purpose through intentional design.</p>
+        </section>
+
+        <section id="about">
+          <h2>About us</h2>
+          <p>Eixo is a design studio built for complexity. We cut through noise to bring clarity to chaos.</p>
+          <p>We design from the inside out. Integrating design thinking, service design, and UX craft to help shape systems, businesses, and products that are meaningful, cohesive, and adaptable.</p>
+          <p>We are not here to decorate. We make things work, and beauty emerges naturally from it.</p>
+          <h3>About Natalia</h3>
+          <p>UX Design Lead with 15+ years across Dell, ThoughtWorks, startups, and most recently Booking.com, where I led design systems at scale.</p>
+          <p>My expertise spans strategic discovery, technical implementation, and alignment of cross-functional teams.</p>
+        </section>
+
+        <section id="methodology">
+          <h2>How we work</h2>
+          <ul>
+            <li><strong>Ask the hard questions early</strong> — We surface gaps, risks, and friction points while there's still time to act.</li>
+            <li><strong>Design for continuity</strong> — Our work connects flows, people, and tools to build resilient systems that keep working as things change.</li>
+            <li><strong>Frame problems before solving them</strong> — We shape problems with care so we can solve the real one, not the loudest.</li>
+            <li><strong>Favour simplicity over trend</strong> — We design for clear language, simple flows, decisions that make sense regardless of style.</li>
+            <li><strong>Collaboration over authority</strong> — We work with people, not around them. Great ideas come from shared understanding, not from job titles.</li>
+          </ul>
+        </section>
+
+        <section id="offerings">
+          <h2>Offerings</h2>
+          <article>
+            <h3>Consultancy</h3>
+            <p>Strategic design for alignment, direction, and focus.</p>
+            <ul>
+              <li>Discovery and alignment workshops</li>
+              <li>Systems and workflow mapping</li>
+              <li>Experience and service design strategy</li>
+              <li>Prioritisation and decision frameworks</li>
+              <li>Organisational alignment and ways of working</li>
+            </ul>
+          </article>
+          <article>
+            <h3>Delivery</h3>
+            <p>Design that scales with your system.</p>
+            <ul>
+              <li>UX/UI design for web and mobile</li>
+              <li>Design system setup and documentation</li>
+              <li>Internal tools and workflow interfaces</li>
+              <li>Process automation and implementation support</li>
+              <li>Developer collaboration and knowledge transfer</li>
+            </ul>
+          </article>
+          <article>
+            <h3>Courses</h3>
+            <p>Design education with structure and soul.</p>
+            <ul>
+              <li>UX foundations for practical, purpose-driven design</li>
+              <li>Crash courses for PMs, leaders and decision-makers</li>
+              <li>Problem-framing before solution-building</li>
+              <li>Design maturity, leadership, and tool fluency</li>
+            </ul>
+          </article>
+          <article>
+            <h3>Mentoring</h3>
+            <p>Guidance for personal and professional growth.</p>
+            <ul>
+              <li>1:1 mentoring for designers, leaders, and creatives</li>
+              <li>Career and purpose alignment during transitions</li>
+              <li>Expanding confidence and decision-making skills</li>
+              <li>Long-term guidance to evolve practice and mindset</li>
+            </ul>
+          </article>
+        </section>
+
+        <section id="testimonials">
+          <h2>What clients say</h2>
+          <blockquote>
+            <p>The workshop pushed us to think deeply about our business. The documentation that followed was clear and actionable and has already guided us on taking several decisions and follow-up on next steps.</p>
+            <footer>— Two-person Leadership Team, Small Business</footer>
+          </blockquote>
+          <blockquote>
+            <p>Natalia brings strong facilitation and design skills. The workshop she ran for us was exceptionally well-structured and helped us generate and prioritise ideas for our next planning cycle.</p>
+            <footer>— Accessibility &amp; Inclusion Strategist, Global Platform</footer>
+          </blockquote>
+          <blockquote>
+            <p>Natalia led a full research initiative to evaluate the impact of our design tooling. She drove interviews, kept the team aligned, and delivered insights that were both rich and measurable.</p>
+            <footer>— Design Lead, Internal Tools Team</footer>
+          </blockquote>
+          <blockquote>
+            <p>Natalia onboards quickly and makes meaningful contributions from day one. Her attention to detail, strong communication, and ability to work independently make her a reliable partner for high-impact projects.</p>
+            <footer>— Engineering Manager, Product Development</footer>
+          </blockquote>
+        </section>
+
+        <section id="contact">
+          <h2>Get in touch</h2>
+          <p>Ready to get started?</p>
+          <p><a href="mailto:hello@eixo.design">hello@eixo.design</a></p>
+          <p>Amsterdam-based, nomad at heart, connected worldwide.</p>
+        </section>
+
+        <footer>
+          <p>Eixo.design is a digital design studio based in Amsterdam, working with clients worldwide. We help teams and organisations design better systems, products, and services through UX design, service design, and design systems. After years inside large corporations, we've seen what brings alignment and what gets in the way. Our mission is to bring that focus and structure to growing businesses, helping them scale with purpose, efficiency, and intention. From discovery to delivery, we design systems and experiences that work in the real world.</p>
+        </footer>
+      </main>
+    </div>
 
     <!-- Mobile-optimized loading -->
     <script>
