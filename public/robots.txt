@@ -8,4 +8,4 @@ Allow: /
 User-agent: Bingbot
 Allow: /
 
-Sitemap: https://eixo.design/sitemap.xml
+Sitemap: https://eixo.design/sitemap-index.xml

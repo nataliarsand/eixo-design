@@ -1,0 +1,180 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { content, offerings } from '../content';
+import AboutFlipCard from '../components/AboutFlipCard.jsx';
+import Accordion from '../components/Accordion.jsx';
+import Testimonials from '../components/Testimonials.jsx';
+
+const lang = 'en';
+const t = content[lang];
+const navItems = t.navItems || [];
+---
+
+<Layout
+  lang="en"
+  title="eixo.design | UX Design Consultancy Amsterdam | Workshops & Strategy"
+  description="Amsterdam-based UX consultancy specializing in workshops, design systems, and strategic discovery. 15+ years helping teams align and build better products."
+>
+  <div class="app">
+    <div class="bg-noise"></div>
+
+    <header>
+      <a href="#hero">
+        <img src="/assets/images/eixo-logo-white.png" alt="Eixo Logo" class="logo" />
+      </a>
+      <button
+        class="menu-toggle"
+        aria-label={t.navigation.openMenu}
+        aria-expanded="false"
+      >
+        <span class="hamburger-line" aria-hidden="true"></span>
+        <span class="hamburger-line" aria-hidden="true"></span>
+        <span class="hamburger-line" aria-hidden="true"></span>
+      </button>
+      <div class="nav-backdrop" aria-hidden="true"></div>
+      <nav class="nav-menu" aria-label={t.navigation.menuLabel}>
+        <div class="nav-menu-content">
+          <ul>
+            {navItems.map(item => (
+              <li><a href={`#${item.id}`}>{item.label}</a></li>
+            ))}
+          </ul>
+          <div class="mobile-lang-switcher">
+            <span class="lang-label">{t.navigation.languageLabel}</span>
+            <div class="lang-buttons">
+              <a href="/" class="btn btn--ghost btn--sm active" aria-label="Switch to English">EN</a>
+              <a href="/pt/" class="btn btn--ghost btn--sm" aria-label="Mudar para Português">PT</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div class="desktop-lang-switcher">
+        <a href="/" class="btn btn--ghost btn--sm active">EN</a>
+        <a href="/pt/" class="btn btn--ghost btn--sm">PT</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="section section--left fade-up" id="hero">
+        <div class="section__inner">
+          <div class="hero-brand">
+            <img src="/assets/images/eixo-icon-white.png" alt="Eixo Icon" class="hero-x" />
+            <h1>
+              <span class="line1">{t.subtitle1}</span>
+              <span class="line2">{t.subtitle2}</span>
+            </h1>
+            <p>{t.description}</p>
+            {t.pronunciation && <p class="pronunciation">{t.pronunciation}</p>}
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--left fade-up" id="about">
+        <div class="section__inner">
+          <AboutFlipCard lang={lang} client:visible />
+          <div class="cta-container">
+            <a href="mailto:hello@eixo.design" class="btn btn--secondary btn--md">
+              Work with us
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--left fade-up" id="methodology">
+        <div class="section__inner">
+          <h3>{t.aboutPrinciplesTitle}</h3>
+          <div class="section__split">
+            <Accordion items={t.aboutPrinciples} client:visible />
+            <div class="accordion-image">
+              <img src="/assets/images/work2.png" alt="Design wall" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--left fade-up" id="offerings">
+        <div class="section__inner">
+          <h3>{t.offeringsLabel}</h3>
+          <div class="cards-grid">
+            {offerings.map(offering => (
+              <div class="offering-card offering-card--disabled">
+                <img src={offering.image} alt={`${offering.title[lang]} icon`} class="offering-icon" />
+                <h4>{offering.title[lang]}</h4>
+                <p class="offering-sub">{offering.subtitle[lang]}</p>
+                <ul>
+                  {offering.bullets[lang].map(bullet => (
+                    <li>{bullet}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+          <div class="cta-container">
+            <a href="mailto:hello@eixo.design" class="btn btn--primary btn--md">
+              {t.cta}
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--left fade-up" id="testimonials">
+        <div class="section__inner">
+          <h3>{t.testimonialsTitle}</h3>
+          <Testimonials testimonials={t.testimonials} client:visible />
+        </div>
+      </section>
+
+      <section class="section section--left fade-up" id="contact">
+        <div class="section__inner">
+          <h3>{t.contactTitle}</h3>
+          <div class="contact-content">
+            <div class="contact-text">
+              <p class="contact-intro">{t.contactText}</p>
+              {t.socialProof && (
+                <div class="social-proof">
+                  <p class="testimonial-preview">{t.socialProof.testimonialPreview}</p>
+                  <div class="trust-signals">
+                    <span class="response-time">{t.socialProof.responseTime}</span>
+                    <span class="status-badge status-badge--online">
+                      <span class="status-badge__dot"></span>
+                      <span class="status-badge__text">{t.socialProof.availability}</span>
+                    </span>
+                  </div>
+                </div>
+              )}
+              <div class="contact-details">
+                <a href="mailto:hello@eixo.design" class="contact-email">hello@eixo.design</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="footer-content">
+          <div class="footer-main">
+            <div class="footer-info">
+              <div class="footer-branding">
+                <img class="footer-logo" src="/assets/images/eixo-logo-white.png" alt="Eixo.design logo" />
+                {t.footer.availability && (
+                  <span class="status-badge status-badge--online">
+                    <span class="status-badge__dot"></span>
+                    <span class="status-badge__text">{t.footer.availability}</span>
+                  </span>
+                )}
+              </div>
+              {t.footer.location && <span class="footer-location">{t.footer.location}</span>}
+              <a href={`mailto:${t.footer.email}`} class="footer-contact">{t.footer.email}</a>
+            </div>
+            <div class="footer-brand">
+              <span class="footer-name">&copy; {new Date().getFullYear()} eixo.design</span>
+              {t.footer.description && <p class="footer-description">{t.footer.description}</p>}
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <button class="scroll-top" aria-label={t.navigation.backToTop} type="button">↑</button>
+  </div>
+</Layout>
