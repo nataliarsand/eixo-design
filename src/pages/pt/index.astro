@@ -56,15 +56,34 @@ const navItems = t.navItems || [];
     <main>
       <section class="section section--left fade-up" id="hero">
         <div class="section__inner">
-          <div class="hero-brand">
-            <img src="/assets/images/eixo-icon-white.png" alt="Eixo Icon" class="hero-x" />
-            <h1>
-              <span class="line1">{t.subtitle1}</span>
-              <span class="line2">{t.subtitle2}</span>
-            </h1>
-            <p>{t.description}</p>
-            {t.pronunciation && <p class="pronunciation">{t.pronunciation}</p>}
+          <div class="hero-layout">
+            <div class="hero-statement">
+              <img src="/assets/images/eixo-icon-white.png" alt="Eixo Icon" class="hero-x" />
+              <h1>
+                <span class="line1">{t.subtitle1}</span>
+                <span class="line2">{t.subtitle2}</span>
+              </h1>
+              {t.pronunciation && <p class="pronunciation">{t.pronunciation}</p>}
+            </div>
+            <div class="hero-context">
+              <p class="hero-lead">{t.heroLead}</p>
+              <p class="hero-credibility">{t.heroCredibility}</p>
+              {t.heroQuote && (
+                <blockquote class="hero-quote">
+                  <p>{t.heroQuote}</p>
+                  <cite>{t.heroQuoteAuthor}</cite>
+                </blockquote>
+              )}
+            </div>
           </div>
+          <div class="cta-container">
+            <a href="mailto:hello@eixo.design" class="btn btn--primary btn--md">
+              {t.heroCta}
+            </a>
+          </div>
+          <a href="#about" class="scroll-hint" aria-label="Rolar para baixo">
+            <span class="scroll-hint__arrow">↓</span>
+          </a>
         </div>
       </section>
 
@@ -104,9 +123,9 @@ const navItems = t.navItems || [];
 
       <section class="section section--left fade-up" id="offerings">
         <div class="section__inner">
-          <h3>{t.offeringsLabel || 'O que oferecemos'}</h3>
+          <h3>{t.offeringsLabel}</h3>
           <div class="cards-grid">
-            {offerings.map(offering => (
+            {offerings.slice(0, 2).map(offering => (
               <div class="offering-card offering-card--disabled">
                 <img src={offering.image} alt={`${offering.title[lang]} ícone`} class="offering-icon" />
                 <h4>{offering.title[lang]}</h4>
@@ -119,9 +138,19 @@ const navItems = t.navItems || [];
               </div>
             ))}
           </div>
+          <h3 class="offerings-also">{t.offeringsAlsoLabel}</h3>
+          <div class="cards-grid cards-grid--compact">
+            {offerings.slice(2).map(offering => (
+              <div class="offering-card offering-card--secondary offering-card--disabled">
+                <img src={offering.image} alt={`${offering.title[lang]} ícone`} class="offering-icon" />
+                <h4>{offering.title[lang]}</h4>
+                <p class="offering-sub">{offering.subtitle[lang]}</p>
+              </div>
+            ))}
+          </div>
           <div class="cta-container">
             <a href="mailto:hello@eixo.design" class="btn btn--primary btn--md">
-              {t.cta || 'Vamos conversar'}
+              {t.cta}
             </a>
           </div>
         </div>

@@ -3,9 +3,13 @@ const content = {
       title: 'eixo.design',
       subtitle1: 'Design from',
       subtitle2: ' the core out.',
-      description: 'Aligning people, processes, and purpose through intentional design.', 
-      aboutTitle: "About us",
+      heroLead: 'UX consultancy based in Amsterdam, helping growing teams align strategy, systems, and people through intentional design.',
+      heroCredibility: '15+ years across Dell, ThoughtWorks, Booking.com, and startups. From discovery workshops to design systems at scale.',
+      heroQuote: '"The workshop she ran was exceptionally well-structured and helped us generate and prioritise ideas for our next planning cycle."',
+      heroQuoteAuthor: 'Accessibility & Inclusion Strategist, Global Platform',
+      heroCta: 'Start a conversation',
       pronunciation: '–pronounced A-shoo',
+      aboutTitle: "About us",
     navigation: {
       languageLabel: 'Language',
       openMenu: 'Open navigation',
@@ -19,8 +23,9 @@ const content = {
       { id: 'offerings', label: 'Offerings' },
       { id: 'contact', label: 'Contact' }
     ],
-    offeringsLabel: 'Offerings',
-    cta: 'Let us talk',
+    offeringsLabel: 'What we do',
+    offeringsAlsoLabel: 'We also offer',
+    cta: 'Let\u2019s talk',
       aboutText1: "Eixo is a design studio built for complexity. We cut through noise to bring clarity to chaos.", 
       aboutText2: "We design from the inside out. Integrating design thinking, service design, and UX craft to help shape systems, businesses, and products that are meaninful, cohesive, and adaptable.",
       aboutText3: "We are not here to decorate. We make things work, and beauty emerges naturally from it.",
@@ -52,7 +57,7 @@ const content = {
         },
       ],
       contactTitle: 'Get in touch',
-      contactText: 'Ready to get started?',
+      contactText: 'Tell us what\u2019s on your mind. We usually start with a conversation.',
       socialProof: {
         testimonialPreview: "\"Natalia brings rare depth to UX strategy and systems thinking.\"",
         responseTime: "Response within 24h",
@@ -86,7 +91,7 @@ const content = {
         }
       ],
       footer: {
-        description: "Eixo.design is a digital design studio based in Amsterdam, working with clients worldwide. We help teams and organisations design better systems, products, and services through UX design, service design, and design systems. After years inside large corporations, we've seen what brings alignment and what gets in the way. Our mission is to bring that focus and structure to growing businesses, helping them scale with purpose, efficiency, and intention. From discovery to delivery, we design systems and experiences that work in the real world.",
+        description: "Design studio based in Amsterdam. UX strategy, workshops, and systems for growing teams.",
         location: "Amsterdam-based, nomad at heart, connected worldwide.",
         availability: "Open to work",
         email: "hello@eixo.design"
@@ -96,7 +101,11 @@ const content = {
       title: 'eixo.design',
       subtitle1: 'Design do',
       subtitle2: ' eixo pra fora.',
-      description: 'Alinhando pessoas, processos e propósito através de design intencional.',
+      heroLead: 'Consultoria de UX baseada em Amsterdã, ajudando times em crescimento a alinhar estratégia, sistemas e pessoas através de design intencional.',
+      heroCredibility: '15+ anos na Dell, ThoughtWorks, Booking.com e startups. De workshops de descoberta a design systems em escala.',
+      heroQuote: '"O workshop nos levou a pensar profundamente sobre nosso negócio. A documentação foi clara e acionável."',
+      heroQuoteAuthor: 'Dupla de Liderança, Pequeno Negócio',
+      heroCta: 'Iniciar uma conversa',
       pronunciation: '',
       navigation: {
         languageLabel: 'Idioma',
@@ -121,6 +130,10 @@ const content = {
       bioText2: "Minha experiência abrange descoberta estratégica, implementação técnica e alinhamento de times multidisciplinares.",
       bioText3: "Trago colaboradores de confiança sempre que necessário para formar times especializados sob medida para cada projeto.",
       
+      offeringsLabel: 'O que fazemos',
+      offeringsAlsoLabel: 'Também oferecemos',
+      cta: 'Vamos conversar',
+      aboutCtaLabel: 'Trabalhe conosco',
       aboutPrinciplesTitle: "Como trabalhamos",
       aboutPrinciplesIntro: "Nosso processo traz estrutura à colaboração. É assim que trabalhamos:",
       
@@ -147,7 +160,7 @@ const content = {
         }
           ],
           contactTitle: 'Entre em contato',
-          contactText: 'Pronto para começar?',
+          contactText: 'Conta pra gente o que está na sua cabeça. A gente sempre começa com uma conversa.',
           socialProof: {
             testimonialPreview: "\"Natalia traz profundidade rara em estratégia de UX e pensamento sistêmico.\"",
             responseTime: "Resposta em até 24h",
@@ -181,7 +194,7 @@ const content = {
             }
           ],
           footer: {
-            description: "Eixo.design é um estúdio de design digital baseado em Amsterdã, trabalhando com clientes no mundo todo. Ajudamos times e organizações a desenharem sistemas, produtos e serviços melhores através de UX, service design e design systems. Depois de anos dentro de grandes corporações, vimos o que gera alinhamento e o que atrapalha. Nossa missão é levar esse foco e estrutura para negócios em crescimento, ajudando-os a escalar com propósito, eficiência e intenção. Do discovery à entrega, desenhamos sistemas e experiências que funcionam no mundo real.",
+            description: "Estúdio de design baseado em Amsterdã. Estratégia de UX, workshops e sistemas para times em crescimento.",
             location: "Base em Amsterdã, nômade de espírito, conectada ao mundo.",
             availability: "Aberta a novos projetos",
             email: "hello@eixo.design"
