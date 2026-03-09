@@ -10,35 +10,14 @@
   transition: all var(--transition-base);
   text-decoration: none;
   color: inherit;
-  cursor: pointer;
+  cursor: default;
   position: relative;
   will-change: transform;
   transform: translateZ(0);
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.15);
 }
 
-.offering-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-  border-color: rgba(255, 255, 255, 0.15);
-  background: rgba(255, 255, 255, 0.04);
-}
 
-/* Disabled state - temporarily hidden offering detail pages */
-.offering-card--disabled {
-  cursor: default;
-}
-
-.offering-card--disabled:hover {
-  transform: none;
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.15);
-  border-color: var(--color-border);
-  background: var(--color-card);
-}
-
-.offering-card--disabled:hover .offering-icon {
-  transform: rotate(-90deg);
-}
 
 .offering-icon {
   width: 42px;
@@ -49,9 +28,6 @@
   transition: transform var(--transition-base);
 }
 
-.offering-card:hover .offering-icon {
-  transform: rotate(-90deg) scale(1.05);
-}
 
 .offering-card h4 {
   font-size: var(--text-2xl);
@@ -78,7 +54,7 @@
 
 .offering-card li {
   font-size: var(--size-body);
-  color: #aaa;
+  color: var(--color-subtle);
   margin-bottom: var(--space-1);
   padding-left: var(--space-3);
   text-align: left;
@@ -101,25 +77,14 @@
   transition: opacity var(--transition-base), transform var(--transition-base);
 }
 
-.offering-card:hover .offering-link-arrow {
-  opacity: 1;
-  transform: translateX(5px);
-}
-
 /* Secondary offerings — lighter, no bullet lists */
 .offering-card--secondary {
   background: transparent;
-  border-color: rgba(255, 255, 255, 0.06);
+  border-color: var(--white-a8);
   box-shadow: none;
   padding: var(--space-3);
 }
 
-.offering-card--secondary:hover {
-  transform: none;
-  box-shadow: none;
-  border-color: rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.02);
-}
 
 .offering-card--secondary h4 {
   font-size: var(--text-xl);
@@ -159,8 +124,8 @@
   .offering-card {
     padding: var(--space-4) var(--space-3);
     border-radius: var(--radius-lg);
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--white-a4);
+    border: 1px solid var(--white-a8);
   }
 
   .offering-icon {

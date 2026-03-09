@@ -1,7 +1,7 @@
 .testimonials-carousel {
   position: relative;
   width: 100%;
-  max-width: 800px;
+  max-width: var(--content-narrow);
   margin: var(--space-3) auto 0;
   padding: 0 var(--space-8);
 }
@@ -42,7 +42,7 @@
 }
 
 .carousel-button {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--white-a4);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-full);
   width: 44px;
@@ -51,14 +51,14 @@
   align-items: center;
   justify-content: center;
   color: var(--color-text);
-  font-size: var(--text-lg);
   cursor: pointer;
+  line-height: 0;
   transition: all var(--transition-base);
   user-select: none;
 }
 
 .carousel-button:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--white-a10);
   border-color: var(--color-accent);
   transform: scale(1.05);
 }
@@ -76,7 +76,7 @@
   width: 8px;
   height: 8px;
   border-radius: var(--radius-full);
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--white-a20);
   border: none;
   cursor: pointer;
   transition: all var(--transition-base);
@@ -84,7 +84,7 @@
 }
 
 .carousel-dot:hover {
-  background: rgba(255, 255, 255, 0.4);
+  background: var(--white-a40);
   transform: scale(1.2);
 }
 

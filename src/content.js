@@ -21,14 +21,14 @@ const content = {
       { id: 'about', label: 'About' },
       { id: 'methodology', label: 'How we work' },
       { id: 'offerings', label: 'Offerings' },
-      { id: 'contact', label: 'Contact' }
+      { id: 'testimonials', label: 'Testimonials' }
     ],
     offeringsLabel: 'What we do',
     offeringsAlsoLabel: 'We also offer',
     cta: 'Let\u2019s talk',
       aboutText1: "Eixo is a design studio built for complexity. We cut through noise to bring clarity to chaos.", 
-      aboutText2: "We design from the inside out. Integrating design thinking, service design, and UX craft to help shape systems, businesses, and products that are meaninful, cohesive, and adaptable.",
-      aboutText3: "We are not here to decorate. We make things work, and beauty emerges naturally from it.",
+      aboutText2: "We design from the inside out. Integrating design thinking, service design, and UX craft to help shape systems, businesses, and products that are meaningful, cohesive, and adaptable.",
+      aboutText3: "We are here to make things work and free your time to focus on what matters.",
       bioTitle: "About Natalia",
       bioText1: "UX Design Lead with 15+ years across Dell, ThoughtWorks, startups, and most recently Booking.com, where I led design systems at scale.",
       bioText2: "My expertise spans strategic discovery, technical implementation, and alignment of cross-functional teams.",
@@ -57,7 +57,7 @@ const content = {
         },
       ],
       contactTitle: 'Get in touch',
-      contactText: 'If you\u2019d rather chat than scroll, we\u2019d love to hear from you.',
+      contactText: 'Have a project in mind? We\u2019d love to hear about it.',
       contactSubtext: 'Tell us a bit about what brought you here. It helps us get back to you with the right conversation.',
       contactForm: {
         reason: 'Reason for reaching out',
@@ -67,6 +67,7 @@ const content = {
           'Courses & Training',
           'Mentoring',
           'Partnerships',
+          'Careers',
           'General inquiry',
           'Other'
         ],
@@ -139,12 +140,12 @@ const content = {
         { id: 'about', label: 'Sobre' },
         { id: 'methodology', label: 'Como trabalhamos' },
         { id: 'offerings', label: 'O que oferecemos' },
-        { id: 'contact', label: 'Contato' }
+        { id: 'testimonials', label: 'Depoimentos' }
       ],
       aboutTitle: "Sobre a Eixo",
       aboutText1: "A Eixo é um estúdio de design feito para a complexidade. Cortamos o ruído para trazer clareza ao caos.",
       aboutText2: "Projetamos de dentro pra fora. Integramos design thinking, design de serviços e prática de UX para moldar sistemas, negócios e produtos significativos, coesos e adaptáveis.",
-      aboutText3: "Não estamos aqui pra enfeitar. Fazemos as coisas funcionarem, e a beleza surge naturalmente disso.",
+      aboutText3: "Estamos aqui pra fazer as coisas funcionarem e liberar seu tempo pra focar no que importa.",
       
       bioTitle: "Sobre a Natalia",
       bioText1: "UX Design Lead com mais de 15 anos de experiência na Dell, ThoughtWorks, startups e, mais recentemente, na Booking.com, onde liderei design systems em escala.",
@@ -181,7 +182,7 @@ const content = {
         }
           ],
           contactTitle: 'Entre em contato',
-          contactText: 'Se prefere conversar a continuar scrollando, adoramos ouvir de você.',
+          contactText: 'Tem um projeto em mente? Adoraríamos ouvir sobre.',
           contactSubtext: 'Conte um pouco sobre o que te trouxe aqui. Assim conseguimos voltar com a conversa certa.',
           contactForm: {
             reason: 'Motivo do contato',
@@ -191,6 +192,7 @@ const content = {
               'Cursos & Treinamento',
               'Mentoria',
               'Parcerias',
+              'Carreiras',
               'Pergunta geral',
               'Outro'
             ],

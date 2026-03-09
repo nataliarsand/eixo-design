@@ -1,0 +1,71 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  lang="en"
+  title="Page not found | eixo.design"
+  description="The page you're looking for doesn't exist."
+>
+  <div class="app">
+    <div class="bg-noise"></div>
+
+    <main class="not-found">
+      <div class="not-found__inner">
+        <img src="/assets/images/eixo-icon-white.png" alt="" class="not-found__icon" aria-hidden="true" />
+        <h1>Page not found</h1>
+        <p>The page you're looking for doesn't exist or has been moved.</p>
+        <div class="not-found__actions">
+          <a href="/" class="btn btn--primary btn--md">Go to homepage</a>
+          <a href="/#contact" class="btn btn--secondary btn--md">Get in touch</a>
+        </div>
+      </div>
+    </main>
+  </div>
+</Layout>
+
+<style>
+  .not-found {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: var(--section-padding-x);
+    text-align: center;
+  }
+
+  .not-found__inner {
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .not-found__icon {
+    width: 48px;
+    height: auto;
+    opacity: 0.4;
+    margin-bottom: var(--space-2);
+  }
+
+  h1 {
+    font-size: var(--size-h2);
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  p {
+    font-size: var(--size-body-lg);
+    color: var(--color-subtle);
+    line-height: 1.6;
+  }
+
+  .not-found__actions {
+    display: flex;
+    gap: var(--space-2);
+    margin-top: var(--space-3);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+</style>

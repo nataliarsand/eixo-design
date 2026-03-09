@@ -4,15 +4,13 @@
 //   cd worker
 //   npx wrangler deploy
 //
-// Setup: Add a DNS TXT record for MailChannels authorization:
-//   Name: _mailchannels
-//   Value: v=mc1 cfid=eixo-contact.nataliarsand.workers.dev
+// Setup: Add your Brevo API key as a secret:
+//   npx wrangler secret put BREVO_API_KEY
 //
-// This uses MailChannels API which is free for Cloudflare Workers.
-// No API keys or secrets needed.
+// Get your free Brevo API key at: https://app.brevo.com/settings/keys/api
 
 export default {
-  async fetch(request) {
+  async fetch(request, env) {
     if (request.method === 'OPTIONS') {
       return new Response(null, { headers: corsHeaders(request) });
     }
@@ -34,7 +32,6 @@ export default {
         return json({ error: 'Invalid email' }, 400, request);
       }
 
-      // Send via MailChannels (free for Cloudflare Workers)
       const emailBody = [
         `Reason: ${reason}`,
         `Name: ${name}`,
@@ -44,41 +41,39 @@ export default {
         message ? `Message:\n${message}` : null,
       ].filter(Boolean).join('\n');
 
-      const mailResponse = await fetch('https://api.mailchannels.net/tx/v1/send', {
+      // Send via Brevo (formerly Sendinblue) Transactional Email API
+      const brevoResponse = await fetch('https://api.brevo.com/v3/smtp/email', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'api-key': env.BREVO_API_KEY,
+        },
         body: JSON.stringify({
-          personalizations: [{
-            to: [{ email: 'nataliarsand@gmail.com', name: 'Natalia Arsand' }],
-          }],
-          from: {
-            email: 'hello@eixo.design',
+          sender: {
             name: 'eixo.design',
+            email: 'hello@eixo.design',
           },
-          reply_to: {
+          to: [{
+            email: 'nataliarsand@gmail.com',
+            name: 'Natalia Arsand',
+          }],
+          replyTo: {
             email: email,
             name: name,
           },
           subject: `[eixo.design] ${reason} — ${name}`,
-          content: [
-            {
-              type: 'text/plain',
-              value: emailBody,
-            },
-            {
-              type: 'text/html',
-              value: formatHtml({ reason, name, email, company, message }),
-            },
-          ],
+          textContent: emailBody,
+          htmlContent: formatHtml({ reason, name, email, company, message }),
         }),
       });
 
-      if (mailResponse.status === 202 || mailResponse.ok) {
+      if (brevoResponse.ok) {
         return json({ ok: true }, 200, request);
       }
 
-      const err = await mailResponse.text();
-      console.error('MailChannels error:', mailResponse.status, err);
+      const err = await brevoResponse.text();
+      console.error('Brevo error:', brevoResponse.status, err);
       return json({ error: 'Email delivery failed' }, 500, request);
     } catch (err) {
       console.error('Worker error:', err);

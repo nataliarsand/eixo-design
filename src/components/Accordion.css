@@ -13,7 +13,7 @@
 }
 
 .accordion-item {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--white-a4);
   padding: 0;
   margin: 0;
   will-change: transform;
@@ -45,7 +45,7 @@
 }
 
 .accordion-title:hover {
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--white-a4);
   color: var(--color-accent);
 }
 

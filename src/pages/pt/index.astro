@@ -38,6 +38,10 @@ const navItems = t.navItems || [];
               <li><a href={`#${item.id}`}>{item.label}</a></li>
             ))}
           </ul>
+          <div class="mobile-nav-ctas">
+            <a href="#contact" class="btn btn--primary btn--sm">Contato</a>
+            <a href="https://calendar.app.google/bzxUPATwJy5Wkuhd6" target="_blank" rel="noopener noreferrer" class="btn btn--secondary btn--sm">Agendar call</a>
+          </div>
           <div class="mobile-lang-switcher">
             <span class="lang-label">{t.navigation.languageLabel}</span>
             <div class="lang-buttons">
@@ -47,9 +51,20 @@ const navItems = t.navItems || [];
           </div>
         </div>
       </nav>
-      <div class="desktop-lang-switcher">
-        <a href="/" class="btn btn--ghost btn--sm">EN</a>
-        <a href="/pt/" class="btn btn--ghost btn--sm active">PT</a>
+      <div class="header-right">
+        <span class="status-badge status-badge--online header-status">
+          <span class="status-badge__dot"></span>
+          <span class="status-badge__text">{t.socialProof.availability}</span>
+        </span>
+        <div class="header-ctas">
+          <a href="#contact" class="btn btn--primary btn--sm">Contato</a>
+          <a href="https://calendar.app.google/bzxUPATwJy5Wkuhd6" target="_blank" rel="noopener noreferrer" class="btn btn--secondary btn--sm">Agendar call</a>
+        </div>
+        <div class="desktop-lang-switcher">
+          <a href="/" class="lang-link">EN</a>
+          <span class="lang-sep">/</span>
+          <a href="/pt/" class="lang-link active">PT</a>
+        </div>
       </div>
     </header>
 
@@ -60,32 +75,21 @@ const navItems = t.navItems || [];
         </div>
         <div class="section__inner">
           <div class="hero-layout">
-            <div class="hero-statement">
-              <img src="/assets/images/eixo-icon-white.png" alt="Eixo Icon" class="hero-x" />
-              <h1>
-                <span class="line1">{t.subtitle1}</span>
-                <span class="line2">{t.subtitle2}</span>
-              </h1>
-              {t.pronunciation && <p class="pronunciation">{t.pronunciation}</p>}
+            <img src="/assets/images/eixo-icon-white.png" alt="Eixo Icon" class="hero-x" />
+            <h1>
+              <span class="line1">{t.subtitle1}</span>
+              <span class="line2">{t.subtitle2}</span>
+            </h1>
+            {t.pronunciation && <p class="pronunciation">{t.pronunciation}</p>}
+            <p class="hero-lead">{t.heroLead}</p>
+            <div class="cta-container">
+              <a href="#contact" class="btn btn--primary btn--md">
+                {t.heroCta}
+              </a>
             </div>
-            <div class="hero-context">
-              <p class="hero-lead">{t.heroLead}</p>
-              <p class="hero-credibility">{t.heroCredibility}</p>
-              {t.heroQuote && (
-                <blockquote class="hero-quote">
-                  <p>{t.heroQuote}</p>
-                  <cite>{t.heroQuoteAuthor}</cite>
-                </blockquote>
-              )}
-            </div>
-          </div>
-          <div class="cta-container">
-            <a href="mailto:hello@eixo.design" class="btn btn--primary btn--md">
-              {t.heroCta}
-            </a>
           </div>
           <a href="#about" class="scroll-hint" aria-label="Rolar para baixo">
-            <span class="scroll-hint__arrow">↓</span>
+            <span class="scroll-hint__arrow"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></span>
           </a>
         </div>
       </section>
@@ -111,18 +115,24 @@ const navItems = t.navItems || [];
             </div>
           </div>
           <div class="cta-container">
-            <a href="mailto:hello@eixo.design" class="btn btn--secondary btn--md">
+            <a href="#contact" class="btn btn--secondary btn--md">
               Trabalhe conosco
             </a>
           </div>
         </div>
       </section>
 
+      <div class="photo-strip fade-up" aria-hidden="true">
+        <div class="bg-image">
+          <img src="/assets/images/work-photos/IMG_3579.JPG" alt="" loading="lazy" draggable="false" />
+        </div>
+      </div>
+
       <section class="section section--left fade-up" id="methodology">
         <div class="section__inner">
           <h3>{t.aboutPrinciplesTitle}</h3>
           <div class="section__split">
-            <Accordion items={t.aboutPrinciples} client:visible />
+            <Accordion items={t.aboutPrinciples} client:load />
             <div class="accordion-image">
               <img src="/assets/images/work2.png" alt="Parede de design" />
             </div>
@@ -135,7 +145,7 @@ const navItems = t.navItems || [];
           <h3>{t.offeringsLabel}</h3>
           <div class="cards-grid">
             {offerings.slice(0, 2).map(offering => (
-              <div class="offering-card offering-card--disabled">
+              <div class="offering-card">
                 <img src={offering.image} alt={`${offering.title[lang]} ícone`} class="offering-icon" />
                 <h4>{offering.title[lang]}</h4>
                 <p class="offering-sub">{offering.subtitle[lang]}</p>
@@ -150,7 +160,7 @@ const navItems = t.navItems || [];
           <h3 class="offerings-also">{t.offeringsAlsoLabel}</h3>
           <div class="cards-grid cards-grid--compact">
             {offerings.slice(2).map(offering => (
-              <div class="offering-card offering-card--secondary offering-card--disabled">
+              <div class="offering-card offering-card--secondary">
                 <img src={offering.image} alt={`${offering.title[lang]} ícone`} class="offering-icon" />
                 <h4>{offering.title[lang]}</h4>
                 <p class="offering-sub">{offering.subtitle[lang]}</p>
@@ -158,14 +168,14 @@ const navItems = t.navItems || [];
             ))}
           </div>
           <div class="cta-container">
-            <a href="mailto:hello@eixo.design" class="btn btn--primary btn--md">
+            <a href="#contact" class="btn btn--primary btn--md">
               {t.cta}
             </a>
           </div>
         </div>
       </section>
 
-      <div class="photo-strip fade-up" aria-hidden="true">
+      <div class="photo-strip photo-strip--second fade-up" aria-hidden="true">
         <div class="bg-image">
           <img src="/assets/images/work-photos/IMG_1694.jpeg" alt="" loading="lazy" draggable="false" />
         </div>
@@ -174,7 +184,7 @@ const navItems = t.navItems || [];
       <section class="section section--left fade-up" id="testimonials">
         <div class="section__inner">
           <h3>{t.testimonialsTitle}</h3>
-          <Testimonials testimonials={t.testimonials} client:visible />
+          <Testimonials testimonials={t.testimonials} client:load />
         </div>
       </section>
 
@@ -185,15 +195,6 @@ const navItems = t.navItems || [];
             <div class="contact-text">
               <p class="contact-intro">{t.contactText}</p>
               <p class="contact-subtext">{t.contactSubtext}</p>
-              {t.socialProof && (
-                <div class="trust-signals">
-                  <span class="response-time">{t.socialProof.responseTime}</span>
-                  <span class="status-badge status-badge--online">
-                    <span class="status-badge__dot"></span>
-                    <span class="status-badge__text">{t.socialProof.availability}</span>
-                  </span>
-                </div>
-              )}
               <div class="contact-details">
                 <a href="mailto:hello@eixo.design" class="contact-email">hello@eixo.design</a>
               </div>
@@ -253,12 +254,13 @@ const navItems = t.navItems || [];
             <div class="footer-brand">
               <span class="footer-name">&copy; {new Date().getFullYear()} eixo.design</span>
               {t.footer.description && <p class="footer-description">{t.footer.description}</p>}
+              <a href="/privacy/" target="_blank" rel="noopener noreferrer" class="footer-legal">Política de Privacidade</a>
             </div>
           </div>
         </div>
       </footer>
     </main>
 
-    <button class="scroll-top" aria-label={t.navigation.backToTop} type="button">↑</button>
+    <button class="scroll-top" aria-label={t.navigation.backToTop} type="button"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
   </div>
 </Layout>

@@ -31,7 +31,6 @@ const ogTitle = lang === 'en'
     <meta name="application-name" content="eixo.design" />
     <meta name="theme-color" content="#000000" />
     <meta name="msapplication-navbutton-color" content="#000000" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
     <!-- Primary Meta Tags -->
     <title>{title}</title>
@@ -88,13 +87,20 @@ const ogTitle = lang === 'en'
     <link rel="alternate" hreflang="pt" href="https://eixo.design/pt/" />
     <link rel="alternate" hreflang="x-default" href="https://eixo.design/" />
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DZC7SVEFE1" is:inline></script>
+    <!-- Google tag (gtag.js) — loaded only after cookie consent -->
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag() { dataLayer.push(arguments); }
-      gtag('js', new Date());
-      gtag('config', 'G-DZC7SVEFE1');
+      function loadGA() {
+        if (document.querySelector('script[src*="googletagmanager"]')) return;
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-DZC7SVEFE1';
+        document.head.appendChild(s);
+        gtag('js', new Date());
+        gtag('config', 'G-DZC7SVEFE1');
+      }
+      if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1' && localStorage.getItem('cookie-consent') === 'accepted') loadGA();
     </script>
 
     <!-- Structured Data / Schema Markup -->
@@ -202,6 +208,32 @@ const ogTitle = lang === 'en'
     </script>
 
     <slot />
+
+    <!-- Cookie consent banner -->
+    <div class="cookie-banner" id="cookie-banner" role="dialog" aria-label={lang === 'pt' ? 'Consentimento de cookies' : 'Cookie consent'}>
+      <p>{lang === 'pt' ? 'Usamos cookies para analytics anônimos. Sem anúncios, sem rastreamento.' : 'We use cookies for anonymous analytics. No ads, no tracking.'}</p>
+      <div class="cookie-actions">
+        <button class="btn btn--primary btn--sm" id="cookie-accept">{lang === 'pt' ? 'Aceitar' : 'Accept'}</button>
+        <button class="btn btn--ghost btn--sm" id="cookie-decline">{lang === 'pt' ? 'Recusar' : 'Decline'}</button>
+      </div>
+    </div>
+
+    <script is:inline>
+      // Cookie consent
+      var banner = document.getElementById('cookie-banner');
+      if (banner && !localStorage.getItem('cookie-consent')) {
+        banner.classList.add('visible');
+      }
+      document.getElementById('cookie-accept')?.addEventListener('click', function() {
+        localStorage.setItem('cookie-consent', 'accepted');
+        banner?.classList.remove('visible');
+        if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') loadGA();
+      });
+      document.getElementById('cookie-decline')?.addEventListener('click', function() {
+        localStorage.setItem('cookie-consent', 'declined');
+        banner?.classList.remove('visible');
+      });
+    </script>
 
     <script>
       // Header menu toggle

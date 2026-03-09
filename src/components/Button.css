@@ -15,7 +15,7 @@
   font-weight: 600;
   letter-spacing: 0.01em;
   transition: all var(--transition-base);
-  -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
+  -webkit-tap-highlight-color: var(--white-a10);
   touch-action: manipulation;
   min-height: 44px;
   white-space: nowrap;
@@ -31,18 +31,18 @@
   background: var(--color-cta-bg);
   color: var(--color-cta-text);
   border-radius: var(--radius-full);
-  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 16px var(--white-a10);
 }
 
 .btn--primary:hover {
   background: var(--color-accent);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.15);
+  box-shadow: 0 6px 20px var(--white-a10);
 }
 
 .btn--primary:active {
   transform: translateY(0);
-  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 8px var(--white-a10);
 }
 
 .btn--secondary {

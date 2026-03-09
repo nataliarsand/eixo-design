@@ -10,21 +10,16 @@
 
 .about-card {
   width: 100%;
-  max-width: 800px;
+  max-width: var(--content-narrow);
   margin: 0 auto;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   background: var(--color-card);
   padding: var(--space-6) var(--space-5) var(--space-6);
   transition: all var(--transition-base);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow-lg);
 }
 
-.about-card:hover {
-  background: var(--color-card-hover);
-  border-color: var(--color-accent);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-}
 
 .about-card h3 {
   margin-bottom: var(--space-6);
@@ -40,9 +35,6 @@
   text-wrap: balance;
 }
 
-.about-card p:hover {
-  opacity: 1;
-}
 
 .about-card p:last-of-type {
   margin-bottom: 0;
@@ -55,20 +47,26 @@
   margin-top: var(--space-2);
 }
 
-/* Bio — split layout with photo */
+/* Bio — card treatment matching about-card */
 .about-bio {
   width: 100%;
-  max-width: 800px;
+  max-width: var(--content-narrow);
   margin: 0 auto;
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: var(--space-6);
+  gap: var(--space-5);
   align-items: center;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-card);
+  padding: var(--space-5);
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-lg);
 }
+
 
 .about-bio-text h3 {
   margin-bottom: var(--space-4);
-  opacity: 0.7;
   text-align: left;
 }
 
@@ -106,15 +104,12 @@
   transition: filter var(--transition-base);
 }
 
-.about-bio-photo:hover img {
-  filter: brightness(1.05);
-}
 
 .about-bio-photo::after {
   content: '';
   position: absolute;
   inset: 0;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--white-a8);
   border-radius: var(--radius-lg);
   pointer-events: none;
 }
@@ -132,6 +127,7 @@
   .about-bio {
     grid-template-columns: 1fr;
     gap: var(--space-4);
+    padding: var(--space-4) var(--space-3);
   }
 
   .about-bio-text h3 {

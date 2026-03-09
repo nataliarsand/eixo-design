@@ -14,6 +14,18 @@
   --color-card-hover: rgba(255, 255, 255, 0.05);
   --color-cta-bg: #fff;
   --color-cta-text: #000;
+  --color-status-online: #4ade80;
+  --color-status-offline: #9ca3af;
+  --color-error: #e05252;
+  --color-surface: #1a1a1a;
+
+  /* White alpha scale — for borders, backgrounds, overlays */
+  --white-a4: rgba(255, 255, 255, 0.04);
+  --white-a8: rgba(255, 255, 255, 0.08);
+  --white-a10: rgba(255, 255, 255, 0.1);
+  --white-a20: rgba(255, 255, 255, 0.2);
+  --white-a30: rgba(255, 255, 255, 0.3);
+  --white-a40: rgba(255, 255, 255, 0.4);
 
   /* Typography */
   --font-sans: 'Space Grotesk', sans-serif;
@@ -53,6 +65,8 @@
   /* Layout */
   --max-width: 1180px;
   --content-width: 1180px;
+  --content-narrow: 800px;
+  --content-text: 680px;
   --gutter: var(--space-4);
   --section-padding-x: clamp(1.5rem, 4vw, 2rem);
   --section-padding-y: clamp(5rem, 10vw, 8rem);
