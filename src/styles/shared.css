@@ -96,7 +96,6 @@ html {
 }
 
 section {
-  min-height: 100vh;
   width: min(100%, var(--max-width));
   margin: 0 auto;
   display: flex;
@@ -106,6 +105,10 @@ section {
   padding: var(--section-padding-y) var(--section-padding-x);
   box-sizing: border-box;
   position: relative;
+}
+
+#hero {
+  min-height: 100svh;
 }
 
 section:not(:last-of-type)::after {
@@ -204,6 +207,15 @@ section:not(:last-of-type)::after {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fade-up .section__inner > astro-island {
+  opacity: 1;
+  transform: none;
+}
+
+.fade-up.visible .section__inner > astro-island {
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
 }
 
 .fade-up.visible .section__inner > *:nth-child(1) {
@@ -674,7 +686,6 @@ header.active {
 
 @media (max-width: 767px) {
   section {
-    min-height: auto;
     padding: var(--space-10) var(--gutter);
   }
 
@@ -961,7 +972,7 @@ header.active {
 /* ----------------------------------------------
    Touch & Accessibility Enhancements
 ---------------------------------------------- */
-button, a, .flip-card {
+button, a {
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
   touch-action: manipulation;
 }
@@ -996,7 +1007,6 @@ html.mobile body {
 }
 
 .offering-card,
-.flip-card,
 .accordion-item {
   will-change: transform;
   transform: translateZ(0);
@@ -1004,15 +1014,12 @@ html.mobile body {
 
 @media (hover: none) and (pointer: coarse) {
   button:focus,
-  a:focus,
-  .flip-card:focus {
+  a:focus {
     outline: 2px solid var(--color-accent);
     outline-offset: 2px;
   }
 
   .offering-card:hover,
-  .flip-card:hover .flip-card-front,
-  .flip-card:hover .flip-card-back,
   .nav-menu a:hover,
   .cta-button:hover,
   .accordion-title:hover {

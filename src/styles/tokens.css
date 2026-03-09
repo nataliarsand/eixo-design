@@ -55,7 +55,7 @@
   --content-width: 1180px;
   --gutter: var(--space-4);
   --section-padding-x: clamp(1.5rem, 4vw, 2rem);
-  --section-padding-y: clamp(4rem, 8vw, 6rem);
+  --section-padding-y: clamp(5rem, 10vw, 8rem);
 
   /* Border Radius - Consistent System */
   --radius-sm: 4px;
