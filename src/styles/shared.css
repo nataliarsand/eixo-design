@@ -890,11 +890,13 @@ header.active {
   .nav-menu {
     position: fixed;
     top: 0;
+    left: auto;
     right: -100%;
     bottom: 0;
     width: min(75%, 300px);
     height: 100vh;
     flex: none;
+    transform: none;
     background: rgba(0, 0, 0, 0.96);
     backdrop-filter: blur(30px);
     transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
