@@ -1,3 +1,7 @@
 name = "eixo-contact"
 main = "contact-worker.js"
 compatibility_date = "2024-01-01"
+
+[[send_email]]
+name = "SEND_EMAIL"
+destination_address = "nataliarsand@gmail.com"

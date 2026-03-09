@@ -1,13 +1,13 @@
 // Cloudflare Worker for eixo.design contact form
 //
-// Deploy:
-//   cd worker
-//   npx wrangler deploy
+// Uses Cloudflare Email Routing — no external API keys needed.
 //
-// Setup: Add your Brevo API key as a secret:
-//   npx wrangler secret put BREVO_API_KEY
-//
-// Get your free Brevo API key at: https://app.brevo.com/settings/keys/api
+// Setup:
+//   1. Enable Email Routing on eixo.design in Cloudflare dashboard
+//   2. Add nataliarsand@gmail.com as a verified destination address
+//   3. Deploy: cd worker && npx wrangler deploy
+
+import { EmailMessage } from 'cloudflare:email';
 
 export default {
   async fetch(request, env) {
@@ -27,12 +27,12 @@ export default {
         return json({ error: 'Missing required fields' }, 400, request);
       }
 
-      // Basic email format check
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         return json({ error: 'Invalid email' }, 400, request);
       }
 
-      const emailBody = [
+      const subject = `[eixo.design] ${reason} — ${name}`;
+      const body = [
         `Reason: ${reason}`,
         `Name: ${name}`,
         `Email: ${email}`,
@@ -41,40 +41,24 @@ export default {
         message ? `Message:\n${message}` : null,
       ].filter(Boolean).join('\n');
 
-      // Send via Brevo (formerly Sendinblue) Transactional Email API
-      const brevoResponse = await fetch('https://api.brevo.com/v3/smtp/email', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'api-key': env.BREVO_API_KEY,
-        },
-        body: JSON.stringify({
-          sender: {
-            name: 'eixo.design',
-            email: 'hello@eixo.design',
-          },
-          to: [{
-            email: 'nataliarsand@gmail.com',
-            name: 'Natalia Arsand',
-          }],
-          replyTo: {
-            email: email,
-            name: name,
-          },
-          subject: `[eixo.design] ${reason} — ${name}`,
-          textContent: emailBody,
-          htmlContent: formatHtml({ reason, name, email, company, message }),
-        }),
-      });
+      const msgId = `<${Date.now()}.${Math.random().toString(36).slice(2)}@eixo.design>`;
+      const rawEmail = [
+        `Message-ID: ${msgId}`,
+        `From: eixo.design <hello@eixo.design>`,
+        `To: nataliarsand@gmail.com`,
+        `Reply-To: ${name} <${email}>`,
+        `Subject: ${subject}`,
+        `Date: ${new Date().toUTCString()}`,
+        `MIME-Version: 1.0`,
+        `Content-Type: text/plain; charset=utf-8`,
+        ``,
+        body,
+      ].join('\r\n');
 
-      if (brevoResponse.ok) {
-        return json({ ok: true }, 200, request);
-      }
+      const msg = new EmailMessage('hello@eixo.design', 'nataliarsand@gmail.com', rawEmail);
+      await env.SEND_EMAIL.send(msg);
 
-      const err = await brevoResponse.text();
-      console.error('Brevo error:', brevoResponse.status, err);
-      return json({ error: 'Email delivery failed' }, 500, request);
+      return json({ ok: true }, 200, request);
     } catch (err) {
       console.error('Worker error:', err);
       return json({ error: 'Internal error' }, 500, request);
@@ -102,32 +86,4 @@ function corsHeaders(request) {
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type',
   };
-}
-
-function esc(str) {
-  if (!str) return '';
-  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-}
-
-function formatHtml({ reason, name, email, company, message }) {
-  return `
-    <div style="font-family: -apple-system, sans-serif; max-width: 560px; color: #333; line-height: 1.6;">
-      <h2 style="color: #000; font-size: 18px; border-bottom: 1px solid #eee; padding-bottom: 12px; margin-bottom: 20px;">
-        New message from eixo.design
-      </h2>
-      <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
-        <tr><td style="padding: 6px 0; color: #888; width: 100px; vertical-align: top;">Reason</td><td style="padding: 6px 0;">${esc(reason)}</td></tr>
-        <tr><td style="padding: 6px 0; color: #888; vertical-align: top;">Name</td><td style="padding: 6px 0;">${esc(name)}</td></tr>
-        <tr><td style="padding: 6px 0; color: #888; vertical-align: top;">Email</td><td style="padding: 6px 0;"><a href="mailto:${esc(email)}" style="color: #000;">${esc(email)}</a></td></tr>
-        ${company ? `<tr><td style="padding: 6px 0; color: #888; vertical-align: top;">Company</td><td style="padding: 6px 0;">${esc(company)}</td></tr>` : ''}
-      </table>
-      ${message ? `
-        <div style="padding: 16px; background: #f7f7f7; border-radius: 6px;">
-          <p style="margin: 0 0 6px; color: #888; font-size: 13px;">Message</p>
-          <p style="margin: 0; white-space: pre-wrap;">${esc(message)}</p>
-        </div>
-      ` : ''}
-      <p style="margin-top: 24px; font-size: 12px; color: #aaa;">Reply directly to this email to respond to ${esc(name)}.</p>
-    </div>
-  `;
 }
