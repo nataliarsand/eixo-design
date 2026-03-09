@@ -1,8 +1,5 @@
 #testimonials {
   background: var(--color-background);
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
 }
 
 #testimonials .section__inner {

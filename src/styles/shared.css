@@ -611,6 +611,65 @@ header.active {
 }
 
 /* ----------------------------------------------
+   Photo Strip — cinematic divider between sections
+---------------------------------------------- */
+/* Background image — shared treatment for hero bg, photo strips, section bgs */
+.bg-image {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.bg-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  opacity: 0.14;
+  filter: grayscale(1) contrast(1.2);
+  mix-blend-mode: lighten;
+  -webkit-mask-image:
+    linear-gradient(180deg, transparent 0%, black 20%, black 80%, transparent 100%);
+  mask-image:
+    linear-gradient(180deg, transparent 0%, black 20%, black 80%, transparent 100%);
+}
+
+/* Hero gets extra concealment */
+#hero .bg-image img {
+  opacity: 0.08;
+  filter: grayscale(1) contrast(1.1) blur(2px);
+  transform: scale(1.03);
+}
+
+/* Photo strip divider — uses bg-image but as a standalone element with fixed height */
+.photo-strip {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  height: clamp(200px, 28vw, 400px);
+  overflow: hidden;
+}
+
+.photo-strip .bg-image {
+  left: 0;
+  transform: none;
+}
+
+@media (max-width: 767px) {
+  .photo-strip {
+    height: clamp(140px, 30vw, 220px);
+  }
+}
+
+/* ----------------------------------------------
    Animations
 ---------------------------------------------- */
 @keyframes fadeTrail {

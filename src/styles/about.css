@@ -1,4 +1,13 @@
 /* About section */
+.about-icon {
+  width: 32px;
+  height: 32px;
+  opacity: 0.5;
+  filter: grayscale(1) contrast(2) brightness(1);
+  display: block;
+  margin: 0 auto var(--space-3);
+}
+
 .about-card {
   width: 100%;
   max-width: 800px;
@@ -46,34 +55,68 @@
   margin-top: var(--space-2);
 }
 
-/* Bio — secondary, lighter block */
+/* Bio — split layout with photo */
 .about-bio {
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
-  padding: 0 var(--space-5);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-6);
+  align-items: center;
 }
 
-.about-bio h3 {
+.about-bio-text h3 {
   margin-bottom: var(--space-4);
   opacity: 0.7;
+  text-align: left;
 }
 
-.about-bio p {
+.about-bio-text p {
   font-size: var(--text-base);
   line-height: 1.7;
   color: var(--color-subtle);
   margin-bottom: var(--space-2);
 }
 
-.about-bio p:last-of-type {
+.about-bio-text p:last-of-type {
   margin-bottom: 0;
 }
 
-.about-bio .strong {
+.about-bio-text .strong {
   font-weight: 500;
   color: var(--color-text);
   opacity: 0.8;
+}
+
+.about-bio-photo {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  width: 180px;
+  aspect-ratio: 3 / 4;
+  order: -1;
+}
+
+.about-bio-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: filter var(--transition-base);
+}
+
+.about-bio-photo:hover img {
+  filter: brightness(1.05);
+}
+
+.about-bio-photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  pointer-events: none;
 }
 
 @media (max-width: 767px) {
@@ -87,10 +130,20 @@
   }
 
   .about-bio {
-    padding: 0 var(--space-3);
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
   }
 
-  .about-bio p {
+  .about-bio-text h3 {
+    text-align: center;
+  }
+
+  .about-bio-photo {
+    width: 140px;
+    margin: 0 auto;
+  }
+
+  .about-bio-text p {
     font-size: var(--text-sm);
   }
 }

@@ -8,8 +8,8 @@ const content = {
       heroQuote: '"The workshop she ran was exceptionally well-structured and helped us generate and prioritise ideas for our next planning cycle."',
       heroQuoteAuthor: 'Accessibility & Inclusion Strategist, Global Platform',
       heroCta: 'Start a conversation',
-      pronunciation: '–pronounced A-shoo',
-      aboutTitle: "About us",
+      pronunciation: '–pronounced AY-shu /ˈay.ʃu/',
+      aboutTitle: "About Eixo",
     navigation: {
       languageLabel: 'Language',
       openMenu: 'Open navigation',
@@ -18,7 +18,7 @@ const content = {
       backToTop: 'Back to top'
     },
     navItems: [
-      { id: 'about', label: 'About us' },
+      { id: 'about', label: 'About' },
       { id: 'methodology', label: 'How we work' },
       { id: 'offerings', label: 'Offerings' },
       { id: 'contact', label: 'Contact' }
@@ -57,7 +57,28 @@ const content = {
         },
       ],
       contactTitle: 'Get in touch',
-      contactText: 'Tell us what\u2019s on your mind. We usually start with a conversation.',
+      contactText: 'If you\u2019d rather chat than scroll, we\u2019d love to hear from you.',
+      contactSubtext: 'Tell us a bit about what brought you here. It helps us get back to you with the right conversation.',
+      contactForm: {
+        reason: 'Reason for reaching out',
+        reasonOptions: [
+          'Consultancy & Workshops',
+          'Design Delivery',
+          'Courses & Training',
+          'Mentoring',
+          'Partnerships',
+          'General inquiry',
+          'Other'
+        ],
+        name: 'Name',
+        email: 'Email',
+        company: 'Company',
+        message: 'What\u2019s on your mind?',
+        submit: 'Send message',
+        sending: 'Sending...',
+        success: 'Message sent. We\u2019ll be in touch soon.',
+        error: 'Something went wrong. Please try again or email us directly.'
+      },
       socialProof: {
         testimonialPreview: "\"Natalia brings rare depth to UX strategy and systems thinking.\"",
         responseTime: "Response within 24h",
@@ -115,12 +136,12 @@ const content = {
         backToTop: 'Voltar ao topo'
       },
       navItems: [
-        { id: 'about', label: 'Sobre nós' },
+        { id: 'about', label: 'Sobre' },
         { id: 'methodology', label: 'Como trabalhamos' },
         { id: 'offerings', label: 'O que oferecemos' },
         { id: 'contact', label: 'Contato' }
       ],
-      aboutTitle: "Sobre nós",
+      aboutTitle: "Sobre a Eixo",
       aboutText1: "A Eixo é um estúdio de design feito para a complexidade. Cortamos o ruído para trazer clareza ao caos.",
       aboutText2: "Projetamos de dentro pra fora. Integramos design thinking, design de serviços e prática de UX para moldar sistemas, negócios e produtos significativos, coesos e adaptáveis.",
       aboutText3: "Não estamos aqui pra enfeitar. Fazemos as coisas funcionarem, e a beleza surge naturalmente disso.",
@@ -160,7 +181,28 @@ const content = {
         }
           ],
           contactTitle: 'Entre em contato',
-          contactText: 'Conta pra gente o que está na sua cabeça. A gente sempre começa com uma conversa.',
+          contactText: 'Se prefere conversar a continuar scrollando, adoramos ouvir de você.',
+          contactSubtext: 'Conte um pouco sobre o que te trouxe aqui. Assim conseguimos voltar com a conversa certa.',
+          contactForm: {
+            reason: 'Motivo do contato',
+            reasonOptions: [
+              'Consultoria & Workshops',
+              'Entrega de Design',
+              'Cursos & Treinamento',
+              'Mentoria',
+              'Parcerias',
+              'Pergunta geral',
+              'Outro'
+            ],
+            name: 'Nome',
+            email: 'Email',
+            company: 'Empresa',
+            message: 'O que está na sua cabeça?',
+            submit: 'Enviar mensagem',
+            sending: 'Enviando...',
+            success: 'Mensagem enviada. Entraremos em contato em breve.',
+            error: 'Algo deu errado. Tente novamente ou envie um email diretamente.'
+          },
           socialProof: {
             testimonialPreview: "\"Natalia traz profundidade rara em estratégia de UX e pensamento sistêmico.\"",
             responseTime: "Resposta em até 24h",

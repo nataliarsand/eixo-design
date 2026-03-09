@@ -8,8 +8,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy:worker": "cd worker && npx wrangler deploy"
   },
   "dependencies": {
     "astro": "^5.0.0",
@@ -17,8 +16,5 @@
     "@astrojs/sitemap": "^3.0.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
-  },
-  "devDependencies": {
-    "gh-pages": "^6.3.0"
   }
 }

@@ -55,6 +55,9 @@ const navItems = t.navItems || [];
 
     <main>
       <section class="section section--left fade-up" id="hero">
+        <div class="bg-image" aria-hidden="true">
+          <img src="/assets/images/work-photos/IMG_0490.JPG" alt="" loading="eager" draggable="false" />
+        </div>
         <div class="section__inner">
           <div class="hero-layout">
             <div class="hero-statement">
@@ -90,16 +93,22 @@ const navItems = t.navItems || [];
       <section class="section section--left fade-up" id="about">
         <div class="section__inner">
           <div class="about-card">
+            <img src="/assets/images/eixo-icon-white.png" alt="" class="about-icon" aria-hidden="true" />
             <h3>{t.aboutTitle}</h3>
             <p>{t.aboutText1}</p>
             <p>{t.aboutText2}</p>
             <p class="strong">{t.aboutText3}</p>
           </div>
           <div class="about-bio">
-            <h3>{t.bioTitle}</h3>
-            <p>{t.bioText1}</p>
-            <p>{t.bioText2}</p>
-            <p class="strong">{t.bioText3}</p>
+            <div class="about-bio-text">
+              <h3>{t.bioTitle}</h3>
+              <p>{t.bioText1}</p>
+              <p>{t.bioText2}</p>
+              <p class="strong">{t.bioText3}</p>
+            </div>
+            <div class="about-bio-photo">
+              <img src="/assets/images/work-photos/natalia/2024-03-20 Natalia-1229-by Ellard Vasen_JpegMini_C1.jpg" alt="Natalia Arsand, fundadora da eixo.design" loading="lazy" />
+            </div>
           </div>
           <div class="cta-container">
             <a href="mailto:hello@eixo.design" class="btn btn--secondary btn--md">
@@ -156,6 +165,12 @@ const navItems = t.navItems || [];
         </div>
       </section>
 
+      <div class="photo-strip fade-up" aria-hidden="true">
+        <div class="bg-image">
+          <img src="/assets/images/work-photos/IMG_1694.jpeg" alt="" loading="lazy" draggable="false" />
+        </div>
+      </div>
+
       <section class="section section--left fade-up" id="testimonials">
         <div class="section__inner">
           <h3>{t.testimonialsTitle}</h3>
@@ -166,25 +181,55 @@ const navItems = t.navItems || [];
       <section class="section section--left fade-up" id="contact">
         <div class="section__inner">
           <h3>{t.contactTitle}</h3>
-          <div class="contact-content">
+          <div class="contact-layout">
             <div class="contact-text">
               <p class="contact-intro">{t.contactText}</p>
+              <p class="contact-subtext">{t.contactSubtext}</p>
               {t.socialProof && (
-                <div class="social-proof">
-                  <p class="testimonial-preview">{t.socialProof.testimonialPreview}</p>
-                  <div class="trust-signals">
-                    <span class="response-time">{t.socialProof.responseTime}</span>
-                    <span class="status-badge status-badge--online">
-                      <span class="status-badge__dot"></span>
-                      <span class="status-badge__text">{t.socialProof.availability}</span>
-                    </span>
-                  </div>
+                <div class="trust-signals">
+                  <span class="response-time">{t.socialProof.responseTime}</span>
+                  <span class="status-badge status-badge--online">
+                    <span class="status-badge__dot"></span>
+                    <span class="status-badge__text">{t.socialProof.availability}</span>
+                  </span>
                 </div>
               )}
               <div class="contact-details">
                 <a href="mailto:hello@eixo.design" class="contact-email">hello@eixo.design</a>
               </div>
             </div>
+            <form class="contact-form" id="contact-form" novalidate>
+              <div class="form-field">
+                <select name="reason" required aria-label={t.contactForm.reason}>
+                  <option value="" disabled selected>{t.contactForm.reason}*</option>
+                  {t.contactForm.reasonOptions.map(option => (
+                    <option value={option}>{option}</option>
+                  ))}
+                </select>
+                <span class="select-arrow" aria-hidden="true"></span>
+              </div>
+              <div class="form-field">
+                <textarea name="message" rows="4" placeholder={t.contactForm.message} aria-label={t.contactForm.message}></textarea>
+              </div>
+              <div class="form-row">
+                <div class="form-field">
+                  <input type="text" name="name" placeholder={`${t.contactForm.name}*`} required aria-label={t.contactForm.name} />
+                </div>
+                <div class="form-field">
+                  <input type="email" name="email" placeholder={`${t.contactForm.email}*`} required aria-label={t.contactForm.email} />
+                </div>
+              </div>
+              <div class="form-field">
+                <input type="text" name="company" placeholder={t.contactForm.company} aria-label={t.contactForm.company} />
+              </div>
+              <button type="submit" class="btn btn--primary btn--md form-submit"
+                data-sending={t.contactForm.sending}
+                data-success={t.contactForm.success}
+                data-error={t.contactForm.error}>
+                {t.contactForm.submit}
+              </button>
+              <div class="form-status" aria-live="polite"></div>
+            </form>
           </div>
         </div>
       </section>

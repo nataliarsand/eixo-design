@@ -1,83 +1,56 @@
-/* Contact section - component-specific styles only */
-.contact-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-6);
+/* Contact section */
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: var(--space-8);
+  align-items: start;
   width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
 }
 
 .contact-text {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  position: sticky;
+  top: calc(var(--space-4) + 80px);
 }
 
 .contact-intro {
   font-size: var(--text-3xl);
-  line-height: 1.6;
+  line-height: 1.4;
   font-family: var(--font-serif);
   color: var(--color-accent);
-  margin-bottom: var(--space-4);
+}
+
+.contact-subtext {
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: var(--color-subtle);
 }
 
 .contact-email {
-  font-size: var(--text-2xl);
-  font-weight: 600;
+  font-size: var(--text-sm);
+  font-weight: 500;
   color: var(--color-text);
   text-decoration: none;
-  border-bottom: 2px solid var(--color-accent);
-  padding-bottom: 0.25rem;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  padding-bottom: 0.15rem;
   transition: all var(--transition-base);
-  position: relative;
   display: inline-block;
-}
-
-.contact-email::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--color-text);
-  transition: width var(--transition-base);
+  width: fit-content;
 }
 
 .contact-email:hover {
   color: var(--color-accent);
-  transform: translateY(-2px);
-}
-
-.contact-email:hover::before {
-  width: 100%;
-}
-
-.social-proof {
-  margin: var(--space-4) 0;
-  padding: var(--space-4);
-  background: var(--color-card);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: var(--radius-md);
-  text-align: center;
-  width: 100%;
-}
-
-.testimonial-preview {
-  font-family: var(--font-serif);
-  font-size: var(--text-xl);
-  line-height: 1.6;
-  color: var(--color-accent);
-  font-style: italic;
-  margin-bottom: var(--space-3);
+  border-color: var(--color-accent);
 }
 
 .trust-signals {
   display: flex;
-  justify-content: center;
-  gap: var(--space-4);
+  gap: var(--space-3);
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .response-time {
@@ -90,14 +63,153 @@
 }
 
 .response-time::before {
-  content: '⚡';
+  content: '\26A1';
   position: absolute;
   left: 0;
   color: var(--color-accent);
 }
 
+/* Form */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.form-field {
+  position: relative;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2);
+}
+
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  transition: all var(--transition-base);
+  outline: none;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.contact-form select {
+  appearance: none;
+  cursor: pointer;
+}
+
+.contact-form select:invalid,
+.contact-form select option[value=""][disabled] {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.contact-form select option {
+  background: #1a1a1a;
+  color: var(--color-text);
+}
+
+.select-arrow {
+  position: absolute;
+  right: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  width: 16px;
+  height: 16px;
+}
+
+.select-arrow::before {
+  content: '';
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-right: 1.5px solid rgba(255, 255, 255, 0.5);
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.5);
+  transform: rotate(45deg) translateY(-2px);
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contact-form input:hover,
+.contact-form textarea:hover,
+.contact-form select:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact-form select:focus {
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.contact-form input:focus-visible,
+.contact-form textarea:focus-visible,
+.contact-form select:focus-visible {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Validation */
+.contact-form .form-field.error input,
+.contact-form .form-field.error textarea,
+.contact-form .form-field.error select {
+  border-color: #e05252;
+}
+
+.form-submit {
+  align-self: flex-start;
+  margin-top: var(--space-1);
+}
+
+.form-status {
+  font-size: var(--text-sm);
+  min-height: 1.5em;
+}
+
+.form-status.success {
+  color: var(--color-accent);
+}
+
+.form-status.error {
+  color: #e05252;
+}
+
 @media (max-width: 767px) {
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+
+  .contact-text {
+    position: static;
+  }
+
   .contact-intro {
     font-size: var(--text-2xl);
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .form-submit {
+    width: 100%;
   }
 }

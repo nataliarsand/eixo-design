@@ -320,6 +320,11 @@ const ogTitle = lang === 'en'
         }
       });
 
+      // Prevent saving/downloading work photos
+      document.querySelectorAll('.bg-image img, .about-bio-photo img, .photo-strip img').forEach(img => {
+        img.addEventListener('contextmenu', e => e.preventDefault());
+      });
+
       // Hash navigation on page load
       const hash = window.location.hash;
       if (hash) {
@@ -327,6 +332,67 @@ const ogTitle = lang === 'en'
           const target = document.querySelector(hash);
           if (target) target.scrollIntoView({ behavior: 'smooth' });
         }, 100);
+      }
+
+      // Contact form submission
+      const contactForm = document.getElementById('contact-form');
+      if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const form = e.target;
+          const status = form.querySelector('.form-status');
+          const submitBtn = form.querySelector('.form-submit');
+          const originalText = submitBtn.textContent;
+
+          // Clear previous errors
+          form.querySelectorAll('.form-field.error').forEach(f => f.classList.remove('error'));
+          status.className = 'form-status';
+          status.textContent = '';
+
+          // Validate required fields
+          let valid = true;
+          form.querySelectorAll('[required]').forEach(field => {
+            if (!field.value.trim()) {
+              field.closest('.form-field').classList.add('error');
+              valid = false;
+            }
+          });
+
+          const emailField = form.querySelector('[name="email"]');
+          if (emailField.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailField.value)) {
+            emailField.closest('.form-field').classList.add('error');
+            valid = false;
+          }
+
+          if (!valid) return;
+
+          submitBtn.disabled = true;
+          submitBtn.textContent = submitBtn.dataset.sending || 'Sending...';
+
+          const data = Object.fromEntries(new FormData(form));
+
+          try {
+            const res = await fetch('https://eixo-contact.nataliarsand.workers.dev', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(data)
+            });
+
+            if (res.ok) {
+              status.className = 'form-status success';
+              status.textContent = submitBtn.dataset.success || 'Message sent. We\u2019ll be in touch soon.';
+              form.reset();
+            } else {
+              throw new Error('Failed');
+            }
+          } catch {
+            status.className = 'form-status error';
+            status.textContent = submitBtn.dataset.error || 'Something went wrong. Please email us at hello@eixo.design';
+          } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+          }
+        });
       }
     </script>
   </body>
