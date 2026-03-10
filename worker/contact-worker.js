@@ -4,13 +4,16 @@
 //
 // Setup:
 //   1. Enable Email Routing on eixo.design in Cloudflare dashboard
-//   2. Add nataliarsand@gmail.com as a verified destination address
+//   2. Add your destination email as a verified address
 //   3. Deploy: cd worker && npx wrangler deploy
 
 import { EmailMessage } from 'cloudflare:email';
 
+const FROM_ADDRESS = 'hello@eixo.design';
+
 export default {
   async fetch(request, env) {
+    const TO_ADDRESS = env.CONTACT_EMAIL || 'hello@eixo.design';
     if (request.method === 'OPTIONS') {
       return new Response(null, { headers: corsHeaders(request) });
     }
@@ -44,8 +47,8 @@ export default {
       const msgId = `<${Date.now()}.${Math.random().toString(36).slice(2)}@eixo.design>`;
       const rawEmail = [
         `Message-ID: ${msgId}`,
-        `From: eixo.design <hello@eixo.design>`,
-        `To: nataliarsand@gmail.com`,
+        `From: eixo.design <${FROM_ADDRESS}>`,
+        `To: ${TO_ADDRESS}`,
         `Reply-To: ${name} <${email}>`,
         `Subject: ${subject}`,
         `Date: ${new Date().toUTCString()}`,
@@ -55,7 +58,7 @@ export default {
         body,
       ].join('\r\n');
 
-      const msg = new EmailMessage('hello@eixo.design', 'nataliarsand@gmail.com', rawEmail);
+      const msg = new EmailMessage(FROM_ADDRESS, TO_ADDRESS, rawEmail);
       await env.SEND_EMAIL.send(msg);
 
       return json({ ok: true }, 200, request);
