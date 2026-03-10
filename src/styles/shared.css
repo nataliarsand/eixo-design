@@ -1011,9 +1011,26 @@ header.active {
 
   .mobile-nav-ctas {
     display: flex;
-    flex-direction: column;
-    gap: var(--space-2);
+    flex-direction: row;
+    gap: var(--space-1);
     padding-top: var(--space-4);
+  }
+
+  .mobile-nav-ctas .btn {
+    flex: 1;
+    font-size: var(--text-xs);
+    padding: 0.5rem 0.75rem;
+    min-height: 36px;
+  }
+
+  .mobile-nav-ctas .btn--primary {
+    background: var(--color-text);
+    color: var(--color-bg);
+  }
+
+  .mobile-nav-ctas .btn--secondary {
+    border-color: var(--white-a30);
+    color: var(--color-text);
   }
 
   .mobile-lang-switcher {
