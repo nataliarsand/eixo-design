@@ -3,8 +3,8 @@ const content = {
       title: 'eixo.design',
       subtitle1: 'Design from',
       subtitle2: ' the core out.',
-      heroLead: 'UX consultancy based in Amsterdam, helping growing teams align strategy, systems, and people through intentional design.',
-      heroCredibility: '15+ years across Dell, ThoughtWorks, Booking.com, and startups. From discovery workshops to design systems at scale.',
+      heroLead: 'UX consultancy based in Amsterdam, helping teams align strategy, systems, and people through intentional design.',
+      heroCredibility: '18 years across Dell, ThoughtWorks, Booking.com, and startups. From discovery workshops to design systems at scale.',
       heroQuote: '"The workshop she ran was exceptionally well-structured and helped us generate and prioritise ideas for our next planning cycle."',
       heroQuoteAuthor: 'Accessibility & Inclusion Strategist, Global Platform',
       heroCta: 'Start a conversation',
@@ -30,11 +30,12 @@ const content = {
       aboutText2: "We design from the inside out. Integrating design thinking, service design, and UX craft to help shape systems, businesses, and products that are meaningful, cohesive, and adaptable.",
       aboutText3: "We are here to make things work and free your time to focus on what matters.",
       bioTitle: "About Natalia",
-      bioText1: "UX Design Lead with 15+ years across Dell, ThoughtWorks, startups, and most recently Booking.com, where I led design systems at scale.",
+      bioText1: "UX Design Lead with 18 years across Dell, ThoughtWorks, startups, and most recently Booking.com, where I led design systems at scale.",
       bioText2: "My expertise spans strategic discovery, technical implementation, and alignment of cross-functional teams.",
       bioText3: "I bring in trusted collaborators as needed to form specialist teams tailored to each project context.",
       aboutPrinciplesTitle: 'How we work',
-      aboutPrinciplesIntro: "Our process brings structure to collaboration. Here's how we work:", 
+      aboutMethodIntro: "Design is a way of thinking — not a set of deliverables. We move between questioning the problem and building the solution, always starting from where you are.",
+      aboutPrinciplesIntro: "Our process brings structure to collaboration. Here\u2019s how we work:",
       aboutPrinciples: [ {
         title: 'Ask the hard questions early',
         description: "We surface gaps, risks, and friction points while there's still time to act. We ask the questions most avoid, the ones that sting a little, but save a lot later."
@@ -113,7 +114,7 @@ const content = {
         }
       ],
       footer: {
-        description: "Design studio based in Amsterdam. UX strategy, workshops, and systems for growing teams.",
+        description: "Design studio based in Amsterdam. UX strategy, workshops, and systems for businesses and teams.",
         location: "Amsterdam-based, nomad at heart, connected worldwide.",
         availability: "Open to work",
         email: "hello@eixo.design"
@@ -123,8 +124,8 @@ const content = {
       title: 'eixo.design',
       subtitle1: 'Design do',
       subtitle2: ' eixo pra fora.',
-      heroLead: 'Consultoria de UX baseada em Amsterdã, ajudando times em crescimento a alinhar estratégia, sistemas e pessoas através de design intencional.',
-      heroCredibility: '15+ anos na Dell, ThoughtWorks, Booking.com e startups. De workshops de descoberta a design systems em escala.',
+      heroLead: 'Consultoria de UX baseada em Amsterdã, ajudando times e negócios a alinhar estratégia, sistemas e pessoas através de design intencional.',
+      heroCredibility: '18 anos na Dell, ThoughtWorks, Booking.com e startups. De workshops de descoberta a design systems em escala.',
       heroQuote: '"O workshop nos levou a pensar profundamente sobre nosso negócio. A documentação foi clara e acionável."',
       heroQuoteAuthor: 'Dupla de Liderança, Pequeno Negócio',
       heroCta: 'Iniciar uma conversa',
@@ -148,7 +149,7 @@ const content = {
       aboutText3: "Estamos aqui pra fazer as coisas funcionarem e liberar seu tempo pra focar no que importa.",
       
       bioTitle: "Sobre a Natalia",
-      bioText1: "UX Design Lead com mais de 15 anos de experiência na Dell, ThoughtWorks, startups e, mais recentemente, na Booking.com, onde liderei design systems em escala.",
+      bioText1: "UX Design Lead com 18 anos de experiência na Dell, ThoughtWorks, startups e, mais recentemente, na Booking.com, onde liderei design systems em escala.",
       bioText2: "Minha experiência abrange descoberta estratégica, implementação técnica e alinhamento de times multidisciplinares.",
       bioText3: "Trago colaboradores de confiança sempre que necessário para formar times especializados sob medida para cada projeto.",
       
@@ -157,7 +158,8 @@ const content = {
       cta: 'Vamos conversar',
       aboutCtaLabel: 'Trabalhe conosco',
       aboutPrinciplesTitle: "Como trabalhamos",
-      aboutPrinciplesIntro: "Nosso processo traz estrutura à colaboração. É assim que trabalhamos:",
+      aboutMethodIntro: "Design \u00e9 uma forma de pensar \u2014 n\u00e3o um conjunto de entregas. Transitamos entre questionar o problema e construir a solu\u00e7\u00e3o, sempre partindo de onde voc\u00ea est\u00e1.",
+      aboutPrinciplesIntro: "Nosso processo traz estrutura \u00e0 colabora\u00e7\u00e3o. \u00c9 assim que trabalhamos:",
       
       aboutPrinciples: [
         {
@@ -238,7 +240,7 @@ const content = {
             }
           ],
           footer: {
-            description: "Estúdio de design baseado em Amsterdã. Estratégia de UX, workshops e sistemas para times em crescimento.",
+            description: "Estúdio de design baseado em Amsterdã. Estratégia de UX, workshops e sistemas para times e negócios.",
             location: "Base em Amsterdã, nômade de espírito, conectada ao mundo.",
             availability: "Aberta a novos projetos",
             email: "hello@eixo.design"

@@ -12,7 +12,7 @@ const navItems = t.navItems || [];
 <Layout
   lang="pt"
   title="eixo.design | Consultoria de UX Design Amsterdã | Workshops & Estratégia"
-  description="Consultoria de UX baseada em Amsterdã, especializada em workshops, design systems e descoberta estratégica. 15+ anos ajudando times a alinhar e construir produtos melhores."
+  description="Consultoria de UX baseada em Amsterdã, especializada em workshops, design systems e descoberta estratégica. 18 anos ajudando times a alinhar e construir produtos melhores."
 >
   <div class="app">
     <div class="bg-noise"></div>
@@ -131,6 +131,7 @@ const navItems = t.navItems || [];
       <section class="section section--left fade-up" id="methodology">
         <div class="section__inner">
           <h3>{t.aboutPrinciplesTitle}</h3>
+          {t.aboutMethodIntro && <p class="method-intro">{t.aboutMethodIntro}</p>}
           <div class="section__split">
             <Accordion items={t.aboutPrinciples} client:load />
             <div class="accordion-image">
