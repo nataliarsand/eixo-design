@@ -106,6 +106,7 @@ const navItems = t.navItems || [];
             <div class="offerings-split">
               {offerings.slice(0, 2).map(offering => (
                 <div class="offerings-col">
+                  <span class="offerings-col__title">{offering.title[lang]}</span>
                   <p class="offerings-col__subtitle">{offering.subtitle[lang]}</p>
                   <div class="offerings-col__when">
                     <span class="offerings-col__when-label">{t.offeringsWhenLabel}</span>
