@@ -18,12 +18,13 @@ const content = {
       backToTop: 'Back to top'
     },
     navItems: [
-      { id: 'about', label: 'About' },
-      { id: 'methodology', label: 'How we work' },
       { id: 'offerings', label: 'Offerings' },
-      { id: 'testimonials', label: 'Testimonials' }
+      { id: 'methodology', label: 'How we work' },
+      { id: 'testimonials', label: 'Testimonials' },
+      { id: 'about', label: 'About' }
     ],
     offeringsLabel: 'What we do',
+    offeringsWhenLabel: 'When',
     offeringsAlsoLabel: 'We also offer',
     cta: 'Let\u2019s talk',
       aboutText1: "Eixo is a design studio built for complexity. We cut through noise to bring clarity to chaos.", 
@@ -35,7 +36,6 @@ const content = {
       bioText3: "I bring in trusted collaborators as needed to form specialist teams tailored to each project context.",
       aboutPrinciplesTitle: 'How we work',
       aboutMethodIntro: "Design is a way of thinking — not a set of deliverables. We move between questioning the problem and building the solution, always starting from where you are.",
-      aboutPrinciplesIntro: "Our process brings structure to collaboration. Here\u2019s how we work:",
       aboutPrinciples: [ {
         title: 'Ask the hard questions early',
         description: "We surface gaps, risks, and friction points while there's still time to act. We ask the questions most avoid, the ones that sting a little, but save a lot later."
@@ -61,16 +61,15 @@ const content = {
       contactText: 'Have a project in mind? We\u2019d love to hear about it.',
       contactSubtext: 'Tell us a bit about what brought you here. It helps us get back to you with the right conversation.',
       contactForm: {
-        reason: 'Reason for reaching out',
+        reason: 'I\u2019m interested in',
         reasonOptions: [
-          'Consultancy & Workshops',
-          'Design Delivery',
-          'Courses & Training',
+          'Consultancy',
+          'Delivery',
+          'Training',
           'Mentoring',
-          'Partnerships',
-          'Careers',
-          'General inquiry',
-          'Other'
+          'Speaking',
+          'Partnership',
+          'General inquiry'
         ],
         name: 'Name',
         email: 'Email',
@@ -138,10 +137,10 @@ const content = {
         backToTop: 'Voltar ao topo'
       },
       navItems: [
-        { id: 'about', label: 'Sobre' },
-        { id: 'methodology', label: 'Como trabalhamos' },
         { id: 'offerings', label: 'O que oferecemos' },
-        { id: 'testimonials', label: 'Depoimentos' }
+        { id: 'methodology', label: 'Como trabalhamos' },
+        { id: 'testimonials', label: 'Depoimentos' },
+        { id: 'about', label: 'Sobre' }
       ],
       aboutTitle: "Sobre a Eixo",
       aboutText1: "A Eixo é um estúdio de design feito para a complexidade. Cortamos o ruído para trazer clareza ao caos.",
@@ -154,13 +153,12 @@ const content = {
       bioText3: "Trago colaboradores de confiança sempre que necessário para formar times especializados sob medida para cada projeto.",
       
       offeringsLabel: 'O que fazemos',
+      offeringsWhenLabel: 'Quando',
       offeringsAlsoLabel: 'Também oferecemos',
       cta: 'Vamos conversar',
       aboutCtaLabel: 'Trabalhe conosco',
       aboutPrinciplesTitle: "Como trabalhamos",
       aboutMethodIntro: "Design \u00e9 uma forma de pensar \u2014 n\u00e3o um conjunto de entregas. Transitamos entre questionar o problema e construir a solu\u00e7\u00e3o, sempre partindo de onde voc\u00ea est\u00e1.",
-      aboutPrinciplesIntro: "Nosso processo traz estrutura \u00e0 colabora\u00e7\u00e3o. \u00c9 assim que trabalhamos:",
-      
       aboutPrinciples: [
         {
           title: "Fazemos as perguntas difíceis desde o início",
@@ -187,16 +185,15 @@ const content = {
           contactText: 'Tem um projeto em mente? Adoraríamos ouvir sobre.',
           contactSubtext: 'Conte um pouco sobre o que te trouxe aqui. Assim conseguimos voltar com a conversa certa.',
           contactForm: {
-            reason: 'Motivo do contato',
+            reason: 'Tenho interesse em',
             reasonOptions: [
-              'Consultoria & Workshops',
-              'Entrega de Design',
-              'Cursos & Treinamento',
+              'Consultoria',
+              'Entrega',
+              'Treinamento',
               'Mentoria',
-              'Parcerias',
-              'Carreiras',
-              'Pergunta geral',
-              'Outro'
+              'Palestras',
+              'Parceria',
+              'Pergunta geral'
             ],
             name: 'Nome',
             email: 'Email',
@@ -257,6 +254,10 @@ const content = {
     en: 'Strategic design for alignment, direction, and focus.',
     pt: 'Design estratégico para alinhamento, direção e foco.'
   },
+  when: {
+    en: 'You\u2019re at a turning point and the next move isn\u2019t obvious.',
+    pt: 'Voc\u00ea est\u00e1 num ponto de virada e o pr\u00f3ximo passo n\u00e3o \u00e9 \u00f3bvio.'
+  },
   bullets: {
     en: [
       'Discovery and alignment workshops',
@@ -268,8 +269,8 @@ const content = {
     pt: [
       'Workshops de descoberta e alinhamento',
       'Mapeamento de sistemas e fluxos de trabalho',
-      'Estratégia de experiência e design de serviços',
-      'Priorização e frameworks de decisão',
+      'Estrat\u00e9gia de experi\u00eancia e design de servi\u00e7os',
+      'Prioriza\u00e7\u00e3o e frameworks de decis\u00e3o',
       'Alinhamento organizacional e formas de trabalho'
     ]
   }
@@ -282,6 +283,10 @@ const content = {
     en: 'Design that scales with your system.',
     pt: 'Design que escala junto com seu sistema.'
   },
+  when: {
+    en: 'You feel ready to build. We\u2019ll make sure, then make it happen.',
+    pt: 'Voc\u00ea sente que est\u00e1 pronto pra construir. A gente confirma, e faz acontecer.'
+  },
   bullets: {
     en: [
       'UX/UI design for web and mobile',
@@ -292,35 +297,35 @@ const content = {
     ],
     pt: [
       'UX/UI para web e aplicativos',
-      'Configuração e documentação de design systems',
+      'Configura\u00e7\u00e3o e documenta\u00e7\u00e3o de design systems',
       'Ferramentas internas e interfaces de fluxo de trabalho',
-      'Automação de processos e suporte à implementação',
-      'Colaboração e transferência de conhecimento com desenvolvedores'
+      'Automa\u00e7\u00e3o de processos e suporte \u00e0 implementa\u00e7\u00e3o',
+      'Colabora\u00e7\u00e3o e transfer\u00eancia de conhecimento com desenvolvedores'
     ]
   }
 },
     {
-    key: 'courses',
-    image: '/assets/images/courses-white.png',
-    title: { en: 'Courses', pt: 'Cursos' },
-    subtitle: {
-        en: 'Design education with structure and soul.',
-        pt: 'Educação em design com estrutura e propósito.'
-    },
-    bullets: {
+      key: 'training',
+      image: '/assets/images/courses-white.png',
+      title: { en: 'Training', pt: 'Treinamentos' },
+      subtitle: {
+        en: 'Design education tailored to your team.',
+        pt: 'Educa\u00e7\u00e3o em design sob medida para seu time.'
+      },
+      bullets: {
         en: [
-        'UX foundations for practical, purpose-driven design',
-        'Crash courses for PMs, leaders and decision-makers',
-        'Problem-framing before solution-building',
-        'Design maturity, leadership, and tool fluency'
+          'UX foundations for practical, purpose-driven design',
+          'Crash courses for PMs, leaders and decision-makers',
+          'Problem-framing before solution-building',
+          'Design maturity, leadership, and tool fluency'
         ],
         pt: [
-        'Fundamentos de UX com foco prático e intencional',
-        'Cursos rápidos para PMs, líderes e tomadores de decisão',
-        'Exploração de problemas antes das soluções',
-        'Maturidade em design, liderança e fluência em ferramentas'
+          'Fundamentos de UX com foco pr\u00e1tico e intencional',
+          'Cursos r\u00e1pidos para PMs, l\u00edderes e tomadores de decis\u00e3o',
+          'Explora\u00e7\u00e3o de problemas antes das solu\u00e7\u00f5es',
+          'Maturidade em design, lideran\u00e7a e flu\u00eancia em ferramentas'
         ]
-    }
+      }
     },
     {
       key: 'mentoring',
@@ -328,7 +333,7 @@ const content = {
       title: { en: 'Mentoring', pt: 'Mentorias' },
       subtitle: {
         en: 'Guidance for personal and professional growth.',
-        pt: 'Orientação para crescimento pessoal e profissional.'
+        pt: 'Orienta\u00e7\u00e3o para crescimento pessoal e profissional.'
       },
       bullets: {
         en: [
@@ -338,11 +343,19 @@ const content = {
           'Long-term guidance to evolve practice and mindset'
         ],
         pt: [
-          'Mentorias 1:1 para designers, líderes e criativos',
-          'Alinhamento de carreira e propósito em transições',
-          'Expansão de confiança e tomada de decisão',
-          'Acompanhamento de longo prazo para evoluir prática e mentalidade'
+          'Mentorias 1:1 para designers, l\u00edderes e criativos',
+          'Alinhamento de carreira e prop\u00f3sito em transi\u00e7\u00f5es',
+          'Expans\u00e3o de confian\u00e7a e tomada de decis\u00e3o',
+          'Acompanhamento de longo prazo para evoluir pr\u00e1tica e mentalidade'
         ]
+      }
+    },
+    {
+      key: 'speaking',
+      title: { en: 'Speaking', pt: 'Palestras' },
+      subtitle: {
+        en: 'Talks on design, leadership, and ways of working.',
+        pt: 'Talks sobre design, lideran\u00e7a e formas de trabalho.'
       }
     }
   ];

@@ -63,8 +63,8 @@
   --space-16: 8rem;    /* 128px */
 
   /* Layout */
-  --max-width: 1180px;
   --content-width: 1180px;
+  --max-width: var(--content-width);
   --content-narrow: 800px;
   --content-text: 680px;
   --gutter: var(--space-4);

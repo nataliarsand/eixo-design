@@ -88,9 +88,97 @@ const navItems = t.navItems || [];
               </a>
             </div>
           </div>
-          <a href="#about" class="scroll-hint" aria-label="Scroll down">
+          <a href="#offerings" class="scroll-hint" aria-label="Scroll down">
             <span class="scroll-hint__arrow"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></span>
           </a>
+        </div>
+      </section>
+
+      <section class="section fade-up" id="offerings">
+        <div class="section__inner offerings-inner">
+          <h3 class="offerings-label">{t.offeringsLabel}</h3>
+          <div class="offerings-content">
+            <div class="offerings-axis">
+              <span class="offerings-axis__title">{offerings[0].title[lang]}</span>
+              <span class="offerings-axis__title">{offerings[1].title[lang]}</span>
+            </div>
+
+            <div class="offerings-split">
+              {offerings.slice(0, 2).map(offering => (
+                <div class="offerings-col">
+                  <p class="offerings-col__subtitle">{offering.subtitle[lang]}</p>
+                  <div class="offerings-col__when">
+                    <span class="offerings-col__when-label">{t.offeringsWhenLabel}</span>
+                    <p>{offering.when[lang]}</p>
+                  </div>
+                  <ul>
+                    {offering.bullets[lang].map(bullet => (
+                      <li>{bullet}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="offerings-also-row">
+            <span class="offerings-also-label">{t.offeringsAlsoLabel}</span>
+            <div class="offerings-also-items">
+              {offerings.slice(2).map(offering => (
+                <div class="offerings-also-item">
+                  <span class="offerings-also-item__title">{offering.title[lang]}</span>
+                  <span class="offerings-also-item__sub">{offering.subtitle[lang]}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div class="cta-container">
+            <a href="#contact" class="btn btn--primary btn--md">
+              {t.cta}
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <div class="photo-strip fade-up" aria-hidden="true">
+        <div class="bg-image">
+          <img src="/assets/images/work-photos/IMG_3579.JPG" alt="" loading="lazy" draggable="false" />
+        </div>
+      </div>
+
+      <section class="section section--left fade-up" id="methodology">
+        <div class="section__inner">
+          <h3>{t.aboutPrinciplesTitle}</h3>
+          {t.aboutMethodIntro && <p class="method-intro">{t.aboutMethodIntro}</p>}
+          <div class="section__split">
+            <Accordion items={t.aboutPrinciples} client:load />
+            <div class="accordion-image">
+              <img src="/assets/images/work2.png" alt="Design wall" />
+            </div>
+          </div>
+          <div class="cta-container">
+            <a href="#contact" class="btn btn--primary btn--md">
+              {t.cta}
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <div class="photo-strip photo-strip--second fade-up" aria-hidden="true">
+        <div class="bg-image">
+          <img src="/assets/images/work-photos/IMG_1694.jpeg" alt="" loading="lazy" draggable="false" />
+        </div>
+      </div>
+
+      <section class="section section--left fade-up" id="testimonials">
+        <div class="section__inner">
+          <h3>{t.testimonialsTitle}</h3>
+          <Testimonials testimonials={t.testimonials} client:load />
+          <div class="cta-container">
+            <a href="#contact" class="btn btn--primary btn--md">
+              {t.cta}
+            </a>
+          </div>
         </div>
       </section>
 
@@ -119,73 +207,6 @@ const navItems = t.navItems || [];
               Work with us
             </a>
           </div>
-        </div>
-      </section>
-
-      <div class="photo-strip fade-up" aria-hidden="true">
-        <div class="bg-image">
-          <img src="/assets/images/work-photos/IMG_3579.JPG" alt="" loading="lazy" draggable="false" />
-        </div>
-      </div>
-
-      <section class="section section--left fade-up" id="methodology">
-        <div class="section__inner">
-          <h3>{t.aboutPrinciplesTitle}</h3>
-          {t.aboutMethodIntro && <p class="method-intro">{t.aboutMethodIntro}</p>}
-          <div class="section__split">
-            <Accordion items={t.aboutPrinciples} client:load />
-            <div class="accordion-image">
-              <img src="/assets/images/work2.png" alt="Design wall" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section section--left fade-up" id="offerings">
-        <div class="section__inner">
-          <h3>{t.offeringsLabel}</h3>
-          <div class="cards-grid">
-            {offerings.slice(0, 2).map(offering => (
-              <div class="offering-card">
-                <img src={offering.image} alt={`${offering.title[lang]} icon`} class="offering-icon" />
-                <h4>{offering.title[lang]}</h4>
-                <p class="offering-sub">{offering.subtitle[lang]}</p>
-                <ul>
-                  {offering.bullets[lang].map(bullet => (
-                    <li>{bullet}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-          <h3 class="offerings-also">{t.offeringsAlsoLabel}</h3>
-          <div class="cards-grid cards-grid--compact">
-            {offerings.slice(2).map(offering => (
-              <div class="offering-card offering-card--secondary">
-                <img src={offering.image} alt={`${offering.title[lang]} icon`} class="offering-icon" />
-                <h4>{offering.title[lang]}</h4>
-                <p class="offering-sub">{offering.subtitle[lang]}</p>
-              </div>
-            ))}
-          </div>
-          <div class="cta-container">
-            <a href="#contact" class="btn btn--primary btn--md">
-              {t.cta}
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <div class="photo-strip photo-strip--second fade-up" aria-hidden="true">
-        <div class="bg-image">
-          <img src="/assets/images/work-photos/IMG_1694.jpeg" alt="" loading="lazy" draggable="false" />
-        </div>
-      </div>
-
-      <section class="section section--left fade-up" id="testimonials">
-        <div class="section__inner">
-          <h3>{t.testimonialsTitle}</h3>
-          <Testimonials testimonials={t.testimonials} client:load />
         </div>
       </section>
 

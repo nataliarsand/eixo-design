@@ -1,149 +1,255 @@
-/* OfferingCard Component Styles */
-.offering-card {
-  background: var(--color-card);
-  border: 1px solid var(--color-border);
-  padding: var(--space-4);
-  border-radius: var(--radius-lg);
+/* Offerings section styles */
+
+/* Section label */
+.offerings-label {
+  text-align: center;
+  width: 100%;
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-subtle);
+  font-weight: 400;
+  margin-bottom: var(--space-3);
+}
+
+/* Content wrapper — holds the diagonal axis line */
+.offerings-content {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* The diagonal axis line — pure CSS backslash spanning full content */
+.offerings-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--white-a10) 5%,
+    var(--white-a20) 20%,
+    var(--white-a20) 80%,
+    var(--white-a10) 95%,
+    transparent
+  );
+  transform: rotate(4deg);
+  transform-origin: top center;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Axis header: Consultancy / Delivery */
+.offerings-axis {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  padding-bottom: var(--space-6);
+}
+
+.offerings-axis__title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 400;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.offerings-axis__title:first-child {
+  text-align: right;
+  padding-right: var(--space-8);
+}
+
+.offerings-axis__title:last-child {
+  text-align: left;
+  padding-left: var(--space-8);
+}
+
+/* Two-column split */
+.offerings-inner {
+  align-items: center;
+  text-align: center;
+}
+
+.offerings-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  position: relative;
+}
+
+.offerings-col {
+  text-align: left;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  transition: all var(--transition-base);
-  text-decoration: none;
-  color: inherit;
-  cursor: default;
-  position: relative;
-  will-change: transform;
-  transform: translateZ(0);
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.15);
+  gap: var(--space-3);
+  padding: var(--space-4) 0;
 }
 
-
-
-.offering-icon {
-  width: 42px;
-  height: auto;
-  margin-bottom: var(--space-2);
-  filter: brightness(0.9);
-  transform: rotate(-90deg);
-  transition: transform var(--transition-base);
+.offerings-col:first-child {
+  padding-right: var(--space-8);
 }
 
-
-.offering-card h4 {
-  font-size: var(--text-2xl);
-  font-weight: 600;
-  margin-bottom: var(--space-1);
-  font-family: var(--font-sans);
-  color: var(--color-text);
+.offerings-col:last-child {
+  padding-left: var(--space-8);
 }
 
-.offering-sub {
+.offerings-col__subtitle {
   font-family: var(--font-serif);
-  font-size: var(--size-body-lg);
-  color: var(--color-accent);
+  font-size: var(--text-xl);
+  color: var(--color-text);
   font-style: italic;
-  margin-bottom: var(--space-2);
+  line-height: 1.5;
+}
+
+.offerings-col__when {
+  padding: var(--space-3) 0;
+}
+
+.offerings-col__when-label {
+  display: block;
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-subtle);
+  margin-bottom: var(--space-1);
+  font-weight: 500;
+}
+
+.offerings-col__when p {
+  font-size: var(--size-body);
+  color: var(--color-accent);
   line-height: 1.6;
 }
 
-.offering-card ul {
+.offerings-col ul {
   list-style: none;
   padding-left: 0;
   margin: 0;
+  border-top: 1px solid var(--white-a8);
+  padding-top: var(--space-3);
 }
 
-.offering-card li {
+.offerings-col li {
   font-size: var(--size-body);
   color: var(--color-subtle);
   margin-bottom: var(--space-1);
   padding-left: var(--space-3);
-  text-align: left;
   position: relative;
+  line-height: 1.7;
 }
 
-.offering-card li::before {
-  content: '⟐';
+.offerings-col li::before {
+  content: '\27D0';
   position: absolute;
   left: 0;
   color: var(--color-bullet);
 }
 
-.offering-link-arrow {
-  margin-top: auto;
-  padding-top: var(--space-2);
-  color: var(--color-accent);
-  font-size: var(--text-2xl);
-  opacity: 0.6;
-  transition: opacity var(--transition-base), transform var(--transition-base);
+/* Also offer — lightweight inline row */
+.offerings-also-row {
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--white-a8);
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-6);
+  width: 100%;
 }
 
-/* Secondary offerings — lighter, no bullet lists */
-.offering-card--secondary {
-  background: transparent;
-  border-color: var(--white-a8);
-  box-shadow: none;
-  padding: var(--space-3);
-}
-
-
-.offering-card--secondary h4 {
-  font-size: var(--text-xl);
-}
-
-.offering-card--secondary .offering-sub {
-  margin-bottom: 0;
-}
-
-.offerings-also {
-  margin-top: var(--space-4);
-  margin-bottom: calc(var(--space-6) * -1 + var(--space-2));
-  opacity: 0.4;
+.offerings-also-label {
   font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-subtle);
+  font-weight: 500;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
-.cards-grid--compact {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  max-width: 70%;
-  margin: 0 auto;
+.offerings-also-items {
+  display: flex;
+  gap: var(--space-6);
+  flex: 1;
 }
 
-@media (max-width: 767px) {
-  .cards-grid--compact {
-    max-width: 100%;
-  }
+.offerings-also-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.offerings-also-item__title {
+  font-family: var(--font-serif);
+  font-size: var(--text-2xl);
+  color: var(--color-text);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.offerings-also-item__sub {
+  font-family: var(--font-serif);
+  font-size: var(--size-body);
+  color: var(--color-subtle);
+  font-style: italic;
+  line-height: 1.5;
 }
 
 /* Responsive */
-@media (max-width: 1024px) {
-  .offering-card {
-    padding: var(--space-3);
-  }
-}
-
 @media (max-width: 767px) {
-  .offering-card {
-    padding: var(--space-4) var(--space-3);
-    border-radius: var(--radius-lg);
-    background: var(--white-a4);
-    border: 1px solid var(--white-a8);
+  .offerings-content::before {
+    display: none;
   }
 
-  .offering-icon {
-    width: 36px;
+  .offerings-axis {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+    text-align: center;
+    padding-bottom: var(--space-4);
   }
 
-  .offering-card h4 {
-    font-size: var(--text-xl);
+  .offerings-axis__title:first-child,
+  .offerings-axis__title:last-child {
+    text-align: center;
+    padding: 0;
   }
 
-  .offering-sub {
-    font-size: var(--text-base);
-    margin-bottom: var(--space-3);
+  .offerings-split {
+    grid-template-columns: 1fr;
   }
 
-  .offering-card li {
+  .offerings-col {
+    padding: var(--space-4) 0;
+    border-bottom: 1px solid var(--white-a8);
+  }
+
+  .offerings-col:first-child,
+  .offerings-col:last-child {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .offerings-col:last-child {
+    border-bottom: none;
+  }
+
+  .offerings-col li {
     font-size: var(--text-sm);
     line-height: 1.6;
-    margin-bottom: var(--space-1);
+  }
+
+  .offerings-also-row {
+    flex-direction: column;
+    gap: var(--space-3);
+    align-items: flex-start;
+  }
+
+  .offerings-also-items {
+    flex-direction: column;
+    gap: var(--space-3);
   }
 }
